@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Michael (Mikhail) V. Yudelson's Academic Page</title>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/text.css" />
+<link rel="stylesheet" href="css/960.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/special.css" />
+</head>
+<body>
+<div class="container_12">
+	<!-- Large header -->
+	<div class="grid_12 title_tab_large grey" id="menu_top">
+	  <p>Michael (Mikhail) V. Yudelson's Academic Page</p>
+	</div>
+	<div class="clear"></div>
+	<!-- menu bar-->
+	<div class="grid_10" id="menu_middle">
+	  <p class="top_tab">
+			<span><a href="index.html"><img src="img/home_256_black.png" style="vertical-align:text-top;" height="20" width="20"/></a></span>&nbsp;&nbsp;<span><a href="vitae.html">Vitae</a></span>&nbsp;&nbsp;<span><a href="proj.html">Projects</a></span>&nbsp;&nbsp;<span><a href="pub.html">Publications</a></span>
+		</p>
+	</div>
+	<div class="grid_2" id="menu_social">
+		<a href="http://www.facebook.com/michael.yudelson" target="_blank"><img src="img/facebook_40_black.png" height="35" width="35"/></a>&nbsp;
+		<a href="http://twitter.com/myudelson" target="_blank"><img src="img/twitter_40_black.png" height="35" width="35"/></a>
+		<a href="http://www.linkedin.com/in/michael1yudelson" target="_blank"><img src="img/linkedin_40_black.png" height="35" width="35"/></a>
+	</div>
+	<div class="clear"></div>
+
+
+	<!-- Current projects -->
+ 	<div class="grid_12">
+			<h1>Current Projects</h1>
+ 	</div>
+
+	<div class="grid_4">
+		<h2>Closing the Big Loop</h2>
+		<p><em>Research project</em><br/>
+		Role: lead data analyst</p>
+		<p>Carnegie Learning, Inc. has accumulated a large body of data on student learning in Cognitive Tutor Algebra&reg; in the order of hundreds of schools, tens of thousands of students, and tens of millions of student problem-solving steps. This project is focusing on harnessing the Big Data to set up a <em>close the loop</em> workflow for iterative improvement of the Cognitive Tutor&reg;. The improvement is driven by using machine learning to tune the parameters of the Bayesian cognitive model that tracks students' progress and controls problem selection.</p>
+		<p>First results (<a href="pub.html#BDBBD">Yudelson, et al., 2014a</a>) show that only a subset of the Big Data &mdash; the <em>Better Data</em> &mdash; needs to be utilized to drive the optimization. Preliminary investigation of the Bayesian model parameter optimization effects for college-level math courses shows that students could save up to 37% of their time spent in Cognitive Tutor &reg; (in preparation).</p>
+	</div>
+
+	<div class="grid_4">
+		<h2>hmmsclbl</h2>
+		<p><em>Post-doctoral project&nbsp;</em><br/>
+		Role: designer &amp; developer<br/>
+		Funding: Pittsburgh Science of Learning Center</p>
+		<p><strong>Hmmsclbl</strong> is a toolkit for building hidden Markov models (HMMs) at scale. It was originally developed to work with Bayesian Knowledge Tracing (BKT) models frequently used in the area of Intelligent Tutoring Systems (ITS). It accepts a simple tab-separated text file and has been successfully tested on datasets as large as one hundred million records (rf. <a href="pub.html#BDBBD">Yudelson, et al., 2014</a>). <strong>Hmmsclbl</strong> can fit and cross-validate models using a number of algorithms including expectation-maximization (EM), stochastic gradient descent, conjugate gradient descent, etc. In addition to standard BKT model, <strong>hmmsclbl</strong> is capable of fitting individualized models with factors accounting for student variance (rf. <a href="pub.html#IBKTM">Yudelson at al., 2013</a>) as well as parameter multiplexing HMM's. (<a href="hmmsclbl.html">more</a>)</p>
+	</div>
+	
+	<div class="grid_4">
+		<h2>Automated Student Modeling in a Java MOOC</h2>
+		<p><em>Collaborative project</em><br/>
+		Role: data analyst, co-advisor&nbsp;</p>
+		<p>This is a joint investigation with the University of Pittsburgh and University of Helsinki. The data consists from progressive student homework code submissions in a Java MOOC course at the University of Helsinki. The goal of analyzed is to determine the possibility of automated modeling of student knowledge. A suite of tools involved include the automated Java parser that produces knowledge quanta from the student code, <a href="http://www.phil.cmu.edu/tetrad/" target="_blank">Tetrad</a> &mdash; a causal modeling solution used to mine knowledge quanta for influential on successful passing of the tests, custom modification of <a href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/" target="_blank">liblinear</a> utility was used to build HLM models of student learning.</p><p>Results published in (<a href="pub.html#IASMIAJM">Yudelson, et al., 2014b</a>) show that relatively simple unsupervised student models display higher positive support for code changes leading towards more tests passed and higher negative support for code changes that result in fewer tests passed.</p>
+	</div>
+	<!-- end Current projects-->
+
+
+	<!-- Past projects -->
+	<div class="grid_12">
+		<h1>Past Projects</h1>
+	</div>
+	
+	<div class="grid_4">
+		<h2>PERSEUS</h2>
+		<p><em>Doctoral dissertation project</em><br/>
+		Role: designer &amp; developer</p>
+		<p>PERSEUS is a Personalization Service Engine. It provides adaptive support for non-personalized (educational) hypermedia systems by abstracting content presentation/aggregation from user modeling. PERSEUS protocols are based on RDF and RSS 1.0. Although, PERSEUS was initially developed for ADAPT2 framework, its data model permits seamless support of any other hypermedia application. Currently, PERSEUS provides social navigation, topic-based navigation, concept-based navigation, and adaptive filtering techniques. (<a href="http://adapt2.sis.pitt.edu/wiki/PERSEUS" target="_blank">more</a>)</p>
+	</div>
+	
+	<div class="grid_4">
+		<h2>Knowledge Tree</h2>
+		<p><em>Graduate research project</em><br/>
+		Role: designer &amp; developer</p>
+		<p>Knowledge Tree is a link aggregating portal. It presents content structured according to the folder-document paradigm. Knowledge Tree provides authentication and authorization and implements a simplified form of access control. It supports collaborative authoring and social annotation. (<a href="http://adapt2.sis.pitt.edu/wiki/Knowledge_Tree" target="_blank">more</a>)</p>
+	</div>
+	
+	<div class="grid_4">
+		<h2>CUMULATE</h2>
+		<p><em>Graduate research project</em><br/>
+		Role: designer &amp; developer</p>
+		<p>CUMULATE is a centralized user modeling server built for the ADAPT2 architecture. It is mainly targeted at providing user modeling support for adaptive educational hypermedia (AEH) systems. CUMULATE maintains a set of overlay models of student's' knowledge. It uses several techniques for computing student models, including thresholded averaging, asymptotic user knowledge assessment, time-spent-reading. (<a href="http://adapt2.sis.pitt.edu/wiki/CUMULATE" target="_blank">more</a>)</p>
+	</div>
+	
+	<div class="clear"></div>
+	
+	<div class="grid_4">
+		<h2>ADAPT<sup>2</sup></h2>
+		<p><em>Graduate research project</em><br/>
+		Role: co-designer &amp; co-developer</p>
+		<p>ADAPT<sup>2</sup> (read adapt-square) &mdash; Advanced Distributed Architecture for Personalized Teaching and Training &mdash; is a framework targeted at providing personalization and adaptation services for developers of content that lacks personalization. ADAPT<sup>2</sup> consists of the following principal components: a portal, a centralized user modeling server, adaptive content navigation shells, content delivery servers, and a personalized service engine (<a href="http://adapt2.sis.pitt.edu/wiki/ADAPT2" target="_blank">more</a>).</p>
+	</div>
+
+	<div class="grid_4">
+		<h2>SlideTutor</h2>
+		<p><em>Graduate research project</em><br/>
+		Role: data analyst</p>
+		<p>SlideTutor is a medical educational system that provides a virtual apprenticeship. It is a simulated environment for learning accurate pathologic diagnosis and reporting. SlideTutor can be used by pathology residents, fellows, and practicing pathologists and provides <em>virtual slides</em> that one can examine just as cases under your microscope. It monitors user’s work and steps in with helpful explanations in case of a mistake. SlideTutor keeps track of user’s learning and adapts its' interaction to fit specific educational needs (<a href="http://slidetutor.upmc.edu/" target="_blank">more</a>).</p>
+		<p>My involvement in the project resulted in a publication that discussed an approach to comparing cognitive models tracking student progress in SlideTutor using a combination of point and curve metrics (<a href="pub.html#AMATSME">Yudelson, et al., 2008</a>).</p>
+	</div>
+	
+	<!-- end Past projects-->
+
+
+	<div class="clear"></div>
+	<!-- Footer style="border-top:1px dotted"-->
+	<div class="grid_10 grey">
+		<p><small>Michael V. Yudelson &copy; 2015</small></p>
+	</div>
+	<div class="grid_2 grey">
+		<p class="right"><small>Adapted from <a href="http://960.gs" target="_blank">960 grid</a></small></p>
+	</div>
+	<!-- end Footer -->
+
+<!-- Google Analytics tracking -->
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-126816-12', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</body>
+</html>

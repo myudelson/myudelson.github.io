@@ -1,0 +1,29 @@
+.title_tab_large {
+	font-size: 21px;
+}
+
+.title_tab_small {
+	font-size: 12px;
+}
+
+
+.top_tab {
+	font-size: 18px;
+}
+
+.top_tab a {
+  text-decoration: none;
+}
+
+.top_tab a:hover {
+  text-decoration: underline;
+}
+
+
+.grey {
+	background-color: #aaa;
+}
+
+.right {
+	text-align:right;
+}
