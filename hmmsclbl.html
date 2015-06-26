@@ -29,13 +29,25 @@
 	</div>
 	<div class="clear"></div>
 
+	<!-- Table of contents-->
+	<div class="grid_2"><p style="text-align:right"><strong>Table of contents</strong></p></div>
+	<div class="grid_10">
+		<p><a href="#bkt">Bayesian Knowledge Tracing</a><br/>
+		<a href="#data">Data</a><br/>
+		<a href="#train">Training BTK Models</a><br/>
+		<a href="#predict">Using Models for Predictions</a><br/>
+		<a href="#example">Examples</a><br/>
+		<a href="#pubs">Publications Featuring <strong>hmmsclbl</strong></a><br/>
+		<a href="#ref">References</a></p>
+	</div>
+	<div class="clear"></div>
 
  	<div class="grid_12">
 			<h1>hmmsclbl</h1>
 
 			<p>This tool is developed to fit Bayesian Knowledge Training models efficiently on large datasets. It is a command line utility written in C/C++. The project started while the author was a post-doc at Human-Computer Interaction Institute, Carnegie Mellon University. These sources are published under BSD-new (3-clause BSD) license.</p>
 
-			<h2>Bayesian Knowledge Tracing</h2>
+			<h2><a id="bkt"></a>Bayesian Knowledge Tracing</h2>
 
 			<p>BKT is a user modeling approach in wide use in the area of Intelligent Tutoring Systems. The goal of BKT is to infer whether the student has mastered a skill or not from a pattern of successful or unsuccessful attempts to apply the skill. It is a special case of Hidden Markov Model (HMM). In BKT there are two types of nodes: binary state nodes capture skill mastery (mastered or not) and binary observation nodes (correct or incorrect application of a skill).</p>
 
@@ -73,11 +85,12 @@ B   .-------------------.
 
 			<p>For more details on BKT refer to [1]. [2], among other things, discusses how a gradient-based fitting of HMM can be implemented. [3, 4] cover additional topics relevant for the implementation.</p>
 
-			<h2>Compilation</h2>
+			<h2><a id="getcompile"></a>Getting and Compiling the Code</h2>
 
+			<p>Open version of <strong>hmmsclbl</strong> code is available via <a href="http://www.educationaldatamining.org/" target="_blank">International Educational Data Mining Society</a>'s GitHub repository <a href="http://goo.gl/5DqpkW" target="_blank">here</a>.</p>
 			<p>If you are on a Linux or Mac OS X system, simply use 'make all' command. If you are on Windows, you might need to install cygwin and have g++/gcc compiler available and be sure to install 'make' command with cygwin.</p>
 
-			<h2>Data</h2>
+			<h2><a id="data"></a>Data</h2>
 
 			<p>Input file data format is quite simple. Four tab separated columns: observation, student, problem/problem step, skill(s). Observation is a 1-started integer. For the two-state BKT, we advise to use 1 for 'correct' and 2 for 'incorrect'. Student is a string label, so is problem or problem step, whatever granularity you prefer. Skill is a string label. Multiple skill labels should be delimited by a character of your choice (do not use tab). An example of few lines of input is below where tilde symbol '~' is used as delimiter.</p>
 
@@ -120,7 +133,7 @@ B	0.79000000	0.21000000	0.22000000	0.78000000
 0.99    0.01
 -- prediction file --
 </pre>
-			<h2>Training BKT models</h2>
+			<h2><a id="train"></a>Training BKT models</h2>
 
 			<p>trainhmm utility has the following launch signature:</p>
 <pre>
@@ -183,7 +196,7 @@ options:
 </pre>
 
 
-			<h2>Using models for prediction</h2>
+			<h2><a id="predict"></a>Using models for prediction</h2>
 
 			<p>predicthmm utility has the following launch signature:</p>
 
@@ -203,7 +216,7 @@ options:
      plus output state probability; works with -v and -m parameters.
 </pre>
 
-			<h2>Examples</h2>
+			<h2><a id="example"></a>Examples</h2>
 
 			<p>Small sample data file <toy_data.txt> is generated using the following BKT parameters: pLo=0.4, pT=0.35, pS=0.25, pG=0.12.</p>
 
@@ -230,7 +243,15 @@ options:
 
 			<p>Depending on your hardware, the model should be fit in about 1-2 minutes.</p>
 
-			<h2>References</h2>
+
+			<h2><a id="pubs"></a>Publications Featuring <strong>hmmsclbl</strong></h2>
+
+			<p>Yudelson, M. &amp; Ritter (2015) <strong>Small Improvement for the Model Accuracy &em; Big Difference for the Students.</strong> In: Proceedings of 17th International Conference on Artificial Intelligence in Education (AIED 2015), Madrid, Spain. [<a href="pdf/AIED2015_YudelsonR.pdf" target="_blank">PDF</a>]</p>
+			<p>Falakmasir, M., Yudelson, M., Ritter, &amp; Koedinger, K. (2015) <strong>Spectral Bayesian Knowledge Tracing.</strong> In: O. Santos, J. Boticario, C. Romero, M. Pechenizkiy, A. Merceron, P. Mitros, J.M. Luna, C. Mihaescu, P. Moreno, A. Hershkovitz, S. Ventura, &amp; M. Desmarais (eds.) Proceedings of the 8th International Conference on Educational Data Mining (EDM 2015), Madrid, Spain, (pp.360-363). [<a href="pdf/EDM2015_FalakmasirYRK.pdf" target="_blank">PDF</a>]</p>			
+			<p><a name="BDBBD"></a>Yudelson, M., Fancsali, S., Ritter, S., Berman, S., Nixon, T., &amp; Joshi, A. (2014) <strong>Better Data Beats Big Data.</strong> In: J. Stamper, Z. Pardos, M. Mavrikis, B. McLaren (eds.) Proceedings of the 7th International Conference on Educational Data Mining (EDM 2014), London, UK, (pp.204-208). [<a href="pdf/EDM2014_YudelsonFRBNJ.pdf" target="_blank">PDF</a>]</p>
+			<p><a name="IBKTM">Yudelson, M., Koedinger, K., Gordon, G. (2013) <strong>Individualized Bayesian Knowledge Tracing Models.</strong> In: Lane, H.C., and Yacef, K., Mostow, J., Pavlik, P.I. (eds.) Proceedings of 16th International Conference on Artificial Intelligence in Education (AIED 2013), Memphis, TN. LNCS vol. 7926, (pp. 171-180). Springer-Verlag Berlin Heidelberg (2013). [<a href="http://dx.doi.org/10.1007/978-3-642-39112-5_18" target="_blank">DOI</a>] [<a href="pdf/AIED2013_YudelsonKG.pdf" target="_blank">PDF</a>]</p>
+
+			<h2><a id="ref"></a>References</h2>
 			<ol>
 				<li>Corbett, A. T. and Anderson, J. R.: Knowledge tracing: Modeling the
 			    acquisition of procedural knowledge. User Modeling and User-Adapted
@@ -243,9 +264,6 @@ options:
 				<li>http://en.wikipedia.org/wiki/Nonlinear_conjugate_gradient_method</li>
 			</ol>
 				
-			<h2>Donwload</h2>
-			
-			<p>Open version of <strong>hmmsclbl</strong> code is available via <a href="http://www.educationaldatamining.org/" target="_blank">International Educational Data Mining Society</a>'s GitHub repository <a href="http://goo.gl/5DqpkW" target="_blank">here</a>.</p>
  	</div>
 
 
