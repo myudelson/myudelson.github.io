@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Michael (Mikhail) V. Yudelson's Academic Page</title>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/text.css" />
+<link rel="stylesheet" href="css/960.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/special.css" />
+
+<script src="assets/numeric-1.2.6.js"></script> <!-- http://numericjs.com/documentation.html -->
+<script src="assets/prototype.js"></script>
+<script type="text/javascript">
+var PI, A, B;
+function col(a, c) {
+	var column = [];
+	for(var i=0; i<a.length; i++)
+		column.push( a[i][c]);
+	return column;
+}
+function compute() {
+	//init
+	var PI =  [  Number.parseFloat($(pLo).value), 1-Number.parseFloat($(pLo).value)];
+	var A  = [[1-Number.parseFloat( $(pF).value),   Number.parseFloat( $(pF).value)], [ Number.parseFloat($(pT).value), 1-Number.parseFloat($(pT).value)]];
+	var B  = [[1-Number.parseFloat( $(pS).value),   Number.parseFloat( $(pS).value)], [ Number.parseFloat($(pG).value), 1-Number.parseFloat($(pG).value)]];
+	//clear results table
+	for(var i = $(tblResults).rows.length - 1; i > 0; i--)
+		if( $(tblResults).rows[i].id == "result")
+			$(tblResults).deleteRow(i);
+	// answers
+	var ans = $(observations).value.trim().split(" ");
+	var obs = $(observations).value.trim().split(" ");
+	for(var i=0; i<ans.length; i++) { ans[i] = ans[i]|0; obs[i] = 1 - ans[i]; } 
+	// compute
+	var pL_arr = [], pC_arr = [], alpha_arr = [], beta_arr = [];
+
+	var pL = PI.slice(0);
+	var pLE, pC, alpha, beta;
+	for(var t=0; t<obs.length; t++) {
+		var o = obs[t];
+		var b = col(B,o);
+		b = numeric.diag(b);
+		
+		// forward variables
+		if(t==0) {
+			alpha = numeric.dot( pL, b );
+			
+		} else {
+			alpha = numeric.dot(alpha, numeric.dot( A, b ) );
+		}
+		alpha_arr.push(alpha);
+
+		// propagation
+		pC =  numeric.dot(pL, B);
+		pC_arr.push(pC);
+
+		pLE = numeric.div(   numeric.mul( pL, col(B,o) ),  numeric.dot( pL, col(B,o) )   );
+		pL = numeric.dot(pLE, A);
+		pL_arr.push(pL);
+	}
+	// backward variables
+	for(var t=(obs.length-1); t>=0; t--) {
+		if(t==(obs.length-1)) {
+			beta = numeric.rep([2],[1])
+		} else {
+			var o = obs[t+1];
+			var b = col(B,o);
+			b = numeric.diag(b);
+			beta = numeric.dot( numeric.dot(A, b), beta );
+		}
+		beta_arr.push(beta);
+	}
+	
+	// add rows
+	for(var i=0; i<obs.length; i++) {
+		$$('#tblResults tr').last().insert({after:
+			'<tr id="result"><td>'+(i+1)+'</td><td>'+ans[i]+'</td><td>'+pL_arr[i][0].toFixed(10)+'</td><td>'+pC_arr[i][0].toFixed(10)+'</td>'+
+			'<td>'+alpha_arr[i][0].toFixed(10)+'</td><td>'+alpha_arr[i][1].toFixed(10)+'</td>'+
+			'<td>'+beta_arr[obs.length-i-1][0][0].toFixed(10)+'</td><td>'+beta_arr[obs.length-i-1][1][0].toFixed(10)+'</td></tr>'
+			});
+	}
+}
+
+function createInput(idname, val) {
+	var input   = document.createElement("input");
+	input.type  = "number";
+	input.name  = idname;
+	input.id    = idname;
+	input.min   = "0";
+	input.max   = "1";
+	input.step  = "0.05";
+	input.value = val;
+	input.onchange = function() { changeValue(this); }//"changeValue(this)";
+	return input;
+}
+
+function numberize(x) { // deal with representation of floats
+	Number(x).toFixed(4);
+}
+
+function resetParameters() {
+	$("td_priors").innerHTML="";
+	$("td_transitions").innerHTML="";
+	$("td_emissions").innerHTML="";
+	var input, nS = $("nS").value, nO = $("nO").value, smPi = 0.0, smA = 0.0, smB = 0.0;	
+	for(i=1; i<=nS; i++) {
+		if(i<nS) smPi += 1/nS;
+		$("td_priors").appendChild( createInput("pi_"+i, numberize( (i<nS)?1/nS:(1-smPi) ) ) );
+		
+		smA = 0.0;
+		for(j=1; j<=nS; j++) {
+			if(j<nS) smA += 1/nS;
+			$("td_transitions").appendChild( createInput("a_"+i+j, numberize( (j<nS)?1/nS:(1-smA) ) ) );
+			if(j==nS && i<nS) {
+				$("td_transitions").appendChild( document.createElement("br") );
+			}
+		}
+		smB = 0.0;
+		for(m=1; m<=nO; m++) {
+			if(m<nO) smB += 1/nO;
+			$("td_emissions").appendChild( createInput("b_"+i+m, numberize( (m<nO)?1/nO:(1-smB) ) ) );
+			if(m==nO && i<nS) {
+				$("td_emissions").appendChild( document.createElement("br") );
+			}
+		}
+	}
+}
+
+function changeValue(changed) {
+	var this_id = changed.id;
+	var nS = $("nS").value, nO = $("nO").value;	
+	nX = (this_id.substr(0,1)=="b")?nO:nS;
+	var row_id = this_id.substr(0,this_id.length-1);
+	var sm = 0.0, err = 0.0;
+	for(l=1;l<=nX;l++) {
+		sm+= parseFloat( $(row_id+l).value );
+	}
+	err = 1.0 - sm;
+	for(l=1;l<=nX;l++) {
+		if( (row_id+l)!=this_id ) {
+		 $(row_id+l).value =  numberize( parseFloat( $(row_id+l).value ) + err/(nX-1) );
+		}
+	}	
+}
+</script>
+
+<style>
+.tblResults td,th{ 
+	border: 1px solid #999;
+	padding: 5px;
+	margin: 5px;
+}
+</style>
+</head>
+
+<body onLoad="compute()">
+<div class="container_12">
+	<!-- Large header -->
+	<div class="grid_12 title_tab_large grey" id="menu_top">
+	  <p>Michael (Mikhail) V. Yudelson's Academic Page</p>
+	</div>
+	<div class="clear"></div>
+	<!-- menu bar-->
+	<div class="grid_10" id="menu_middle">
+	  <p class="top_tab">
+			<span><a href="index.html"><img src="img/home_256_black.png" style="vertical-align:text-top;" height="20" width="20"/></a></span>&nbsp;&nbsp;<span><a href="vitae.html">Vitae</a></span>&nbsp;&nbsp;<span><a href="proj.html">Projects</a></span>&nbsp;&nbsp;<span><a href="pub.html">Publications</a></span>
+		</p>
+	</div>
+	<div class="grid_2" id="menu_social">
+		<a href="http://www.facebook.com/michael.yudelson" target="_blank"><img src="img/facebook_40_black.png" height="35" width="35"/></a>&nbsp;
+		<a href="http://twitter.com/myudelson" target="_blank"><img src="img/twitter_40_black.png" height="35" width="35"/></a>
+		<a href="http://www.linkedin.com/in/michael1yudelson" target="_blank"><img src="img/linkedin_40_black.png" height="35" width="35"/></a>
+	</div>
+	<div class="clear"></div>
+
+ 	<div class="grid_12">
+		<h1>Quick BKT</h1>
+		<p>This is a quick helper interface for tracing/debugging/developing Bayesian Knowledge Tracing models. It covers computing of the skill mastery (latent), performance (observation), as well as forward and backward variables.</p>
+		<p>Computations are done with the help of <a href="http://numericjs.com/" target="_blank">Numeric Javascript</a></p>
+		<form>
+			<table>
+				<tr><td align="right">pInit</td><td><input type="number" name="pLo" id="pLo" min="0" max="1" step="0.1" value="0.5"  onChange="javascript:compute();"></td></tr>
+				<tr><td align="right">pLearn</td> <td><input type="number" name="pT"  id="pT"  min="0" max="1" step="0.1" value="0.4" onChange="javascript:compute();"></td></tr>
+				<tr><td align="right">pForget</td> <td><input type="number" name="pF"  id="pF"  min="0" max="1" step="0.1" value="0.0" disabled="true" onChange="javascript:compute();"></td></tr>
+				<tr><td align="right">pSlip</td> <td><input type="number" name="pS"  id="pS"  min="0" max="1" step="0.1" value="0.2" onChange="javascript:compute();"></td></tr>
+				<tr><td align="right">pGuess</td> <td><input type="number" name="pG"  id="pG"  min="0" max="1" step="0.1" value="0.2" onChange="javascript:compute();"></td></tr>
+				<tr><td align="right" valign="top">Observations</td> <td><input type="text" pattern="^[01]( [01])*$" name="obs" id="observations"  value="0 0 1 1 1 0 1 1 0 1" size="40" title="0's and 1's separated by spaces" onChange="javascript:compute();"><br/><span style="font-size:small;color:grey">0's and 1's separated by spaces</span></td></tr>
+			</table>
+			<input type="button" value="Compute" onClick="javascript:compute();">
+
+		</form>
+		<hr/>
+		<table id="tblResults" class="tblResults">
+			<tr><th rowspan="2">#</th><th rowspan="2">Right/<br/>wrong</th><th rowspan="2">pKnown</th><th rowspan="2">pCorrect</th><th colspan="2">Forward Variables</th><th colspan="2">Backward Variables</th></tr>
+			<tr><th>&alpha;<sub>t,i=1</sub></th><th>&alpha;<sub>t,i=2</sub></th><th>&beta;<sub>t,i=1</sub></th><th>&beta;<sub>t,i=2</sub></th></tr>
+			<span id="spanResults">
+			</span>
+		</table>
+
+		
+ 	</div>
+
+
+	<div class="clear"></div>
+	<!-- Footer style="border-top:1px dotted"-->
+	<div class="grid_10 grey">
+		<p><small>Michael V. Yudelson &copy; 2015</small></p>
+	</div>
+	<div class="grid_2 grey">
+		<p class="right"><small>Adapted from <a href="http://960.gs" target="_blank">960 grid</a></small></p>
+	</div>
+	<!-- end Footer -->
+
+<!-- Google Analytics tracking -->
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-126816-12', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</body>
+</html>
