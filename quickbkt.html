@@ -80,6 +80,9 @@ function compute() {
 			'<td>'+beta_arr[obs.length-i-1][0][0].toFixed(10)+'</td><td>'+beta_arr[obs.length-i-1][1][0].toFixed(10)+'</td></tr>'
 			});
 	}
+	
+	// write likelihood
+	$(lik).innerHTML = numberize(alpha_arr[obs.length-1][0]+alpha_arr[obs.length-1][1], 10);
 }
 
 function createInput(idname, val) {
@@ -95,8 +98,9 @@ function createInput(idname, val) {
 	return input;
 }
 
-function numberize(x) { // deal with representation of floats
-	Number(x).toFixed(4);
+function numberize(x, digits) { // deal with representation of floats
+	if (typeof digits == 'undefined') digits = 4;
+	return Number(x).toFixed(digits);
 }
 
 function resetParameters() {
@@ -197,6 +201,7 @@ function changeValue(changed) {
 			<span id="spanResults">
 			</span>
 		</table>
+		<div>Likelihood of the data given the model:<span id="lik" name="lik"></span><div/>
 
 		
 		<h2><a id="ref"></a>References</h2>
