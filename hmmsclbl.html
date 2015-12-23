@@ -48,9 +48,9 @@
 
 		<h2><a id="bkt"></a>Bayesian Knowledge Tracing</h2>
 
-		<p>BKT is a user modeling approach in wide use in the area of Intelligent Tutoring Systems. The goal of BKT is to infer whether the student has mastered a skill or not from a pattern of successful or unsuccessful attempts to apply the skill. It is a special case of Hidden Markov Model (HMM). In BKT there are two types of nodes: binary state nodes capture skill mastery (mastered or not) and binary observation nodes (correct or incorrect application of a skill).</p>
+		<p>BKT is a user modeling approach in extensive use in the area of Intelligent Tutoring Systems. The goal of BKT is to infer whether the student has mastered a skill or not from a pattern of successful or unsuccessful attempts to apply the skill. It is a special case of Hidden Markov Model (HMM). In BKT, there are two types of nodes: binary state nodes capture skill mastery (mastered or not) and binary observation nodes (correct or incorrect application of a skill).</p>
 
-		<p>For each skill BKT has four parameters.</p>
+		<p>For each skill, BKT has four parameters.</p>
 
 		<ol>
 		<li>pInit or pLo - is a probability the skill was known a priori,</li>
@@ -58,10 +58,10 @@
 		    state upon practice attempt,</li>
 		<li>pForget or pF - is a probability that the skill will transition into "not mastered state" upon practice attempt. Traditionally, pForget is set to zero.</li>
 		<li>pSlip or pS - is a probability that a known skill is applied incorrectly, and</li>
-		<li>pGuess or pG - is a probability that unknown skill will be applied correctly.</li>
+		<li>pGuess or pG - is a probability that an unknown skill will be applied correctly.</li>
 		</ol>
 			
-		<p>Parameters of the BKT can be represented in the matrix form. Priors &mdash; &pi; &mdash; are a vector 1*N, where N is the number of states. throughout this discussion, we will assume that the first element of the \pi vector is the a priory probability of knowing the skill. pLearn is part of the transitions matrix A that captures probabilities of state changes from row to column and is N*N. No forgetting is captured by setting A[1,2] = 0 (from mastered to unmastered). pLearn corresponds to A[2,1] - from unmastered to mastered. pGuess and pSlip are specified in B &mdash; observation matrix N*M, where M is the number of observations. First column corresponds to correct observation, second &mdash; incorrect. For two observations, typical for BKT, pGuess is B[2,1] &mdash; unmastered skill but a correct response, and pSlip is B[1,2] - mastered skill but incorrect response.</p>
+		<p>Parameters of the BKT can be represented in the matrix form. Priors &mdash; &pi; &mdash; are a vector 1*N, where N is the number of states. Throughout this discussion, we will assume that the first element of the \pi vector is the a priory probability of knowing the skill. pLearn is part of the transitions matrix A that captures probabilities of state changes from row to column and is N*N. No forgetting is captured by setting A[1,2] = 0 (from mastered to unmastered). pLearn corresponds to A[2,1] - from unmastered to mastered. pGuess and pSlip are specified in B &mdash; observation matrix N*M, where M is the number of observations. First column corresponds to correct observation, second &mdash; incorrect. For two observations, typical for BKT, pGuess is B[2,1] &mdash; unmastered skill but a correct response, and pSlip is B[1,2] - mastered skill but incorrect response.</p>
 
 <pre>
 \pi .-------------------.
@@ -81,19 +81,19 @@ B   .-------------------.
    .-------------------.
 </pre>
 
-		<p>For more details on BKT refer to [<a href="#KT">1</a>]. [<a href="#IATPFMPASR">2</a>], among other things, discusses how a gradient-based fitting of HMM can be implemented. [<a href="#WC">3</a>, <a href="#NCGM">4</a>] cover additional topics relevant for the implementation.</p>
+		<p>For more details on BKT refer to [<a href="#KT">1</a>]. [<a href="#IATPFMPASR">2</a>], among other things, discusses how a gradient-based fitting of HMM can be implemented. [<a href="#WC">3</a>, <a href="#NCGM">4</a>] cover additional topics relevant to the implementation.</p>
 
 		<h2><a id="getcompile"></a>Getting and Compiling the Code</h2>
 
-		<p>Open version of <strong>hmmsclbl</strong> code is available via <a href="http://www.educationaldatamining.org/" target="_blank">International Educational Data Mining Society</a>'s GitHub repository <a href="http://goo.gl/5DqpkW" target="_blank">here</a>. If you have git tool installed, use the following command to get the source code.</p>
+		<p>The public version of <strong>hmmsclbl</strong> code is available via <a href="http://www.educationaldatamining.org/" target="_blank">International Educational Data Mining Society</a>'s GitHub repository <a href="http://goo.gl/5DqpkW" target="_blank">here</a>. If you have git tool installed, use the following command to get the source code.</p>
 		
 		<code>git clone https://github.com/IEDMS/standard-bkt</code>
 
-		<p>To compile issue 'make all' command. If you are on Linux, the g++/gcc compiler and Open MP library should already be installed. In Mac OX, you would need command line tools of Xcode to be installed. g++/gcc compiler with Open MP (no longer bundled with Mac OS X by default) could be downloaded from <a href="hpc.sourceforge.net" target="_blank">here</a>. If you are on Windows, you might need to install cygwin and have g++/gcc compiler available and be sure to install 'make' command with cygwin.</p>
+		<p>To compile issue 'make all' command. If you are on Linux, the g++/gcc compiler and Open MP library should already be installed. In Mac OX, you would need command line tools of Xcode to be installed. g++/gcc compiler with Open MP (no longer bundled with Mac OS X by default) could be downloaded from <a href="hpc.sourceforge.net" target="_blank">here</a>. If you are on Windows, you might need to install cygwin and have the g++/gcc compiler available and be sure to install 'make' command with cygwin.</p>
 
 		<h2><a id="data"></a>Data</h2>
 
-		<p>Input file data format is quite simple. Four tab separated columns: observation, student, problem/problem step, skill(s). Observation is a 1-started integer. For the two-state BKT, we advise to use 1 for 'correct' and 2 for 'incorrect'. Student is a string label, so is problem or problem step, whatever granularity you prefer. Skill is a string label. Multiple skill labels should be delimited by a character of your choice (do not use tab). An example of few lines of input is below where tilde symbol '~' is used as delimiter.</p>
+		<p>Input file data format is quite straightforward. Four tab-separated columns: observation, student, problem/problem step, skill(s). Observation is a 1-started integer. For the two-state BKT, we use 1 for 'correct' and 2 for 'incorrect'. The student is a string label, so is problem or problem step, whatever granularity you prefer. Skill is a string label as well. Multiple skill labels should be delimited by a character of your choice (do not use tab). An example of few lines of input is given below where tilde symbol '~' is used as a delimiter.</p>
 
 <pre>
 -- input file --
@@ -105,7 +105,7 @@ B   .-------------------.
 
 		<p>If there is no skill label for a particular row of data use '.' (dot) symbol. In test data, the utility will use known observations for training and will produce predictions for missing observations that should have '.' (dot) instead of observation code (1, 2, or otherwise).</p>
 
-		<p>Output files are the model and the predictions file. Model file contains general information about the data, e.g., number of observations, number of skills and number of problems/problem steps; as well as the model parameters.</p>
+		<p>Output files are the model and the predictions file. The model file contains general information about the data, e.g., the number of observations, the number of skills, and the number of problems/problem steps; as well as the model parameters.</p>
 
 		<p>Prediction file consists of model predictions for each row of the input file. Depending on the option (see parameter specifications below), you can print out probability distribution for student's response (probability of correct and probability of incorrect, if the observation node is binary). The probability values are tab separated. See examples of a outputs file below.</p>
 
