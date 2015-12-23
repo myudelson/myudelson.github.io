@@ -222,9 +222,9 @@ options:
 
 		<code>sh> ./predicthmm -p 1 toy_data_test.txt model.txt predict.txt</code>
 
-		<p>To give this tool a proper test you might want to try it on a KDD Cup 2010 dataset donated to the Pittsburgh Science of Learning Center by Carnegie Learning Inc. The dataset can be downloaded (after a quick registration) from <a href="http://pslcdatashop.web.cmu.edu/KDDCup/" target="_blank">here</a>. This datasets consists of training and challenge sets. For the sake of testing the tool, download the challenge  Algebra I set that has about 9 million transactions of over 3300 students. The training file should be trimmed to the tool's format. See shell commands below that do that.</p>
+		<p>To give this tool a proper test you might want to try it on a KDD Cup 2010 dataset donated to the Pittsburgh Science of Learning Center by Carnegie Learning Inc. The dataset can be downloaded (after a quick registration) from <a href="http://pslcdatashop.web.cmu.edu/KDDCup/" target="_blank">here</a>. This datasets consists of training and challenge sets. For the sake of testing the tool, download the challenge  Algebra I set that has about 9 million transactions of over 3300 students. The training file should be trimmed to the tool's format. The command below unzips the training file and reformats it.</p>
 
-		<code>sh> gawk -F"\t" 'BEGIN{OFS=""} {if(NR==1)next; skill=$20; gsub("~~", "~", skill); skill=(skill=="")?".":($3"__"skill); print 2-$14,$2,$3"__"$4,skill;}' algebra_2008_2009_train.txt > a89_kts_train.txt</code><br/>
+		<code>sh> unzip -q -c algebra_2008_2009.zip algebra_2008_2009_train.txt | awk "-F\t" 'BEGIN{OFS="\t"} {if(NR==1)next; skill=$20; gsub("~~", "~", skill); if(skill=="") skill="."; else { skill=$3"__"skill; gsub(/~/, "~"$3"__",skill);} print 2-$14,$2,$3"__"$4,skill;}' > a89_train.txt</code><br/>
 
 		<p>To fit a BKT model of this dataset using gradient descent method as well as to  compute fit metrics and the prediction run the following command:</p>
 
@@ -235,7 +235,7 @@ options:
 
 		<h2><a id="pubs"></a>Publications Featuring <strong>hmmsclbl</strong></h2>
 
-		<p>Yudelson, M. &amp; Ritter (2015) <strong>Small Improvement for the Model Accuracy &em; Big Difference for the Students.</strong> In: Proceedings of 17th International Conference on Artificial Intelligence in Education (AIED 2015), Madrid, Spain. [<a href="pdf/AIED2015_YudelsonR.pdf" target="_blank">PDF</a>]</p>
+		<p>Yudelson, M. &amp; Ritter (2015) <strong>Small Improvement for the Model Accuracy &ndash; Big Difference for the Students.</strong> In: Proceedings of 17th International Conference on Artificial Intelligence in Education (AIED 2015), Madrid, Spain. [<a href="pdf/AIED2015_YudelsonR.pdf" target="_blank">PDF</a>]</p>
 		<p>Falakmasir, M., Yudelson, M., Ritter, &amp; Koedinger, K. (2015) <strong>Spectral Bayesian Knowledge Tracing.</strong> In: O. Santos, J. Boticario, C. Romero, M. Pechenizkiy, A. Merceron, P. Mitros, J.M. Luna, C. Mihaescu, P. Moreno, A. Hershkovitz, S. Ventura, &amp; M. Desmarais (eds.) Proceedings of the 8th International Conference on Educational Data Mining (EDM 2015), Madrid, Spain, (pp.360-363). [<a href="pdf/EDM2015_FalakmasirYRK.pdf" target="_blank">PDF</a>]</p>			
 		<p><a name="BDBBD"></a>Yudelson, M., Fancsali, S., Ritter, S., Berman, S., Nixon, T., &amp; Joshi, A. (2014) <strong>Better Data Beats Big Data.</strong> In: J. Stamper, Z. Pardos, M. Mavrikis, B. McLaren (eds.) Proceedings of the 7th International Conference on Educational Data Mining (EDM 2014), London, UK, (pp.204-208). [<a href="pdf/EDM2014_YudelsonFRBNJ.pdf" target="_blank">PDF</a>]</p>
 		<p><a name="IBKTM"></a>Yudelson, M., Koedinger, K., Gordon, G. (2013) <strong>Individualized Bayesian Knowledge Tracing Models.</strong> In: Lane, H.C., and Yacef, K., Mostow, J., Pavlik, P.I. (eds.) Proceedings of 16th International Conference on Artificial Intelligence in Education (AIED 2013), Memphis, TN. LNCS vol. 7926, (pp. 171-180). Springer-Verlag Berlin Heidelberg (2013). [<a href="http://dx.doi.org/10.1007/978-3-642-39112-5_18" target="_blank">DOI</a>] [<a href="pdf/AIED2013_YudelsonKG.pdf" target="_blank">PDF</a>]</p>
