@@ -199,10 +199,18 @@ function changeValue(changed) {
 		<hr/>
 		<p>Likelihood of the data given the model:&nbsp;<span id="lik" name="lik"></span><p/>
 		<table id="tblResults" class="tblResults">
-			<tr><th rowspan="2">#</th><th rowspan="2">Right/<br/>wrong</th><th rowspan="2">pKnown</th><th rowspan="2">pCorrect</th><th colspan="2">Forward Variables</th><th colspan="2">Backward Variables</th></tr>
-			<tr><th>&alpha;<sub>t,i=1</sub></th><th>&alpha;<sub>t,i=2</sub></th><th>&beta;<sub>t,i=1</sub></th><th>&beta;<sub>t,i=2</sub></th></tr>
-			<span id="spanResults">
-			</span>
+			<thead>
+				<tr><th rowspan="2">#</th><th rowspan="2">Right/<br/>wrong</th><th rowspan="2">pKnown&dagger;</th><th rowspan="2">pCorrect&ddagger;</th><th colspan="2">Forward Variables</th><th colspan="2">Backward Variables</th></tr><tr><th>&alpha;<sub>t,i=1</sub></th><th>&alpha;<sub>t,i=2</sub></th><th>&beta;<sub>t,i=1</sub></th><th>&beta;<sub>t,i=2</sub></th></tr>
+			</thead>
+			<tfoot>
+				<tr><td colspan="8">&dagger; pKnown is computed after the observation is revealed<br/>
+				&ddagger; pCorrect is computed before the observation is revealed</td></tr>
+			</tfoot>
+			<tbody>
+				<span id="spanResults">
+				<tr><td colspan="8"></td></tr>
+				</span>
+			</tbody>
 		</table>
 
 		<h2><a id="ref"></a>References</h2>
