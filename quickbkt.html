@@ -203,8 +203,8 @@ function changeValue(changed) {
 				<tr><th rowspan="2">#</th><th rowspan="2">Right/<br/>wrong</th><th rowspan="2">pKnown&dagger;</th><th rowspan="2">pCorrect&ddagger;</th><th colspan="2">Forward Variables</th><th colspan="2">Backward Variables</th></tr><tr><th>&alpha;<sub>t,i=1</sub></th><th>&alpha;<sub>t,i=2</sub></th><th>&beta;<sub>t,i=1</sub></th><th>&beta;<sub>t,i=2</sub></th></tr>
 			</thead>
 			<tfoot>
-				<tr><td colspan="8">&dagger; pKnown is computed after the observation is revealed<br/>
-				&ddagger; pCorrect is computed before the observation is revealed</td></tr>
+				<tr><td colspan="8">&dagger; pKnown is computed having taken the current observation into consideration<br/>
+				&ddagger; pCorrect is computed without considering the current observation</td></tr>
 			</tfoot>
 			<tbody>
 				<span id="spanResults">
