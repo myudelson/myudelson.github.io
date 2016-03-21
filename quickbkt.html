@@ -13,6 +13,12 @@
 
 <script src="assets/numeric-1.2.6.js"></script> <!-- http://numericjs.com/documentation.html -->
 <script src="assets/prototype.js"></script>
+
+<link rel="stylesheet" href="assets/mathscribe/jqmath-0.4.3.css">
+<script src="assets/mathscribe/jquery-1.4.3.min.js"></script>
+<script src="assets/mathscribe/jqmath-etc-0.4.3.min.js" charset="utf-8"></script>
+
+
 <script type="text/javascript">
 var PI, A, B;
 function col(a, c) {
@@ -200,7 +206,7 @@ function changeValue(changed) {
 		<p>Likelihood of the data given the model:&nbsp;<span id="lik" name="lik"></span><p/>
 		<table id="tblResults" class="tblResults">
 			<thead>
-				<tr><th rowspan="2">#</th><th rowspan="2">Right/<br/>wrong</th><th rowspan="2">pKnown&dagger;</th><th rowspan="2">pCorrect&ddagger;</th><th colspan="2">Forward Variables</th><th colspan="2">Backward Variables</th></tr><tr><th>&alpha;<sub>t,i=1</sub></th><th>&alpha;<sub>t,i=2</sub></th><th>&beta;<sub>t,i=1</sub></th><th>&beta;<sub>t,i=2</sub></th></tr>
+				<tr><th rowspan="2">#</th><th rowspan="2">Right/<br/>wrong</th><th rowspan="2">pKnown&dagger;</th><th rowspan="2">pCorrect&ddagger;</th><th colspan="2">Forward Variables</th><th colspan="2">Backward Variables</th></tr><tr><th><img src="assets/eq/alpha_t,i_eq_1.png" align="middle" alt="\alpha_{t,i=1}" /></th><th><img src="assets/eq/alpha_t,i_eq_2.png" align="middle" alt="\alpha_{t,i=2}" /></th><th><img src="assets/eq/beta_t,i_eq_1.png" align="middle" alt="\beta_{t,i=1}" /></th><th><img src="assets/eq/beta_t,i_eq_2.png" align="middle" alt="\beta_{t,i=2}" /></th></tr>
 			</thead>
 			<tfoot>
 				<tr><td colspan="8">&dagger; pKnown is computed having taken the current observation into consideration<br/>
