@@ -28,6 +28,8 @@ function col(a, c) {
 	return column;
 }
 function compute() {
+	// digits after decimal point
+	n_digi = 8;
 	//init
 	var PI =  [  Number.parseFloat($(pLo).value), 1-Number.parseFloat($(pLo).value)];
 	var A  = [[1-Number.parseFloat( $(pF).value),   Number.parseFloat( $(pF).value)], [ Number.parseFloat($(pT).value), 1-Number.parseFloat($(pT).value)]];
@@ -60,12 +62,15 @@ function compute() {
 		alpha_arr.push(alpha);
 
 		// propagation
-		pC =  numeric.dot(pL, B);
-		pC_arr.push(pC);
+		//      this is the first correctness estimate, before data point is revealed
+		if(t==0) pC1 =  numeric.dot(pL, B);
 
 		pLE = numeric.div(   numeric.mul( pL, col(B,o) ),  numeric.dot( pL, col(B,o) )   );
 		pL = numeric.dot(pLE, A);
 		pL_arr.push(pL);
+		//      this is the correctness estimate after the data point is revealed
+		pC =  numeric.dot(pL, B);
+		pC_arr.push(pC);
 	}
 	// backward variables
 	for(var t=(obs.length-1); t>=0; t--) {
@@ -81,11 +86,18 @@ function compute() {
 	}
 	
 	// add rows
+	// first row is the correctness before crunching data
+	$$('#tblResults tr').last().insert({after:
+		'<tr id="result"><td>0&dagger;</td><td>n/a</td><td>'+PI[0].toFixed(n_digi)+'</td><td>'+pC1[0].toFixed(n_digi)+'</td>'+
+		'<td>n/a</td><td>n/a</td>'+
+		'<td>n/a</td><td>n/a</td></tr>'
+		});
+	// and now with ubservations processed
 	for(var i=0; i<obs.length; i++) {
 		$$('#tblResults tr').last().insert({after:
-			'<tr id="result"><td>'+(i+1)+'</td><td>'+ans[i]+'</td><td>'+pL_arr[i][0].toFixed(10)+'</td><td>'+pC_arr[i][0].toFixed(10)+'</td>'+
-			'<td>'+alpha_arr[i][0].toFixed(10)+'</td><td>'+alpha_arr[i][1].toFixed(10)+'</td>'+
-			'<td>'+beta_arr[obs.length-i-1][0][0].toFixed(10)+'</td><td>'+beta_arr[obs.length-i-1][1][0].toFixed(10)+'</td></tr>'
+			'<tr id="result"><td>'+(i+1)+'</td><td>'+ans[i]+'</td><td>'+pL_arr[i][0].toFixed(n_digi)+'</td><td>'+pC_arr[i][0].toFixed(n_digi)+'</td>'+
+			'<td>'+alpha_arr[i][0].toFixed(n_digi)+'</td><td>'+alpha_arr[i][1].toFixed(n_digi)+'</td>'+
+			'<td>'+beta_arr[obs.length-i-1][0][0].toFixed(n_digi)+'</td><td>'+beta_arr[obs.length-i-1][1][0].toFixed(n_digi)+'</td></tr>'
 			});
 	}
 	
@@ -163,6 +175,11 @@ function changeValue(changed) {
 	padding: 5px;
 	margin: 5px;
 }
+.tblDefinitions td,th{ 
+	border: 0px;
+	padding: 5px;
+	margin: 5px;
+}
 </style>
 </head>
 
@@ -206,17 +223,87 @@ function changeValue(changed) {
 		<p>Likelihood of the data given the model:&nbsp;<span id="lik" name="lik"></span><p/>
 		<table id="tblResults" class="tblResults">
 			<thead>
-				<tr><th rowspan="2">#</th><th rowspan="2">Right/<br/>wrong</th><th rowspan="2">pKnown&dagger;</th><th rowspan="2">pCorrect&ddagger;</th><th colspan="2">Forward Variables</th><th colspan="2">Backward Variables</th></tr><tr><th><img src="http://latex.codecogs.com/gif.latex?%5Calpha_%7Bt%2Ci%3D1%7D" align="middle" alt="\alpha_{t,i=1}" /></th><th><img src="http://latex.codecogs.com/gif.latex?%5Calpha_%7Bt%2Ci%3D2%7D" align="middle" alt="\alpha_{t,i=2}" /></th><th><img src="http://latex.codecogs.com/gif.latex?%5Cbeta_%7Bt%2Ci%3D1%7D" align="middle" alt="\beta_{t,i=1}" /></th><th><img src="http://latex.codecogs.com/gif.latex?%5Cbeta_%7Bt%2Ci%3D2%7D" align="middle" alt="\beta_{t,i=2}" /></th></tr>
+				<tr>
+					<th rowspan="2">#</th>
+					<th rowspan="2">Right/<br/>wrong</th>
+					<th rowspan="2">pKnown</th>
+					<th rowspan="2">pCorrect</th>
+					<th colspan="2">Forward Variables</th>
+					<th colspan="2">Backward Variables</th>
+				</tr>
+				<tr>
+					<th><img src="http://latex.codecogs.com/gif.latex?%5Calpha_%7Bt%2Ci%3D1%7D" align="middle" alt="\alpha_{t,i=1}" /></th>
+					<th><img src="http://latex.codecogs.com/gif.latex?%5Calpha_%7Bt%2Ci%3D2%7D" align="middle" alt="\alpha_{t,i=2}" /></th>
+					<th><img src="http://latex.codecogs.com/gif.latex?%5Cbeta_%7Bt%2Ci%3D1%7D" align="middle" alt="\beta_{t,i=1}" /></th>
+					<th><img src="http://latex.codecogs.com/gif.latex?%5Cbeta_%7Bt%2Ci%3D2%7D" align="middle" alt="\beta_{t,i=2}" /></th>
+				</tr>
 			</thead>
 			<tfoot>
-				<tr><td colspan="8">&dagger; pKnown is computed having taken the current observation into consideration<br/>
-				&ddagger; pCorrect is computed without considering the current observation</td></tr>
+				<tr><td colspan="8">&dagger; Estimates for row 0 are computed before any observations are considered: pKnown = pInit, <br/>
+				pCorrect is computed based on pInit as well, other variables are not defined. For rows 1 through <em>N</em>, <br/>
+				all of the variables are computed assuming the observation has been <em>revealed</em> to the algorithm.</td></tr>
 			</tfoot>
 			<tbody>
 				<span id="spanResults">
 				<tr><td colspan="8"></td></tr>
 				</span>
 			</tbody>
+		</table>
+
+		<h2><a id="define"></a>Definitions</h2>
+		<p>The following are the definitions of the parameters in the vector/matrix form. Numer of hidden states is <em>N</em>; number of observations is Numer of hidden states is <em>M</em>. Indices for elements of vectors, as well as rows and columns of matrices are 1-started. For the matrices, row index is given first, column – second. For simplicity, these are given for number of hidden states and number of observations both equal to 2. <p/>
+		
+		<table class="tblDefinitions">
+			<tr>
+				<td>Priors vector, 1*<em>N</em></td>
+				<td><img alt="\Pi=\[p(L_0), 1-p(L_0)\]" src="http://latex.codecogs.com/gif.latex?%5CPi%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0Ap%28L_0%29%261-p%28L_0%29%5C%5C%0D%0A%5Cend%7Bbmatrix%7D" /></td>
+			</tr>
+			<tr>
+				<td>Transitions matrix, <em>N</em>*<em>N</em></td>
+				<td><img alt="A=\[1, 0; p(T), 1-p(T)\]" src="http://latex.codecogs.com/gif.latex?A%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0A1%260%5C%5C%0D%0Ap%28T%29%261-p%28T%29%0D%0A%5Cend%7Bbmatrix%7D" /></td>
+			</tr>
+			<tr>
+				<td>Emissions matrix, <em>N</em>*<em>M</em></td>
+				<td><img alt="B=\[1-p(S), p(S); p(G), 1-p(G)\]" src="http://latex.codecogs.com/gif.latex?B%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0A1-p%28S%29%26p%28S%29%5C%5C%0D%0Ap%28G%29%261-p%28G%29%0D%0A%5Cend%7Bbmatrix%7D" /></td>
+			</tr>
+			<tr>
+				<td>Correctness, 1*<em>M</em></td>
+				<td>Vector containing the probability distribution of observations. First element is pCorrect.</td>
+			</tr>
+			<tr>
+				<td>Knowledge, 1*<em>N</em></td>
+				<td>Vector containing the probability distribution of hidden states. First element is pKnown.</td>
+			</tr>
+		</table>
+		
+		<h2><a id="compute"></a>Computations</h2>
+
+		<table class="tblDefinitions">
+			<tr>
+				<td><a id="pnown">Knowledge <em>L</em></td>
+				<td><img alt="L_0=\Pi" src="http://latex.codecogs.com/gif.latex?L_0%3D%5CPi" /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><img alt="L_t=p(L|E)_t \cdot A,~t=1..T" src="http://latex.codecogs.com/gif.latex?L_t%3Dp(L%7CE)_t%20%5Ccdot%20A%2C~t%3D1..T" /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><img alt="p(L|E)_t= (L_{t-1} \circ B[,e] )~./~( L_{t-1} \cdot B[,e] ),~t=1..T" src="http://latex.codecogs.com/gif.latex?p(L%7CE)_t%3D%20(L_%7Bt-1%7D%20%5Ccirc%20B%5B%2Ce%5D%20)~.%2F~(%20L_%7Bt-1%7D%20%5Ccdot%20B%5B%2Ce%5D%20)%2C~t%3D1..T" />, where </td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><img alt="\circ" src="http://latex.codecogs.com/gif.latex?%5Ccirc"/>  is by-element  multiplication, <img alt="\cdot" src="http://latex.codecogs.com/gif.latex?%5Ccdot"> is dot-product, <em>./</em> is by-element division, <br/>
+				<em>B</em>[,<em>e</em>] is the <em>e</em>-th column of matrix <em>B</em>, <em>e</em> is the observation at time <em>t</em>.</td>
+			</tr>
+			<tr>
+				<td>Correctness <em>C</em></td>
+				<td><img alt="C_0=\Pi \cdot B" src="http://latex.codecogs.com/gif.latex?C_0%3D%5CPi%20%5Ccdot%20B" /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><img alt="C_t=L \cdot B,~t=1..T" src="http://latex.codecogs.com/gif.latex?C_t%3DL%20%5Ccdot%20B%2C~t%3D1..T" /></td>
+			</tr>
 		</table>
 
 		<h2><a id="ref"></a>References</h2>
