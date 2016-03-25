@@ -251,7 +251,7 @@ function changeValue(changed) {
 		</table>
 
 		<h2><a id="define"></a>Definitions</h2>
-		<p>The following are the definitions of the parameters in the vector/matrix form. Numer of hidden states is <em>N</em>; number of observations is Numer of hidden states is <em>M</em>. Indices for elements of vectors, as well as rows and columns of matrices are 1-started. For the matrices, row index is given first, column – second. For simplicity, these are given for number of hidden states and number of observations both equal to 2. <p/>
+		<p>Standard BKT considers every skill as an independant one. Computations are performed for a student-skill sequence of observations of length <em>T</em>. The number of hidden states is <em>N</em>. The number of observations is <em>M</em>. Indices for elements of vectors, as well as rows and columns of matrices are 1-started. For the matrices, row index is given first, column – second. For simplicity, we consider the number of hidden states and the number of observations to be both equal to 2. <p/>
 		
 		<table class="tblDefinitions">
 			<tr>
@@ -268,11 +268,11 @@ function changeValue(changed) {
 			</tr>
 			<tr>
 				<td>Correctness, 1*<em>M</em></td>
-				<td>Vector containing the probability distribution of observations. First element is pCorrect.</td>
+				<td>Vector containing the probability distribution of observations. The first element is pCorrect.</td>
 			</tr>
 			<tr>
 				<td>Knowledge, 1*<em>N</em></td>
-				<td>Vector containing the probability distribution of hidden states. First element is pKnown.</td>
+				<td>Vector containing the probability distribution of hidden states. The first element is pKnown.</td>
 			</tr>
 		</table>
 		
@@ -302,7 +302,7 @@ function changeValue(changed) {
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><img alt="C_t=L \cdot B,~t=1..T" src="http://latex.codecogs.com/gif.latex?C_t%3DL%20%5Ccdot%20B%2C~t%3D1..T" /></td>
+				<td><img alt="C_t=L_t \cdot B,~t=1..T" src="http://latex.codecogs.com/gif.latex?C_t%3DL_t%20%5Ccdot%20B%2C~t%3D1..T" /></td>
 			</tr>
 		</table>
 
