@@ -14,9 +14,11 @@
 <script src="assets/numeric-1.2.6.js"></script> <!-- http://numericjs.com/documentation.html -->
 <script src="assets/prototype.js"></script>
 
+<!-- 
 <link rel="stylesheet" href="assets/mathscribe/jqmath-0.4.3.css">
 <script src="assets/mathscribe/jquery-1.4.3.min.js"></script>
 <script src="assets/mathscribe/jqmath-etc-0.4.3.min.js" charset="utf-8"></script>
+ -->
 
 
 <script type="text/javascript">
@@ -176,7 +178,6 @@ function changeValue(changed) {
 	margin: 5px;
 }
 .tblDefinitions td,th{ 
-	border: 0px;
 	padding: 5px;
 	margin: 5px;
 }
@@ -221,7 +222,8 @@ function changeValue(changed) {
 		</form>
 		<hr/>
 		<p>Likelihood of the data given the model:&nbsp;<span id="lik" name="lik"></span><p/>
-		<table id="tblResults" class="tblResults">
+			
+		<table id="tblResults" class="tblResults" class="">
 			<thead>
 				<tr>
 					<th rowspan="2">#</th>
@@ -255,17 +257,54 @@ function changeValue(changed) {
 		
 		<table class="tblDefinitions">
 			<tr>
+				<td>Hidden states</td>
+				<td>{<em>known</em>, <em>unknown</em>}</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>more formally, <img alt="S=\{s_i\},~i=1..N" src="http://latex.codecogs.com/gif.latex?S%3D%5C%7Bs_i%5C%7D%2C~i%3D1..N" /></td>
+			</tr>
+			
+			<tr>
+				<td>Observations</td>
+				<td>{<em>correct</em>, <em>incorrect</em>}</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>more formally, <img alt="O=\{o_t\},~o_t=\nu_m,~t=1..T,~m=1..M" src="http://latex.codecogs.com/gif.latex?O%3D%5C%7Bo_t%5C%7D%2C~o_t%3D%5Cnu_m%2C~t%3D1..T%2C~m%3D1..M" /></td>
+			</tr>
+			
+			<tr>
 				<td>Priors vector, 1*<em>N</em></td>
 				<td><img alt="\Pi=\[p(L_0), 1-p(L_0)\]" src="http://latex.codecogs.com/gif.latex?%5CPi%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0Ap%28L_0%29%261-p%28L_0%29%5C%5C%0D%0A%5Cend%7Bbmatrix%7D" /></td>
 			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>more formally, <img alt="\Pi=\{\pi_i\},~i=1..N" src="http://latex.codecogs.com/gif.latex?%5CPi%3D%5C%7B%5Cpi_i%5C%7D%2C~i%3D1..N" /></td>
+			</tr>
+
 			<tr>
 				<td>Transitions matrix, <em>N</em>*<em>N</em></td>
 				<td><img alt="A=\[1, 0; p(T), 1-p(T)\]" src="http://latex.codecogs.com/gif.latex?A%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0A1%260%5C%5C%0D%0Ap%28T%29%261-p%28T%29%0D%0A%5Cend%7Bbmatrix%7D" /></td>
 			</tr>
 			<tr>
+				<td>&nbsp;</td>
+				<td>more formally, <img alt="A=\{a_{ij}\},~a_{ij}=p\{s_{t+1} = j|s_t = i\},~i,j=1..N" src="http://latex.codecogs.com/gif.latex?A%3D%5C%7Ba_%7Bij%7D%5C%7D%2C~a_%7Bij%7D%3Dp%5C%7Bs_%7Bt%2B1%7D%20%3D%20j%7Cs_t%20%3D%20i%5C%7D%2C~i%2Cj%3D1..N" /><br />
+				i.e., the probability of transferring from state <em>i</em> to state <em>j</em>
+				</td>
+			</tr>
+
+			<tr>
 				<td>Emissions matrix, <em>N</em>*<em>M</em></td>
 				<td><img alt="B=\[1-p(S), p(S); p(G), 1-p(G)\]" src="http://latex.codecogs.com/gif.latex?B%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0A1-p%28S%29%26p%28S%29%5C%5C%0D%0Ap%28G%29%261-p%28G%29%0D%0A%5Cend%7Bbmatrix%7D" /></td>
 			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>more formally, <img alt="b_{jm}=p\{o_t=\nu_m|s_t=j\}~j=1..N,~m=1..M" src="http://latex.codecogs.com/gif.latex?b_%7Bjm%7D%3Dp%5C%7Bo_t%3D%5Cnu_m%7Cs_t%3Dj%5C%7D~j%3D1..N%2C~m%3D1..M" /><br />
+				 i.e. probability of observing <img alt="\nu_m" src="http://latex.codecogs.com/gif.latex?%5Cnu_m" />, while being in state <em>j</em>
+				</td>
+			</tr>
+
 			<tr>
 				<td>Correctness, 1*<em>M</em></td>
 				<td>Vector containing the probability distribution of observations. The first element is pCorrect.</td>
@@ -289,12 +328,12 @@ function changeValue(changed) {
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><img alt="p(L|E)_t= (L_{t-1} \circ B[,e] )~./~( L_{t-1} \cdot B[,e] ),~t=1..T" src="http://latex.codecogs.com/gif.latex?p(L%7CE)_t%3D%20(L_%7Bt-1%7D%20%5Ccirc%20B%5B%2Ce%5D%20)~.%2F~(%20L_%7Bt-1%7D%20%5Ccdot%20B%5B%2Ce%5D%20)%2C~t%3D1..T" />, where </td>
+				<td><img alt="p(L|E)_t= (L_{t-1} \circ B[,o_t] )~./~( L_{t-1} \cdot B[,o_t] ),~t=1..T" src="http://latex.codecogs.com/gif.latex?p(L%7CE)_t%3D%20(L_%7Bt-1%7D%20%5Ccirc%20B%5B%2Co_t%5D%20)~.%2F~(%20L_%7Bt-1%7D%20%5Ccdot%20B%5B%2Co_t%5D%20)%2C~t%3D1..T" />, where </td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td><img alt="\circ" src="http://latex.codecogs.com/gif.latex?%5Ccirc"/>  is by-element  multiplication, <img alt="\cdot" src="http://latex.codecogs.com/gif.latex?%5Ccdot"> is dot-product, <em>./</em> is by-element division, <br/>
-				<em>B</em>[,<em>e</em>] is the <em>e</em>-th column of matrix <em>B</em>, <em>e</em> is the observation at time <em>t</em>.</td>
+				<img alt="B[,o_t]" src="http://latex.codecogs.com/gif.latex?B%5B%2Co_t%5D"/> is the <img alt="o_t" src="http://latex.codecogs.com/gif.latex?o_t"/>-th column of matrix <em>B</em>, <img alt="o_t" src="http://latex.codecogs.com/gif.latex?o_t"/> is the observation at time <em>t</em>.</td>
 			</tr>
 			<tr>
 				<td>Correctness <em>C</em></td>
