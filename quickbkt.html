@@ -22,7 +22,9 @@
 
 
 <script type="text/javascript">
-var PI, A, B;
+var PI, A, B, ans, obs;
+var pL_arr, pC_arr, alpha_arr, beta_arr, c_arr, alpha_scaled_arr, beta_scaled_arr;
+var gamma_ti_arr, gamma_tij_arr; // for EM
 function col(a, c) {
 	var column = [];
 	for(var i=0; i<a.length; i++)
@@ -31,24 +33,21 @@ function col(a, c) {
 }
 function compute() {
 	// digits after decimal point
-	n_digi = 8;
+	n_digi = 6;
 	//init
-	var PI =  [  Number.parseFloat($(pLo).value), 1-Number.parseFloat($(pLo).value)];
-	var A  = [[1-Number.parseFloat( $(pF).value),   Number.parseFloat( $(pF).value)], [ Number.parseFloat($(pT).value), 1-Number.parseFloat($(pT).value)]];
-	var B  = [[1-Number.parseFloat( $(pS).value),   Number.parseFloat( $(pS).value)], [ Number.parseFloat($(pG).value), 1-Number.parseFloat($(pG).value)]];
-	//clear results table
-	for(var i = $(tblResults).rows.length - 1; i > 0; i--)
-		if( $(tblResults).rows[i].id == "result")
-			$(tblResults).deleteRow(i);
+	PI =  [  Number.parseFloat($(pLo).value), 1-Number.parseFloat($(pLo).value)];
+	A  = [[1-Number.parseFloat( $(pF).value),   Number.parseFloat( $(pF).value)], [ Number.parseFloat($(pT).value), 1-Number.parseFloat($(pT).value)]];
+	B  = [[1-Number.parseFloat( $(pS).value),   Number.parseFloat( $(pS).value)], [ Number.parseFloat($(pG).value), 1-Number.parseFloat($(pG).value)]];
+
 	// answers
-	var ans = $(observations).value.trim().split(" ");
-	var obs = $(observations).value.trim().split(" ");
+	ans = $(observations).value.trim().split(" ");
+	obs = $(observations).value.trim().split(" ");
 	for(var i=0; i<ans.length; i++) { ans[i] = ans[i]|0; obs[i] = 1 - ans[i]; } 
 	// compute
-	var pL_arr = [], pC_arr = [], alpha_arr = [], beta_arr = [];
+	pL_arr = [], pC_arr = [], alpha_arr = [], beta_arr = [], c_arr = [], alpha_scaled_arr = [], beta_scaled_arr = [];
 
 	var pL = PI.slice(0);
-	var pLE, pC, alpha, beta;
+	var pLE, pC, alpha, beta, c, alpha_scaled, beta_scaled;
 	for(var t=0; t<obs.length; t++) {
 		var o = obs[t];
 		var b = col(B,o);
@@ -57,11 +56,22 @@ function compute() {
 		// forward variables
 		if(t==0) {
 			alpha = numeric.dot( pL, b );
+			// scaled			
+			alpha_scaled = numeric.dot( pL, b );
+			c = 1 / numeric.sum(alpha_scaled);
+			c_arr.push(c);
+			alpha_scaled = numeric.mul(alpha_scaled, c);
 			
 		} else {
 			alpha = numeric.dot(alpha, numeric.dot( A, b ) );
+			// scaled
+			alpha_scaled = numeric.dot(alpha_scaled, numeric.dot( A, b ) );
+			c = 1 / numeric.sum(alpha_scaled);
+			c_arr.push(c);
+			alpha_scaled = numeric.mul(alpha_scaled, c);
 		}
 		alpha_arr.push(alpha);
+		alpha_scaled_arr.push(alpha_scaled);
 
 		// propagation
 		//      this is the first correctness estimate, before data point is revealed
@@ -77,20 +87,36 @@ function compute() {
 	// backward variables
 	for(var t=(obs.length-1); t>=0; t--) {
 		if(t==(obs.length-1)) {
-			beta = numeric.rep([2],[1])
+			beta = numeric.rep([2],1)
+			// scaled
+			beta_scaled = numeric.rep([2],c_arr[t])
 		} else {
 			var o = obs[t+1];
 			var b = col(B,o);
 			b = numeric.diag(b);
 			beta = numeric.dot( numeric.dot(A, b), beta );
+			// scaled
+			beta_scaled = numeric.dot( numeric.dot(A, b), beta_scaled );
+			beta_scaled = numeric.mul(beta_scaled, c);
 		}
 		beta_arr.push(beta);
+		beta_scaled_arr.push(beta_scaled);
 	}
-	
+	display_variables();
+}
+
+function display_variables() {
+	//clear results table
+	for(var i = $(tblResults).rows.length - 1; i > 0; i--)
+		if( $(tblResults).rows[i].id == "result")
+			$(tblResults).deleteRow(i);
+
 	// add rows
 	// first row is the correctness before crunching data
 	$$('#tblResults tr').last().insert({after:
 		'<tr id="result"><td>0&dagger;</td><td>n/a</td><td>'+PI[0].toFixed(n_digi)+'</td><td>'+pC1[0].toFixed(n_digi)+'</td>'+
+		'<td>n/a</td><td>n/a</td>'+
+		'<td>n/a</td><td>n/a</td>'+
 		'<td>n/a</td><td>n/a</td>'+
 		'<td>n/a</td><td>n/a</td></tr>'
 		});
@@ -99,12 +125,16 @@ function compute() {
 		$$('#tblResults tr').last().insert({after:
 			'<tr id="result"><td>'+(i+1)+'</td><td>'+ans[i]+'</td><td>'+pL_arr[i][0].toFixed(n_digi)+'</td><td>'+pC_arr[i][0].toFixed(n_digi)+'</td>'+
 			'<td>'+alpha_arr[i][0].toFixed(n_digi)+'</td><td>'+alpha_arr[i][1].toFixed(n_digi)+'</td>'+
-			'<td>'+beta_arr[obs.length-i-1][0][0].toFixed(n_digi)+'</td><td>'+beta_arr[obs.length-i-1][1][0].toFixed(n_digi)+'</td></tr>'
+			'<td>'+beta_arr[obs.length-i-1][0].toFixed(n_digi)+'</td><td>'+beta_arr[obs.length-i-1][1].toFixed(n_digi)+'</td>' +
+			'<td>'+c_arr[i].toFixed(n_digi)+'</td>'+
+			'<td>'+alpha_scaled_arr[i][0].toFixed(n_digi)+'</td><td>'+alpha_scaled_arr[i][1].toFixed(n_digi)+'</td>'+
+			'<td>'+beta_scaled_arr[obs.length-i-1][0].toFixed(n_digi)+'</td><td>'+beta_scaled_arr[obs.length-i-1][1].toFixed(n_digi)+'</td></tr>'
 			});
 	}
 	
 	// write likelihood
-	$(lik).innerHTML = numberize(alpha_arr[obs.length-1][0]+alpha_arr[obs.length-1][1], 10);
+	$(lik).innerHTML = numberize(alpha_arr[obs.length-1][0]+alpha_arr[obs.length-1][1], 2*n_digi);
+	
 }
 
 function createInput(idname, val) {
@@ -119,6 +149,143 @@ function createInput(idname, val) {
 	input.onchange = function() { changeValue(this); }//"changeValue(this)";
 	return input;
 }
+
+function EM() {
+	compute();
+	
+	// pre-compute new variables
+	var denom = 0; numer = 0; N = 2, M = 2; T = ans.length;
+	gamma_ti_arr = numeric.rep([T,N],0);
+	gamma_tij_arr = numeric.rep([T,N,N],0);
+	for(var t=0; t<(T-1); t++){ // for t = 0 to T − 2 denom = 0
+		var o_tp1 = obs[t+1];
+		denom = 0;
+		for(var i=0; i<N; i++){ //for i = 0 to N − 1
+			for(var j=0; j<N; j++){ //for j = 0 to N − 1
+				denom += alpha_arr[t][i] * A[i][j] * B[j][o_tp1] * beta_arr[t+1][j];
+			} // next j
+		} // next i
+		for(var i=0; i<N; i++){ //for i = 0 to N − 1
+			gamma_ti_arr[t][i] = 0; // γt(i) = 0
+			for(var j=0; j<N; j++) { // for j = 0 to N − 1
+				gamma_tij_arr[t][i][j] = ( alpha_arr[t][i] * A[i][j] * B[j][o_tp1] * beta_arr[t+1][j])/((denom>0)?denom:1); // γt(i,j) = (αt(i)aijbj(Ot+1)βt+1(j))/denom;
+				gamma_ti_arr[t][i] += gamma_tij_arr[t][i][j];// γt(i) = γt(i) + γt(i, j);
+			} // next j
+		} // next i
+	} // next t
+	// update parameters
+
+	// re-estimate π
+	for(var i=0; i<N; i++){ //for i = 0 to N − 1
+		PI[i] = gamma_ti_arr[0][i];//πi = γ0(i)
+	} // next i
+	// re-estimate A
+	for(var i=0; i<N; i++){ //for i = 0 to N − 1
+		for(var j=0; j<N; j++) { // for j = 0 to N − 1
+			numer = 0;
+			denom = 0;
+			for(var t=0; t<(T-1); t++){ // for t = 0 to T − 2
+				numer = numer + gamma_tij_arr[t][i][j];// γt(i, j)
+				denom = denom + gamma_ti_arr[t][i];// γt(i)
+			} // next t
+			A[i][j] = numer/denom; //aij
+		} // next j
+	} // next i
+	// re-estimate B 
+	for(var i=0; i<N; i++){ //for i = 0 to N − 1
+		for(var m=0; m<M; m++) { // for j = 0 to M − 1
+			numer = 0;
+			denom = 0;
+			for(var t=0; t<(T-1); t++){ // for t = 0 to T − 2
+				var o_t = obs[t];
+				if(o_t == m) { // then
+					numer = numer + gamma_ti_arr[t][i];// γt(i)
+				} // end if
+				denom = denom + gamma_ti_arr[t][i];// γt(i)
+			} // next t
+			B[i][m] = numer/denom; // bi(m) 
+		} // next m
+	} // next i
+	
+	// change parameters
+	$(pLo).value = PI[0];
+	$(pF).value = 0;
+	$(pT).value = A[1][0];
+	$(pS).value = B[0][1];
+	$(pG).value = B[1][0];
+	
+	compute();
+	display_variables();
+}
+
+function EM_scaled() {
+	compute();
+	
+	// pre-compute new variables
+	var denom = 0; numer = 0; N = 2, M = 2; T = ans.length;
+	gamma_ti_arr = numeric.rep([T,N],0);
+	gamma_tij_arr = numeric.rep([T,N,N],0);
+	for(var t=0; t<(T-1); t++){ // for t = 0 to T − 2 denom = 0
+		var o_tp1 = obs[t+1];
+		denom = 0;
+		for(var i=0; i<N; i++){ //for i = 0 to N − 1
+			for(var j=0; j<N; j++){ //for j = 0 to N − 1
+				denom += alpha_scaled_arr[t][i] * A[i][j] * B[j][o_tp1] * beta_scaled_arr[t+1][j];
+			} // next j
+		} // next i
+		for(var i=0; i<N; i++){ //for i = 0 to N − 1
+			gamma_ti_arr[t][i] = 0; // γt(i) = 0
+			for(var j=0; j<N; j++) { // for j = 0 to N − 1
+				gamma_tij_arr[t][i][j] = ( alpha_scaled_arr[t][i] * A[i][j] * B[j][o_tp1] * beta_scaled_arr[t+1][j])/((denom>0)?denom:1); // γt(i,j) = (αt(i)aijbj(Ot+1)βt+1(j))/denom;
+				gamma_ti_arr[t][i] += gamma_tij_arr[t][i][j];// γt(i) = γt(i) + γt(i, j);
+			} // next j
+		} // next i
+	} // next t
+	// update parameters
+
+	// re-estimate π
+	for(var i=0; i<N; i++){ //for i = 0 to N − 1
+		PI[i] = gamma_ti_arr[0][i];//πi = γ0(i)
+	} // next i
+	// re-estimate A
+	for(var i=0; i<N; i++){ //for i = 0 to N − 1
+		for(var j=0; j<N; j++) { // for j = 0 to N − 1
+			numer = 0;
+			denom = 0;
+			for(var t=0; t<(T-1); t++){ // for t = 0 to T − 2
+				numer = numer + gamma_tij_arr[t][i][j];// γt(i, j)
+				denom = denom + gamma_ti_arr[t][i];// γt(i)
+			} // next t
+			A[i][j] = numer/denom; //aij
+		} // next j
+	} // next i
+	// re-estimate B 
+	for(var i=0; i<N; i++){ //for i = 0 to N − 1
+		for(var m=0; m<M; m++) { // for j = 0 to M − 1
+			numer = 0;
+			denom = 0;
+			for(var t=0; t<(T-1); t++){ // for t = 0 to T − 2
+				var o_t = obs[t];
+				if(o_t == m) { // then
+					numer = numer + gamma_ti_arr[t][i];// γt(i)
+				} // end if
+				denom = denom + gamma_ti_arr[t][i];// γt(i)
+			} // next t
+			B[i][m] = numer/denom; // bi(m) 
+		} // next m
+	} // next i
+	
+	// change parameters
+	$(pLo).value = PI[0];
+	$(pF).value = A[0][1];
+	$(pT).value = A[1][0];
+	$(pS).value = B[0][1];
+	$(pG).value = B[1][0];
+	
+	compute();
+	display_variables();
+}
+
 
 function numberize(x, digits) { // deal with representation of floats
 	if (typeof digits == 'undefined') digits = 4;
@@ -210,14 +377,15 @@ function changeValue(changed) {
 		<p>Computations are done with the help of <a href="http://numericjs.com/" target="_blank">Numeric Javascript</a></p>
 		<form>
 			<table>
-				<tr><td align="right">pInit</td><td><input type="number" name="pLo" id="pLo" min="0" max="1" step="0.1" value="0.5"  onChange="javascript:compute();"></td></tr>
-				<tr><td align="right">pLearn</td> <td><input type="number" name="pT"  id="pT"  min="0" max="1" step="0.1" value="0.4" onChange="javascript:compute();"></td></tr>
-				<tr><td align="right">pForget</td> <td><input type="number" name="pF"  id="pF"  min="0" max="1" step="0.1" value="0.0" onChange="javascript:compute();"></td></tr>
-				<tr><td align="right">pSlip</td> <td><input type="number" name="pS"  id="pS"  min="0" max="1" step="0.1" value="0.2" onChange="javascript:compute();"></td></tr>
-				<tr><td align="right">pGuess</td> <td><input type="number" name="pG"  id="pG"  min="0" max="1" step="0.1" value="0.2" onChange="javascript:compute();"></td></tr>
+				<tr><td align="right">pInit</td><td><input type="number" name="pLo" id="pLo" min="0" max="1" step="0.01" value="0.5"  onChange="javascript:compute();"></td></tr>
+				<tr><td align="right">pLearn</td> <td><input type="number" name="pT"  id="pT"  min="0" max="1" step="0.01" value="0.4" onChange="javascript:compute();"></td></tr>
+				<tr><td align="right">pForget</td> <td><input type="number" name="pF"  id="pF"  min="0" max="1" step="0.01" value="0.0" onChange="javascript:compute();"></td></tr>
+				<tr><td align="right">pSlip</td> <td><input type="number" name="pS"  id="pS"  min="0" max="1" step="0.01" value="0.2" onChange="javascript:compute();"></td></tr>
+				<tr><td align="right">pGuess</td> <td><input type="number" name="pG"  id="pG"  min="0" max="1" step="0.01" value="0.2" onChange="javascript:compute();"></td></tr>
 				<tr><td align="right" valign="top">Observations</td> <td><input type="text" pattern="^[01]( [01])*$" name="obs" id="observations"  value="0 0 1 1 1 0 1 1 0 1" size="40" title="0's and 1's separated by spaces" onChange="javascript:compute();"><br/><span style="font-size:small;color:grey">0's and 1's separated by spaces</span></td></tr>
 			</table>
-			<input type="button" value="Compute" onClick="javascript:compute();">
+			<input type="button" value="Compute" onClick="javascript:compute();">&nbsp;&nbsp;
+			<input type="button" value="Update parameters (EM)" onClick="javascript:EM();" enabled="false">
 
 		</form>
 		<hr/>
@@ -232,22 +400,30 @@ function changeValue(changed) {
 					<th rowspan="2">pCorrect</th>
 					<th colspan="2">Forward Variables</th>
 					<th colspan="2">Backward Variables</th>
+					<th rowspan="2">Scale <img src="http://latex.codecogs.com/gif.latex?c_t" align="middle" alt="c_t" /></th>
+					<th colspan="2">Fwd. Variables Scaled</th>
+					<th colspan="2">Bwd. Variables Scaled</th>
 				</tr>
 				<tr>
 					<th><img src="http://latex.codecogs.com/gif.latex?%5Calpha_%7Bt%2Ci%3D1%7D" align="middle" alt="\alpha_{t,i=1}" /></th>
 					<th><img src="http://latex.codecogs.com/gif.latex?%5Calpha_%7Bt%2Ci%3D2%7D" align="middle" alt="\alpha_{t,i=2}" /></th>
 					<th><img src="http://latex.codecogs.com/gif.latex?%5Cbeta_%7Bt%2Ci%3D1%7D" align="middle" alt="\beta_{t,i=1}" /></th>
 					<th><img src="http://latex.codecogs.com/gif.latex?%5Cbeta_%7Bt%2Ci%3D2%7D" align="middle" alt="\beta_{t,i=2}" /></th>
+
+					<th><img src="http://latex.codecogs.com/gif.latex?%5Chat%7B%5Calpha%7D_%7Bt%2Ci%3D1%7D" align="middle" alt="\hat{\alpha}_{t,i=1}" /></th>
+					<th><img src="http://latex.codecogs.com/gif.latex?%5Chat%7B%5Calpha%7D_%7Bt%2Ci%3D2%7D" align="middle" alt="\hat{\alpha}_{t,i=2}" /></th>
+					<th><img src="http://latex.codecogs.com/gif.latex?%5Chat%7B%5Cbeta%7D_%7Bt%2Ci%3D1%7D" align="middle" alt="\hat{\beta}_{t,i=1}" /></th>
+					<th><img src="http://latex.codecogs.com/gif.latex?%5Chat%7B%5Cbeta%7D_%7Bt%2Ci%3D2%7D" align="middle" alt="\hat{\beta}_{t,i=2}" /></th>
 				</tr>
 			</thead>
 			<tfoot>
-				<tr><td colspan="8">&dagger; Estimates for row 0 are computed before any observations are considered: pKnown = pInit, <br/>
+				<tr><td colspan="13">&dagger; Estimates for row 0 are computed before any observations are considered: pKnown = pInit, <br/>
 				pCorrect is computed based on pInit as well, other variables are not defined. For rows 1 through <em>N</em>, <br/>
 				all of the variables are computed assuming the observation has been <em>revealed</em> to the algorithm.</td></tr>
 			</tfoot>
 			<tbody>
 				<span id="spanResults">
-				<tr><td colspan="8"></td></tr>
+				<tr><td colspan="13"></td></tr>
 				</span>
 			</tbody>
 		</table>
@@ -301,7 +477,7 @@ function changeValue(changed) {
 			<tr>
 				<td>&nbsp;</td>
 				<td>more formally, <img alt="b_{jm}=p\{o_t=\nu_m|s_t=j\}~j=1..N,~m=1..M" src="http://latex.codecogs.com/gif.latex?b_%7Bjm%7D%3Dp%5C%7Bo_t%3D%5Cnu_m%7Cs_t%3Dj%5C%7D~j%3D1..N%2C~m%3D1..M" /><br />
-				 i.e. probability of observing <img alt="\nu_m" src="http://latex.codecogs.com/gif.latex?%5Cnu_m" />, while being in state <em>j</em>
+				 i.e., the probability of observing <img alt="\nu_m" src="http://latex.codecogs.com/gif.latex?%5Cnu_m" />, while being in state <em>j</em>
 				</td>
 			</tr>
 
