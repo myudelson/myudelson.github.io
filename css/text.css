@@ -9,6 +9,14 @@ body {
 pre,
 code {
   font-family: "Courier New", Courier, monospace;
+  background-color: #f6f6f6;
+  border-radius: 0.3rem;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  padding-right: 4px;
+  padding-left: 4px;
+  border: 1px solid #e6e6e6;
+  
 }
 
 hr {
