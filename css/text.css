@@ -7,7 +7,7 @@ body {
 }
 
 pre,
-code {
+code, .code {
   font-family: "Courier New", Courier, monospace;
   background-color: #f6f6f6;
   border-radius: 0.3rem;
@@ -15,9 +15,15 @@ code {
   padding-top: 2px;
   padding-right: 4px;
   padding-left: 4px;
-  border: 1px solid #e6e6e6;
-  
+  margin-bottom: 2px;
+  margin-top: 2px;
+  border: 1px solid #e6e6e6;  
 }
+
+pre {
+	word-wrap: normal;
+}
+
 
 hr {
   border: 0 solid #ccc;
