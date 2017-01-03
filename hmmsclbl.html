@@ -25,13 +25,13 @@
 		</p>
 	</div>
 	<div class="grid_4" id="menu_social">
-		<a href="http://www.facebook.com/michael.yudelson" target="_blank"><img src="img/facebook_40_black.png" height="35" width="35"/></a>&nbsp;
-		<a href="http://twitter.com/myudelson" target="_blank"><img src="img/twitter_40_black.png" height="35" width="35"/></a>
-		<a href="http://www.linkedin.com/in/michael1yudelson" target="_blank"><img src="img/linkedin_40_black.png" height="35" width="35"/></a>
-		<a href="https://github.com/myudelson" target="_blank"><img src="img/github_40_black.png" height="35" width="35"/></a>
-		<a href="https://scholar.google.com/citations?user=ncrZ-ZsAAAAJ&hl=en" target="_blank"><img src="img/googlescholar_256_black.png" height="35" width="35"/></a>
-		<a href="http://orcid.org/0000-0002-8280-0348" target="_blank"><img src="img/orcid_64_black.png" height="35" width="35"/></a>
-		<a href="http://dblp.uni-trier.de/pers/hd/y/Yudelson:Michael.html" target="_blank"><img src="img/dblp_120_black.png" height="35" width="35"/></a>
+		<a href="http://www.facebook.com/michael.yudelson" alt="Facebook Page" target="_blank"><img src="img/facebook_40_black.png" height="35" width="35"/></a>&nbsp;
+		<a href="http://twitter.com/myudelson" alt="Twitter Feed"  target="_blank"><img src="img/twitter_40_black.png" height="35" width="35"/></a>
+		<a href="http://www.linkedin.com/in/michael1yudelson" alt="LinkedIn Profile"  target="_blank"><img src="img/linkedin_40_black.png" height="35" width="35"/></a>
+		<a href="https://github.com/myudelson" alt="gitHub account"  target="_blank"><img src="img/github_40_black.png" height="35" width="35"/></a>
+		<a href="https://scholar.google.com/citations?user=ncrZ-ZsAAAAJ&hl=en" alt="Google Scholar Profile"  target="_blank"><img src="img/googlescholar_256_black.png" height="35" width="35"/></a>
+		<a href="http://orcid.org/0000-0002-8280-0348" alt="ORCID profile"  target="_blank"><img src="img/orcid_64_black.png" height="35" width="35"/></a>
+		<a href="http://dblp.uni-trier.de/pers/hd/y/Yudelson:Michael.html" alt="DBLP page"  target="_blank"><img src="img/dblp_120_black.png" height="35" width="35"/></a>
 	</div>
 	<div class="clear"></div>
 
@@ -96,7 +96,7 @@
 -- input file --
 </pre>
 
-		<p>If there is no skill label for a particular row of data use '.' (dot) symbol. In test data, the utility will use known observations for training and will produce predictions for missing observations that should have '.' (dot) instead of observation code (1, 2, or otherwise).</p>
+		<p>If there is no skill label for a particular row of data use <code>.</code> (dot) symbol. In test data, the utility will use known observations for training and will produce predictions for missing observations that should have <code>.</code> (dot) instead of observation code (1, 2, or otherwise).</p>
 
 		<p>Output files are the model and the predictions file. The model file contains general information about the data, e.g., the number of observations, the number of skills, and the number of problems/problem steps; as well as the model parameters.</p>
 
@@ -210,7 +210,7 @@ options:
 
 		<p>The model will have 90% accuracy and root mean squared error (RMSE) = 0.302691 and the recovered BKT parameters would be: pLo=0.00000000, pT=0.16676161, pS=0.00044059, pG=0.00038573. Overall loglikelihood, actually, goes up from 9.3763477 to 10.4379501 in 3 iterations.</p>
 
-		<p>If we fit BKT model using Gradient Descent method using '-s 1.2' argument, the recovered parameters would be: pLo=0.00041944, pT=0.17478539, pS=0.07938036, 0.03804388, the accuracy would remain at 90% while RMSE = 0.299250. Loglikelihood changes from  9.3763477 to 6.4099682 after 11 iterations.</p>
+		<p>If we fit BKT model using Gradient Descent method using <code>-s 1.2</code> argument, the recovered parameters would be: pLo=0.00041944, pT=0.17478539, pS=0.07938036, 0.03804388, the accuracy would remain at 90% while RMSE=0.299250. Loglikelihood changes from  9.3763477 to 6.4099682 after 11 iterations.</p>
 
 		<p>To generate predictions using a previously fit model run the following command:</p>
 
@@ -229,20 +229,14 @@ options:
 
 		<h2><a id="pubs"></a>Publications Featuring <strong>hmm-scalable</strong></h2>
 
-		<p><a name="IBKTM"></a>Yudelson, M., Koedinger, K., Gordon, G. (2013) <strong>Individualized Bayesian Knowledge Tracing Models.</strong> In: Lane, H.C., and Yacef, K., Mostow, J., Pavlik, P.I. (eds.) Proceedings of 16th International Conference on Artificial Intelligence in Education (AIED 2013), Memphis, TN. LNCS vol. 7926, (pp. 171-180). Springer-Verlag Berlin Heidelberg (2013). [<a href="http://dx.doi.org/10.1007/978-3-642-39112-5_18" target="_blank">DOI</a>] [<a href="pdf/AIED2013_YudelsonKG.pdf" target="_blank">PDF</a>]</p>		<p>Yudelson, M. &amp; Ritter (2015) <strong>Small Improvement for the Model Accuracy &ndash; Big Difference for the Students.</strong> In: Proceedings of 17th International Conference on Artificial Intelligence in Education (AIED 2015), Madrid, Spain. [<a href="pdf/AIED2015_YudelsonR.pdf" target="_blank">PDF</a>]</p>
 		<p>Falakmasir, M., Yudelson, M., Ritter, &amp; Koedinger, K. (2015) <strong>Spectral Bayesian Knowledge Tracing.</strong> In: O. Santos, J. Boticario, C. Romero, M. Pechenizkiy, A. Merceron, P. Mitros, J.M. Luna, C. Mihaescu, P. Moreno, A. Hershkovitz, S. Ventura, &amp; M. Desmarais (eds.) Proceedings of the 8th International Conference on Educational Data Mining (EDM 2015), Madrid, Spain, (pp.360-363). [<a href="pdf/EDM2015_FalakmasirYRK.pdf" target="_blank">PDF</a>]</p>			
 		<p><a name="BDBBD"></a>Yudelson, M., Fancsali, S., Ritter, S., Berman, S., Nixon, T., &amp; Joshi, A. (2014) <strong>Better Data Beats Big Data.</strong> In: J. Stamper, Z. Pardos, M. Mavrikis, B. McLaren (eds.) Proceedings of the 7th International Conference on Educational Data Mining (EDM 2014), London, UK, (pp.204-208). [<a href="pdf/EDM2014_YudelsonFRBNJ.pdf" target="_blank">PDF</a>]</p>
 		<p><a name="IBKTM"></a>Yudelson, M., Koedinger, K., Gordon, G. (2013) <strong>Individualized Bayesian Knowledge Tracing Models.</strong> In: Lane, H.C., and Yacef, K., Mostow, J., Pavlik, P.I. (eds.) Proceedings of 16th International Conference on Artificial Intelligence in Education (AIED 2013), Memphis, TN. LNCS vol. 7926, (pp. 171-180). Springer-Verlag Berlin Heidelberg (2013). [<a href="http://dx.doi.org/10.1007/978-3-642-39112-5_18" target="_blank">DOI</a>] [<a href="pdf/AIED2013_YudelsonKG.pdf" target="_blank">PDF</a>]</p>
 
 		<h2><a id="ref"></a>References</h2>
 		<ol>
-			<li><a name="KT"></a>Corbett, A. T. and Anderson, J. R.: Knowledge tracing: Modeling the
-		    acquisition of procedural know	ledge. User Modeling and User-Adapted
-		    Interaction, 4(4), 253-278. (1995)</li>
-			<li><a name="IATPFMPASR"></a>Levinson, S. E., Rabiner, L. R., and Sondhi, M. M.: An Introduction to the
-		    Application of the Theory of Probabilistic Functions of a Markov Process to
-		    Automatic Speech Recognition. Bell System Technical Journal, 62(4):
-		    1035-1074. (1983)</li>
+			<li><a name="KT"></a>Corbett, A. T. and Anderson, J. R.: Knowledge tracing: Modeling the acquisition of procedural know	ledge. User Modeling and User-Adapted Interaction, 4(4), 253-278. (1995)</li>
+			<li><a name="IATPFMPASR"></a>Levinson, S. E., Rabiner, L. R., and Sondhi, M. M.: An Introduction to the Application of the Theory of Probabilistic Functions of a Markov Process to Automatic Speech Recognition. Bell System Technical Journal, 62(4): 1035-1074. (1983)</li>
 			<li><a name="WC"></a>Wolfe conditions. (2014, May 12). In Wikipedia, The Free Encyclopedia. Retrieved 23:07, July 15, 2015, from <a href="http://en.wikipedia.org/w/index.php?title=Wolfe_conditions&oldid=608251997" target="_blank">http://en.wikipedia.org/w/index.php?title=Wolfe_conditions&amp;oldid=608251997</a></li>
 			<li><a name="NCGM"></a>Nonlinear conjugate gradient method. (2015, June 26). In Wikipedia, The Free Encyclopedia. Retrieved 23:08, July 15, 2015, from <a href="http://en.wikipedia.org/w/index.php?title=Nonlinear_conjugate_gradient_method&oldid=668720538" target="_blank">http://en.wikipedia.org/w/index.php?title=Nonlinear_conjugate_gradient_method&amp;oldid=668720538</a></li>
 		</ol>
