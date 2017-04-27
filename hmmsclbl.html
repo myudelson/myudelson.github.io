@@ -38,8 +38,7 @@
  	<div class="grid_12">
 		<h1>hmm-scalable</h1>
 
-		<p>This tool is developed to fit Bayesian Knowledge Training models efficiently on large datasets. It is a command line utility written in C/C++. The project started while the author was a post-doc at Human-Computer Interaction Institute, Carnegie Mellon University. These sources are published under BSD-new (3-clause BSD) license.</p>
-			
+		<p>This command-line tool is developed to fit Hidden Markov Models (HMM) from the large datasets. In particular, it is targeting a specific kind of HMM used in education called Bayesian Knowledge Tracing (BKT) model. The utility is written in C/C++. The project started while the author was a post-doc at Human-Computer Interaction Institute, Carnegie Mellon University. These sources are published under BSD-new (3-clause BSD) <a href="https://en.wikipedia.org/wiki/BSD_licenses#3-clause_license_.28.22Revised_BSD_License.22.2C_.22New_BSD_License.22.2C_or_.22Modified_BSD_License.22.29" target="_blank">license</a></p>			
 		<!-- Table of contents-->
 		<h2>Table of contents</h2>
 		<p><a href="#bkt">Bayesian Knowledge Tracing</a><br/>
@@ -52,21 +51,20 @@
 
 		<h2><a id="bkt"></a>Bayesian Knowledge Tracing</h2>
 
-		<p>BKT is a user modeling approach widely use in the area of Intelligent Tutoring Systems (ITS). In ITS, it is customary to tag problems and problem steps students are solving with knowledge quanta often called skills. When a student is attempting to solve a problem or a problem step, they are said to <em>practice a skill</em>. A student model in a general sense performs deductions on whether the skill(s) is (are) mastered given a sequence of correct and incorrect attempts to solve a problems/problem steps that are tagged with it. The goal of BKT is to infer whether the student has mastered a skill or not from a pattern of successful or unsuccessful attempts to apply it. BKT uses a formalism of a Hidden Markov Model to estimate student's skill mastery. In BKT, there are two types of nodes: binary state nodes capture skill mastery (one per skill) that assume values of <em>mastered</em> or <em>not mastered</em> and binary observation nodes (one per skill) that assume values of <em>correct</em> or <em>incorrect</em>.</p>
+		<p>Bayesian Knowledge Training (BKT) is a user modeling approach widely use in the area of Intelligent Tutoring Systems (ITS). In ITS, it is customary to tag problems and problem steps students are working on with knowledge quanta (also called skills). When a student is attempting to solve a problem or a problem step, they are said to <em>practice a skill (skills)</em>. A student model (BKT being one) performs deductions on whether the skill(s) is (are) mastered given a sequence of correct and incorrect attempts to solve problems (problem steps). BKT uses a formalism of a Hidden Markov Model to make the estimation of student's skill mastery. In BKT, there are two types of nodes: binary state nodes capture skill mastery (one per skill) that assume values of <em>mastered</em> or <em>not mastered</em> and binary observation nodes (one per skill) that assume values of <em>correct</em> or <em>incorrect</em>.</p>
 
 		<p>For each skill, BKT has four parameters.</p>
 
 		<ol>
 		<li><em>p-init</em> or pLo - is a probability the skill was known a priori,</li>
-		<li><em>p-learn</em> or pT - is a probability the skill will transition into "mastered"
-		    state upon practice attempt,</li>
-		<li><em>p-forget</em> or pF - is a probability that the skill will transition into "not mastered state" upon practice attempt. Traditionally, pForget is set to zero.</li>
+		<li><em>p-learn</em> or pT - is a probability the skill will transition into <em>mastered</em> state after a practice attempt,</li>
+		<li><em>p-forget</em> or pF - is a probability that the skill will transition into <em>not mastered state</em> after a practice attempt. Traditionally, <em>p-forget</em> is set to zero and is not counted towards the total number of parameters.</li>
 		<li><em>p-slip</em> or pS - is a probability that a known skill is applied incorrectly, and</li>
 		<li><em>p-guess</em> or pG - is a probability that an unknown skill will be applied correctly.</li>
 		</ol>
-			
-		<p>Parameters of the BKT can be represented in the matrix form. Priors &mdash; <img src="http://latex.codecogs.com/gif.latex?%5CPi" alt="\pi"/> &mdash; are a vector 1*N, where N is the number of states (N=2 in standard BKT). Throughout this discussion, we will we assume that the first element of the <img src="http://latex.codecogs.com/gif.latex?%5CPi" alt="\pi"/> vector is the a priory probability of knowing the skill. <em>p-learn</em> is part of the transitions matrix A that captures probabilities of state changes from the row to the column and is N*N. No forgetting is captured by setting A[1,2] = 0 (from mastered to unmastered). <em>p-learn</em> corresponds to A[2,1] - from unmastered to mastered. <em>p-guess</em> and <em>p-slip</em> are specified in B &mdash; observation matrix N*M, where M is the number of observations (M=2 in standard BKT). The first column corresponds to a correct observation, the second &mdash; to the incorrect. For standard BKT with two observations, <em>p-guess</em> is B[2,1] &mdash; unmastered skill but a correct response, and <em>p-splip</em> is B[1,2] - mastered skill but an incorrect response.</p>
-
+		
+		<p>BKT parameters can be represented in the vector/matrix form. A vector of priors &mdash; <img src="http://latex.codecogs.com/gif.latex?%5CPi" alt="\pi"/> &mdash; contains the <em>p-init</em> parameter. There are N elements in the priors vector (N=2 in standard BKT). Throughout this discussion, we will we assume that <em>p-init</em> is the first element of the <img src="http://latex.codecogs.com/gif.latex?%5CPi" alt="\pi"/> vector. <em>p-learn</em> is part of the transitions matrix A that captures probabilities of mastery state changes and its size is N*N. No forgetting is captured by setting A[1,2] = 0 (from mastered to unmastered). <em>p-learn</em> corresponds to A[2,1] &mdash; from unmastered to mastered. <em>p-guess</em> and <em>p-slip</em> are specified in the observation matrix B that is N*M, where M is the number of observations (M=2 in standard BKT). The first column corresponds to a correct observation, the second &mdash; to the incorrect. In standard BKT with two observations, <em>p-guess</em> is B[2,1] &mdash; unmastered skill but a correct response, and <em>p-splip</em> is B[1,2] - mastered skill but an incorrect response. </p>
+		
 <p><img src="http://latex.codecogs.com/gif.latex?%5CPi%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0Ap%28L_0%29%261-p%28L_0%29%5C%5C%0D%0A%5Cend%7Bbmatrix%7D" alt="\Pi=\[p(L_0), 1-p(L_0)\]"/></p>
 
 <p><img src="http://latex.codecogs.com/gif.latex?A%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0A1%260%5C%5C%0D%0Ap%28T%29%261-p%28T%29%0D%0A%5Cend%7Bbmatrix%7D" alt="A=\[1, 0; p(T), 1-p(T)\]"/></p>
@@ -78,11 +76,11 @@
 
 		<h2><a id="getcompile"></a>Getting and Compiling the Code</h2>
 
-		<p>The public version of <strong>hmm-scalable</strong> code is available via <a href="http://www.educationaldatamining.org/" target="_blank">International Educational Data Mining Society</a>'s GitHub repository <a href="http://goo.gl/5DqpkW" target="_blank">here</a>. If you have <code>git</code> tool installed, use the following command to get the source code.</p>
+		<p>A public version of <strong>hmm-scalable</strong> code is available via <a href="http://www.educationaldatamining.org/" target="_blank">International Educational Data Mining Society</a>'s GitHub repository <a href="http://goo.gl/5DqpkW" target="_blank">here</a>. If you have <code>git</code> tool installed, use the following command to get the source code.</p>
 		
 		<code>git clone https://github.com/IEDMS/standard-bkt</code>
 
-		<p>To compile issue <code>make all</code> command. If you are on Linux, the g++/gcc compiler and Open MP library should already be installed. In Mac OX, you would need command line tools of Xcode to be installed. g++/gcc compiler with Open MP (no longer bundled with Mac OS X by default) could be downloaded from <a href="hpc.sourceforge.net" target="_blank">here</a>. If you are on Windows, you might need to install <code>cygwin</code> and have the g++/gcc compiler available and be sure to install <code>make</code> command with <code>cygwin</code>.</p>
+		<p>To compile issue <code>make all</code> command. If you are on Linux, the <code>g++/gcc</code> compiler and Open MP library should already be installed. In Mac OX, you would need command line tools of Xcode to be installed. <code>g++/gcc</code> compiler with Open MP (no longer bundled with Mac OS X by default) could be downloaded from <a href="hpc.sourceforge.net" target="_blank">here</a>. If you are on Windows, you might need to install <code>cygwin</code> and have the <code>g++/gcc</code> compiler available and be sure to install <code>make</code> command with <code>cygwin</code>.</p>
 
 		<h2><a id="data"></a>Data</h2>
 
