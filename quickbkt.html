@@ -33,13 +33,14 @@ function col(a, c) {
 }
 
 const SAFETY = 1.0e-12 
+n_digi = 6;
+
 function safe0num(val) {
 	return (val<=SAFETY)? SAFETY : val;
 }
 
 function compute() {
 	// digits after decimal point
-	n_digi = 6;
 	//init
 	PI =  [  Number.parseFloat($(pLo).value), 1-Number.parseFloat($(pLo).value)];
 	A  = [[1-Number.parseFloat( $(pF).value),   Number.parseFloat( $(pF).value)], [ Number.parseFloat($(pT).value), 1-Number.parseFloat($(pT).value)]];
@@ -58,12 +59,13 @@ function compute() {
 
 	var pL = PI.slice(0);
 	var pLE, pC, alpha, beta, c, alpha_scaled, beta_scaled;
+	accuracy = 0.0
+	rmse = 0.0
+	// forward variables
 	for(var t=0; t<obs.length; t++) {
 		var o = obs[t];
 		var b = col(B,o);
 		b = numeric.diag(b);
-		
-		// forward variables
 		if(t==0) {
 			alpha = numeric.dot( pL, b );
 			// scaled			
@@ -85,7 +87,21 @@ function compute() {
 
 		// propagation
 		//      this is the first correctness estimate, before data point is revealed
-		if(t==0) pC1 =  numeric.dot(pL, B);
+		if(t==0) {
+			pC1 =  numeric.dot(pL, B);
+			accuracy += (Math.round(pC1[0])==ans[t])
+			// console.log("pC1[0] "+pC1[0])
+			// console.log("Math.round(pC1[0]) "+Math.round(pC1[0]))
+			// console.log("running summ of correct "+accuracy)
+			rmse += Math.pow(ans[t]-pC1[0],2)
+		} else {
+			accuracy += (Math.round(pC[0])==ans[t])
+			// console.log("pC[0] "+pC[0])
+			// console.log("Math.round(pC[0]) "+Math.round(pC[0]))
+			// console.log("running summ of correct "+accuracy)
+			rmse += Math.pow(ans[t]-pC[0],2)
+		}
+		// console.log("running summ of se "+rmse)
 
 		pLE = numeric.div(   numeric.mul( pL, col(B,o) ),  numeric.dot( pL, col(B,o) )   );
 		pL = numeric.dot(pLE, A);
@@ -113,6 +129,10 @@ function compute() {
 		beta_scaled_arr.unshift(beta_scaled);
 	}
 	likelihood = alpha_arr[obs.length-1][0]+alpha_arr[obs.length-1][1]
+	accuracy = accuracy/T
+	// console.log("running summ of se "+rmse)
+	rmse = Math.sqrt(rmse/T)
+	// console.log("rmse "+rmse)
 	display_variables();
 }
 
@@ -145,6 +165,8 @@ function display_variables() {
 	
 	// write likelihood
 	$(lik).innerHTML = numberize(likelihood, 2*n_digi);
+	$(acc).innerHTML = numberize(accuracy, n_digi);
+	$(rms).innerHTML = numberize(rmse, n_digi);
 	
 }
 
@@ -366,6 +388,11 @@ function changeValue(changed) {
 	padding: 5px;
 	margin: 5px;
 }
+.tblResultsNoBrdr td{ 
+	border: 0px;
+	padding: 5px;
+	margin: 5px;
+}
 .tblDefinitions td,th{ 
 	padding: 5px;
 	margin: 5px;
@@ -401,14 +428,14 @@ function changeValue(changed) {
  	<div class="grid_12">
 		<h1>Quick BKT</h1>
 		<p>This is a quick helper interface for tracing/debugging/developing Bayesian Knowledge Tracing models [<a href="#KT">1</a>]. It covers computing of the skill mastery (latent), performance (observation), as well as forward and backward variables [<a href="#FBA">2</a>].</p>
-		<p>Computations are done with the help of <a href="http://numericjs.com/" target="_blank">Numeric Javascript</a></p>
+		<p>Computations are done with the help of <a href="https://github.com/sloisel/numeric" target="_blank">Numeric Javascript</a></p>
 		<form>
 			<table>
-				<tr><td align="right">pInit</td><td><input type="number" name="pLo" id="pLo" min="0" max="1" step="0.01" value="0.5"  onChange="javascript:compute();"></td></tr>
-				<tr><td align="right">pLearn</td> <td><input type="number" name="pT"  id="pT"  min="0" max="1" step="0.01" value="0.4" onChange="javascript:compute();"></td></tr>
-				<tr><td align="right">pForget</td> <td><input type="number" name="pF"  id="pF"  min="0" max="1" step="0.01" value="0.0" onChange="javascript:compute();"></td></tr>
-				<tr><td align="right">pSlip</td> <td><input type="number" name="pS"  id="pS"  min="0" max="1" step="0.01" value="0.2" onChange="javascript:compute();"></td></tr>
-				<tr><td align="right">pGuess</td> <td><input type="number" name="pG"  id="pG"  min="0" max="1" step="0.01" value="0.2" onChange="javascript:compute();"></td></tr>
+				<tr><td align="right">pInit</td><td><input type="number" name="pLo" id="pLo" min="0" max="1" step="0.01" value="0.5"  onChange="javascript:compute();" style="width:70px"></td></tr>
+				<tr><td align="right">pLearn</td> <td><input type="number" name="pT"  id="pT"  min="0" max="1" step="0.01" value="0.4" onChange="javascript:compute();" style="width:70px"></td></tr>
+				<tr><td align="right">pForget</td> <td><input type="number" name="pF"  id="pF"  min="0" max="1" step="0.01" value="0.0" onChange="javascript:compute();" style="width:70px"></td></tr>
+				<tr><td align="right">pSlip</td> <td><input type="number" name="pS"  id="pS"  min="0" max="1" step="0.01" value="0.2" onChange="javascript:compute();" style="width:70px"></td></tr>
+				<tr><td align="right">pGuess</td> <td><input type="number" name="pG"  id="pG"  min="0" max="1" step="0.01" value="0.2" onChange="javascript:compute();" style="width:70px"></td></tr>
 				<tr><td align="right" valign="top">Observations</td> <td><input type="text" pattern="^[01]( [01])*$" name="obs" id="observations"  value="0 0 1 1 1 0 1 1 0 1" size="40" title="0's and 1's separated by spaces" onChange="javascript:compute();"><br/><span style="font-size:small;color:grey">0's and 1's separated by spaces</span></td></tr>
 			</table>
 			<input type="button" value="Compute" onClick="javascript:compute();">&nbsp;&nbsp;
@@ -416,8 +443,12 @@ function changeValue(changed) {
 
 		</form>
 		<hr/>
-		<p>Likelihood of the data given the model:&nbsp;<span id="lik" name="lik"></span><p/>
-			
+		<table class="tblResultsNoBrdr">
+			<tr><td>Likelihood of the data given the model</td><td><span id="lik" name="lik"></span></td></tr>
+			<tr><td>Accuracy of the model</td><td><span id="acc" name="acc"></span></td></tr>
+			<tr><td>Root mean squared error of the model</td><td><span id="rms" name="rms"></span></td></tr>
+		</table>
+		<br/>
 		<table id="tblResults" class="tblResults" class="">
 			<thead>
 				<tr>
@@ -427,20 +458,20 @@ function changeValue(changed) {
 					<th rowspan="2">pCorrect</th>
 					<th colspan="2">Forward Variables</th>
 					<th colspan="2">Backward Variables</th>
-					<th rowspan="2">Scale <img src="http://latex.codecogs.com/gif.latex?c_t" align="middle" alt="c_t" /></th>
+					<th rowspan="2">Scale <img src="http://latex.codecogs.com/svg.latex?c_t" align="middle" alt="c_t" /></th>
 					<th colspan="2">Fwd. Variables Scaled</th>
 					<th colspan="2">Bwd. Variables Scaled</th>
 				</tr>
 				<tr>
-					<th><img src="http://latex.codecogs.com/gif.latex?%5Calpha_%7Bt%2Ci%3D1%7D" align="middle" alt="\alpha_{t,i=1}" /></th>
-					<th><img src="http://latex.codecogs.com/gif.latex?%5Calpha_%7Bt%2Ci%3D2%7D" align="middle" alt="\alpha_{t,i=2}" /></th>
-					<th><img src="http://latex.codecogs.com/gif.latex?%5Cbeta_%7Bt%2Ci%3D1%7D" align="middle" alt="\beta_{t,i=1}" /></th>
-					<th><img src="http://latex.codecogs.com/gif.latex?%5Cbeta_%7Bt%2Ci%3D2%7D" align="middle" alt="\beta_{t,i=2}" /></th>
+					<th><img src="http://latex.codecogs.com/svg.latex?%5Calpha_%7Bt%2Ci%3D1%7D" align="middle" alt="\alpha_{t,i=1}" /></th>
+					<th><img src="http://latex.codecogs.com/svg.latex?%5Calpha_%7Bt%2Ci%3D2%7D" align="middle" alt="\alpha_{t,i=2}" /></th>
+					<th><img src="http://latex.codecogs.com/svg.latex?%5Cbeta_%7Bt%2Ci%3D1%7D" align="middle" alt="\beta_{t,i=1}" /></th>
+					<th><img src="http://latex.codecogs.com/svg.latex?%5Cbeta_%7Bt%2Ci%3D2%7D" align="middle" alt="\beta_{t,i=2}" /></th>
 
-					<th><img src="http://latex.codecogs.com/gif.latex?%5Chat%7B%5Calpha%7D_%7Bt%2Ci%3D1%7D" align="middle" alt="\hat{\alpha}_{t,i=1}" /></th>
-					<th><img src="http://latex.codecogs.com/gif.latex?%5Chat%7B%5Calpha%7D_%7Bt%2Ci%3D2%7D" align="middle" alt="\hat{\alpha}_{t,i=2}" /></th>
-					<th><img src="http://latex.codecogs.com/gif.latex?%5Chat%7B%5Cbeta%7D_%7Bt%2Ci%3D1%7D" align="middle" alt="\hat{\beta}_{t,i=1}" /></th>
-					<th><img src="http://latex.codecogs.com/gif.latex?%5Chat%7B%5Cbeta%7D_%7Bt%2Ci%3D2%7D" align="middle" alt="\hat{\beta}_{t,i=2}" /></th>
+					<th><img src="http://latex.codecogs.com/svg.latex?%5Chat%7B%5Calpha%7D_%7Bt%2Ci%3D1%7D" align="middle" alt="\hat{\alpha}_{t,i=1}" /></th>
+					<th><img src="http://latex.codecogs.com/svg.latex?%5Chat%7B%5Calpha%7D_%7Bt%2Ci%3D2%7D" align="middle" alt="\hat{\alpha}_{t,i=2}" /></th>
+					<th><img src="http://latex.codecogs.com/svg.latex?%5Chat%7B%5Cbeta%7D_%7Bt%2Ci%3D1%7D" align="middle" alt="\hat{\beta}_{t,i=1}" /></th>
+					<th><img src="http://latex.codecogs.com/svg.latex?%5Chat%7B%5Cbeta%7D_%7Bt%2Ci%3D2%7D" align="middle" alt="\hat{\beta}_{t,i=2}" /></th>
 				</tr>
 			</thead>
 			<tfoot>
@@ -465,7 +496,7 @@ function changeValue(changed) {
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td>more formally, <img alt="S=\{s_i\},~i=1..N" src="http://latex.codecogs.com/gif.latex?S%3D%5C%7Bs_i%5C%7D%2C~i%3D1..N" /></td>
+				<td>more formally, <img alt="S=\{s_i\},~i=1..N" src="http://latex.codecogs.com/svg.latex?S%3D%5C%7Bs_i%5C%7D%2C~i%3D1..N" /></td>
 			</tr>
 			
 			<tr>
@@ -474,37 +505,37 @@ function changeValue(changed) {
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td>more formally, <img alt="O=\{o_t\},~o_t=\nu_m,~t=1..T,~m=1..M" src="http://latex.codecogs.com/gif.latex?O%3D%5C%7Bo_t%5C%7D%2C~o_t%3D%5Cnu_m%2C~t%3D1..T%2C~m%3D1..M" /></td>
+				<td>more formally, <img alt="O=\{o_t\},~o_t=\nu_m,~t=1..T,~m=1..M" src="http://latex.codecogs.com/svg.latex?O%3D%5C%7Bo_t%5C%7D%2C~o_t%3D%5Cnu_m%2C~t%3D1..T%2C~m%3D1..M" /></td>
 			</tr>
 			
 			<tr>
 				<td>Priors vector, 1*<em>N</em></td>
-				<td><img alt="\Pi=\[p(L_0), 1-p(L_0)\]" src="http://latex.codecogs.com/gif.latex?%5CPi%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0Ap%28L_0%29%261-p%28L_0%29%5C%5C%0D%0A%5Cend%7Bbmatrix%7D" /></td>
+				<td><img alt="\Pi=\[p(L_0), 1-p(L_0)\]" src="http://latex.codecogs.com/svg.latex?%5CPi%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0Ap%28L_0%29%261-p%28L_0%29%5C%5C%0D%0A%5Cend%7Bbmatrix%7D" /></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td>more formally, <img alt="\Pi=\{\pi_i\},~i=1..N" src="http://latex.codecogs.com/gif.latex?%5CPi%3D%5C%7B%5Cpi_i%5C%7D%2C~i%3D1..N" /></td>
+				<td>more formally, <img alt="\Pi=\{\pi_i\},~i=1..N" src="http://latex.codecogs.com/svg.latex?%5CPi%3D%5C%7B%5Cpi_i%5C%7D%2C~i%3D1..N" /></td>
 			</tr>
 
 			<tr>
 				<td>Transitions matrix, <em>N</em>*<em>N</em></td>
-				<td><img alt="A=\[1, 0; p(T), 1-p(T)\]" src="http://latex.codecogs.com/gif.latex?A%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0A1%260%5C%5C%0D%0Ap%28T%29%261-p%28T%29%0D%0A%5Cend%7Bbmatrix%7D" /></td>
+				<td><img alt="A=\[1, 0; p(T), 1-p(T)\]" src="http://latex.codecogs.com/svg.latex?A%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0A1%260%5C%5C%0D%0Ap%28T%29%261-p%28T%29%0D%0A%5Cend%7Bbmatrix%7D" /></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td>more formally, <img alt="A=\{a_{ij}\},~a_{ij}=p\{s_{t+1} = j|s_t = i\},~i,j=1..N" src="http://latex.codecogs.com/gif.latex?A%3D%5C%7Ba_%7Bij%7D%5C%7D%2C~a_%7Bij%7D%3Dp%5C%7Bs_%7Bt%2B1%7D%20%3D%20j%7Cs_t%20%3D%20i%5C%7D%2C~i%2Cj%3D1..N" /><br />
+				<td>more formally, <img alt="A=\{a_{ij}\},~a_{ij}=p\{s_{t+1} = j|s_t = i\},~i,j=1..N" src="http://latex.codecogs.com/svg.latex?A%3D%5C%7Ba_%7Bij%7D%5C%7D%2C~a_%7Bij%7D%3Dp%5C%7Bs_%7Bt%2B1%7D%20%3D%20j%7Cs_t%20%3D%20i%5C%7D%2C~i%2Cj%3D1..N" /><br />
 				i.e., the probability of transferring from state <em>i</em> to state <em>j</em>
 				</td>
 			</tr>
 
 			<tr>
 				<td>Emissions matrix, <em>N</em>*<em>M</em></td>
-				<td><img alt="B=\[1-p(S), p(S); p(G), 1-p(G)\]" src="http://latex.codecogs.com/gif.latex?B%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0A1-p%28S%29%26p%28S%29%5C%5C%0D%0Ap%28G%29%261-p%28G%29%0D%0A%5Cend%7Bbmatrix%7D" /></td>
+				<td><img alt="B=\[1-p(S), p(S); p(G), 1-p(G)\]" src="http://latex.codecogs.com/svg.latex?B%3D%0D%0A%5Cbegin%7Bbmatrix%7D%0D%0A1-p%28S%29%26p%28S%29%5C%5C%0D%0Ap%28G%29%261-p%28G%29%0D%0A%5Cend%7Bbmatrix%7D" /></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td>more formally, <img alt="b_{jm}=p\{o_t=\nu_m|s_t=j\}~j=1..N,~m=1..M" src="http://latex.codecogs.com/gif.latex?b_%7Bjm%7D%3Dp%5C%7Bo_t%3D%5Cnu_m%7Cs_t%3Dj%5C%7D~j%3D1..N%2C~m%3D1..M" /><br />
-				 i.e., the probability of observing <img alt="\nu_m" src="http://latex.codecogs.com/gif.latex?%5Cnu_m" />, while being in state <em>j</em>
+				<td>more formally, <img alt="b_j(m)=p\{o_t=\nu_m|s_t=j\}~j=1..N,~m=1..M" src="http://latex.codecogs.com/svg.latex?b_%7Bj%7D%28m%29%3Dp%5C%7Bo_t%3D%5Cnu_m%7Cs_t%3Dj%5C%7D~j%3D1..N%2C~m%3D1..M" /><br />
+				 i.e., the probability of observing <img alt="\nu_m" src="http://latex.codecogs.com/svg.latex?%5Cnu_m" />, while being in state <em>j</em>
 				</td>
 			</tr>
 
@@ -523,28 +554,28 @@ function changeValue(changed) {
 		<table class="tblDefinitions">
 			<tr>
 				<td><a id="pnown">Knowledge <em>L</em></td>
-				<td><img alt="L_0=\Pi" src="http://latex.codecogs.com/gif.latex?L_0%3D%5CPi" /></td>
+				<td><img alt="L_0=\Pi" src="http://latex.codecogs.com/svg.latex?L_0%3D%5CPi" /></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><img alt="L_t=p(L|E)_t \cdot A,~t=1..T" src="http://latex.codecogs.com/gif.latex?L_t%3Dp(L%7CE)_t%20%5Ccdot%20A%2C~t%3D1..T" /></td>
+				<td><img alt="L_t=p(L|E)_t \cdot A,~t=1..T" src="http://latex.codecogs.com/svg.latex?L_t%3Dp(L%7CE)_t%20%5Ccdot%20A%2C~t%3D1..T" /></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><img alt="p(L|E)_t= (L_{t-1} \circ B[,o_t] )~./~( L_{t-1} \cdot B[,o_t] ),~t=1..T" src="http://latex.codecogs.com/gif.latex?p(L%7CE)_t%3D%20(L_%7Bt-1%7D%20%5Ccirc%20B%5B%2Co_t%5D%20)~.%2F~(%20L_%7Bt-1%7D%20%5Ccdot%20B%5B%2Co_t%5D%20)%2C~t%3D1..T" />, where </td>
+				<td><img alt="p(L|E)_t= (L_{t-1} \circ B[,o_t] )~./~( L_{t-1} \cdot B[,o_t] ),~t=1..T" src="http://latex.codecogs.com/svg.latex?p(L%7CE)_t%3D%20(L_%7Bt-1%7D%20%5Ccirc%20B%5B%2Co_t%5D%20)~.%2F~(%20L_%7Bt-1%7D%20%5Ccdot%20B%5B%2Co_t%5D%20)%2C~t%3D1..T" />, where </td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><img alt="\circ" src="http://latex.codecogs.com/gif.latex?%5Ccirc"/>  is by-element  multiplication, <img alt="\cdot" src="http://latex.codecogs.com/gif.latex?%5Ccdot"> is dot-product, <em>./</em> is by-element division, <br/>
-				<img alt="B[,o_t]" src="http://latex.codecogs.com/gif.latex?B%5B%2Co_t%5D"/> is the <img alt="o_t" src="http://latex.codecogs.com/gif.latex?o_t"/>-th column of matrix <em>B</em>, <img alt="o_t" src="http://latex.codecogs.com/gif.latex?o_t"/> is the observation at time <em>t</em>.</td>
+				<td><img alt="\circ" src="http://latex.codecogs.com/svg.latex?%5Ccirc"/>  is by-element  multiplication, <img alt="\cdot" src="http://latex.codecogs.com/svg.latex?%5Ccdot"> is dot-product, <em>./</em> is by-element division, <br/>
+				<img alt="B[,o_t]" src="http://latex.codecogs.com/svg.latex?B%5B%2Co_t%5D"/> is the <img alt="o_t" src="http://latex.codecogs.com/svg.latex?o_t"/>-th column of matrix <em>B</em>, <img alt="o_t" src="http://latex.codecogs.com/svg.latex?o_t"/> is the observation at time <em>t</em>.</td>
 			</tr>
 			<tr>
 				<td>Correctness <em>C</em></td>
-				<td><img alt="C_0=\Pi \cdot B" src="http://latex.codecogs.com/gif.latex?C_0%3D%5CPi%20%5Ccdot%20B" /></td>
+				<td><img alt="C_0=\Pi \cdot B" src="http://latex.codecogs.com/svg.latex?C_0%3D%5CPi%20%5Ccdot%20B" /></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><img alt="C_t=L_t \cdot B,~t=1..T" src="http://latex.codecogs.com/gif.latex?C_t%3DL_t%20%5Ccdot%20B%2C~t%3D1..T" /></td>
+				<td><img alt="C_t=L_t \cdot B,~t=1..T" src="http://latex.codecogs.com/svg.latex?C_t%3DL_t%20%5Ccdot%20B%2C~t%3D1..T" /></td>
 			</tr>
 		</table>
 
