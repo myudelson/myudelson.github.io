@@ -11,8 +11,8 @@
 <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 <link rel="shortcut icon" type="image/png" href="http://yudelson.info/favicon.png"/>
 
-<script src="assets/numeric-1.2.6.js"></script> <!-- http://numericjs.com/documentation.html -->
-<script src="assets/prototype.js"></script>
+<script src="assets/numeric-1.2.6.js" type="text/javascript"></script> <!-- http://numericjs.com/documentation.html -->
+<script src="assets/prototype.js" type="text/javascript"></script>
 
 <!-- 
 <link rel="stylesheet" href="assets/mathscribe/jqmath-0.4.3.css">
@@ -31,6 +31,12 @@ function col(a, c) {
 		column.push( a[i][c]);
 	return column;
 }
+
+const SAFETY = 1.0e-12 
+function safe0num(val) {
+	return (val<=SAFETY)? SAFETY : val;
+}
+
 function compute() {
 	// digits after decimal point
 	n_digi = 6;
@@ -42,6 +48,10 @@ function compute() {
 	// answers
 	ans = $(observations).value.trim().split(" ");
 	obs = $(observations).value.trim().split(" ");
+	T = obs.length
+	O = obs
+	N = 2
+	M = 2
 	for(var i=0; i<ans.length; i++) { ans[i] = ans[i]|0; obs[i] = 1 - ans[i]; } 
 	// compute
 	pL_arr = [], pC_arr = [], alpha_arr = [], beta_arr = [], c_arr = [], alpha_scaled_arr = [], beta_scaled_arr = [];
@@ -99,9 +109,10 @@ function compute() {
 			beta_scaled = numeric.dot( numeric.dot(A, b), beta_scaled );
 			beta_scaled = numeric.mul(beta_scaled, c);
 		}
-		beta_arr.push(beta);
-		beta_scaled_arr.push(beta_scaled);
+		beta_arr.unshift(beta);
+		beta_scaled_arr.unshift(beta_scaled);
 	}
+	likelihood = alpha_arr[obs.length-1][0]+alpha_arr[obs.length-1][1]
 	display_variables();
 }
 
@@ -125,15 +136,15 @@ function display_variables() {
 		$$('#tblResults tr').last().insert({after:
 			'<tr id="result"><td>'+(i+1)+'</td><td>'+ans[i]+'</td><td>'+pL_arr[i][0].toFixed(n_digi)+'</td><td>'+pC_arr[i][0].toFixed(n_digi)+'</td>'+
 			'<td>'+alpha_arr[i][0].toFixed(n_digi)+'</td><td>'+alpha_arr[i][1].toFixed(n_digi)+'</td>'+
-			'<td>'+beta_arr[obs.length-i-1][0].toFixed(n_digi)+'</td><td>'+beta_arr[obs.length-i-1][1].toFixed(n_digi)+'</td>' +
+			'<td>'+beta_arr[i][0].toFixed(n_digi)+'</td><td>'+beta_arr[i][1].toFixed(n_digi)+'</td>' +
 			'<td>'+c_arr[i].toFixed(n_digi)+'</td>'+
 			'<td>'+alpha_scaled_arr[i][0].toFixed(n_digi)+'</td><td>'+alpha_scaled_arr[i][1].toFixed(n_digi)+'</td>'+
-			'<td>'+beta_scaled_arr[obs.length-i-1][0].toFixed(n_digi)+'</td><td>'+beta_scaled_arr[obs.length-i-1][1].toFixed(n_digi)+'</td></tr>'
+			'<td>'+beta_scaled_arr[i][0].toFixed(n_digi)+'</td><td>'+beta_scaled_arr[i][1].toFixed(n_digi)+'</td></tr>'
 			});
 	}
 	
 	// write likelihood
-	$(lik).innerHTML = numberize(alpha_arr[obs.length-1][0]+alpha_arr[obs.length-1][1], 2*n_digi);
+	$(lik).innerHTML = numberize(likelihood, 2*n_digi);
 	
 }
 
@@ -152,70 +163,81 @@ function createInput(idname, val) {
 
 function EM() {
 	compute();
-	
+	likelihood_prev = likelihood
 	// pre-compute new variables
-	var denom = 0; numer = 0; N = 2, M = 2; T = ans.length;
 	gamma_ti_arr = numeric.rep([T,N],0);
 	gamma_tij_arr = numeric.rep([T,N,N],0);
-	for(var t=0; t<(T-1); t++){ // for t = 0 to T − 2 denom = 0
-		var o_tp1 = obs[t+1];
-		denom = 0;
+	for(t=0; t<(T-1); t++){ // for t = 0 to T − 2 denom = 0
+		var o_tp1 = O[t+1];
+		denom = 0.0;
 		for(var i=0; i<N; i++){ //for i = 0 to N − 1
 			for(var j=0; j<N; j++){ //for j = 0 to N − 1
 				denom += alpha_arr[t][i] * A[i][j] * B[j][o_tp1] * beta_arr[t+1][j];
 			} // next j
 		} // next i
 		for(var i=0; i<N; i++){ //for i = 0 to N − 1
-			gamma_ti_arr[t][i] = 0; // γt(i) = 0
 			for(var j=0; j<N; j++) { // for j = 0 to N − 1
 				gamma_tij_arr[t][i][j] = ( alpha_arr[t][i] * A[i][j] * B[j][o_tp1] * beta_arr[t+1][j])/((denom>0)?denom:1); // γt(i,j) = (αt(i)aijbj(Ot+1)βt+1(j))/denom;
 				gamma_ti_arr[t][i] += gamma_tij_arr[t][i][j];// γt(i) = γt(i) + γt(i, j);
 			} // next j
 		} // next i
 	} // next t
-	// update parameters
+
+	// save arrays
+	PI_copy = [...PI]//.map(function(arr) {return arr.slice(0);});
+	A_copy  = [...A]//A.map(function(arr) {return arr.slice(0);});
+	B_copy  = [...B]//B.map(function(arr) {return arr.slice(0);});
 
 	// re-estimate π
 	for(var i=0; i<N; i++){ //for i = 0 to N − 1
 		PI[i] = gamma_ti_arr[0][i];//πi = γ0(i)
 	} // next i
-	// re-estimate A
-	for(var i=0; i<N; i++){ //for i = 0 to N − 1
-		for(var j=0; j<N; j++) { // for j = 0 to N − 1
-			numer = 0;
-			denom = 0;
-			for(var t=0; t<(T-1); t++){ // for t = 0 to T − 2
-				numer = numer + gamma_tij_arr[t][i][j];// γt(i, j)
-				denom = denom + gamma_ti_arr[t][i];// γt(i)
-			} // next t
-			A[i][j] = numer/denom; //aij
-		} // next j
-	} // next i
-	// re-estimate B 
-	for(var i=0; i<N; i++){ //for i = 0 to N − 1
-		for(var m=0; m<M; m++) { // for j = 0 to M − 1
-			numer = 0;
-			denom = 0;
-			for(var t=0; t<(T-1); t++){ // for t = 0 to T − 2
-				var o_t = obs[t];
-				if(o_t == m) { // then
-					numer = numer + gamma_ti_arr[t][i];// γt(i)
-				} // end if
-				denom = denom + gamma_ti_arr[t][i];// γt(i)
-			} // next t
-			B[i][m] = numer/denom; // bi(m) 
-		} // next m
-	} // next i
-	
-	// change parameters
-	$(pLo).value = PI[0];
-	$(pF).value = 0;
-	$(pT).value = A[1][0];
-	$(pS).value = B[0][1];
-	$(pG).value = B[1][0];
-	
-	compute();
+	// re-estimate A, B
+	var A_num = numeric.rep([N,N],0);
+	var A_den = numeric.rep([N,N],0);
+	var B_num = numeric.rep([N,M],0);
+	var B_den = numeric.rep([N,M],0);
+	for(t=0; t<(T-1); t++){ // for t = 0 to T − 2
+		o = O[t];
+		for(i=0; i<N; i++){ //for i = 0 to N − 1
+			for(j=0; j<N; j++) { // for j = 0 to N − 1
+				A_num[i][j] += gamma_tij_arr[t][i][j];// γt(i, j)
+				A_den[i][j] += gamma_ti_arr[t][i];// γt(i)
+			} // next j
+			for(m=0; m<M; m++) { // for j = 0 to M − 1
+				B_num[i][m] += (o == m)* gamma_ti_arr[t][i];// γt(i) 
+				B_den[i][m] += gamma_ti_arr[t][i];// γt(i)
+			} // next m
+		} // next i	
+	} // next t
+
+	for(i=0; i<N; i++){ //for i = 0 to N − 1
+		for(j=0; j<N; j++) {
+			A[i][j] = A_num[i][j] / safe0num(A_den[i][j]);
+		}
+		for(m=0; m<M; m++) {
+			B[i][m] = B_num[i][m] / safe0num(B_den[i][m]);
+		}
+	}
+	change_parameters()
 	display_variables();
+	compute();
+	if(likelihood<likelihood_prev) {
+		PI = [...PI_copy]//.map(function(arr) {return arr.slice(0);});
+		A  =  [...A_copy]//.map(function(arr) {return arr.slice(0);});
+		B  =  [...B_copy]//.map(function(arr) {return arr.slice(0);});
+		change_parameters()
+		display_variables();
+	}
+}
+
+function change_parameters() {
+	// change parameters
+	$(pLo).value = PI[0].toFixed(n_digi);
+	$(pF).value = 0;
+	$(pT).value = A[1][0].toFixed(n_digi);
+	$(pS).value = B[0][1].toFixed(n_digi);
+	$(pG).value = B[1][0].toFixed(n_digi);
 }
 
 function EM_scaled() {
@@ -390,7 +412,7 @@ function changeValue(changed) {
 				<tr><td align="right" valign="top">Observations</td> <td><input type="text" pattern="^[01]( [01])*$" name="obs" id="observations"  value="0 0 1 1 1 0 1 1 0 1" size="40" title="0's and 1's separated by spaces" onChange="javascript:compute();"><br/><span style="font-size:small;color:grey">0's and 1's separated by spaces</span></td></tr>
 			</table>
 			<input type="button" value="Compute" onClick="javascript:compute();">&nbsp;&nbsp;
-			<input type="button" value="Update parameters. Expectation Maximization (Beta)" onClick="javascript:EM();" enabled="false">
+			<input type="button" value="Update parameters using EM algorithm" onClick="javascript:EM();" enabled="false">
 
 		</form>
 		<hr/>
@@ -538,7 +560,7 @@ function changeValue(changed) {
  <div class="clear"></div>
  <!-- Footer style="border-top:1px dotted"-->
  <div class="grid_10 grey">
-		<p><small>Michael V. Yudelson &copy; 2021</small></p>
+		<p><small>Michael V. Yudelson &copy; 2022</small></p>
  </div>
  <div class="grid_2 grey">
 		<p class="right"><small>Adapted from <a href="http://960.gs" target="_blank">960 grid</a></small></p>
