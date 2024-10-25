@@ -69,3 +69,28 @@ span {
   background-image: url(../img/24_col.gif);
 }
 */
+
+
+.tag, .tag-blue, .tag-green, .tag-red {
+  color: #fff;
+  background-color: #000;
+  background-repeat: repeat-y;
+  margin-bottom: 5px;
+  margin-top: 5px; /*mvy*/
+  padding: 2px;
+}
+
+.tag-blue {
+  color: #fff;
+  background-color: #66f;
+}
+
+.tag-green {
+  color: #fff;
+  background-color: #690;
+}
+
+.tag-red {
+  color: #fff;
+  background-color: #c00;
+}
