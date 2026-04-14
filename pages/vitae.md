@@ -2,7 +2,7 @@
 layout: page
 title: Vitae
 permalink: /vitae/
-weight: 3
+weight: 1
 ---
 
 # **Vitae**
