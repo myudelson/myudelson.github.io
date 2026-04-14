@@ -1,0 +1,19 @@
+- name: Artificial Intelligence Strategy
+  percentage: 100
+  color: danger
+
+- name: High-Volume Data and Data-Driven Decision Systems
+  percentage: 100
+  color: secondary
+
+# - name: Machine Learning and Statistical Systems Architecture
+#   percentage: 100
+#   color: info
+
+- name: AI and Machine Learning Product Development
+  percentage: 100
+  color: success
+
+- name: Thought Leadership and Technology Product Development
+  percentage: 100
+  color: dark

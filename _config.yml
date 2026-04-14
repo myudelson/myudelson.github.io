@@ -1,0 +1,109 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve --livereload'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: Michael Yudelson
+email: https://mailhide.io/e/AfgZo # for myudelson@gmail.com # https://mailhide.io/e/oisZjkK9 for myudelson@mail.ru
+image: assets/img/Tuxonoff_web_3.jpeg
+description: >- # this means to ignore newlines until "baseurl:"
+  Leveraging artificial intelligence and data science for building highly-capable cloud-based 
+  systems under increasing technological uncertainty.
+description_ru: >- 
+  Построение высокоэффективных процессов и систем с использованием искусственного 
+  интеллекта и дата сайенс в условиях растущей технологической неопределенности.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+# twitter_username: jekyllrb
+# github_username:  jekyll
+
+author:
+  name: Michael Yudelson
+  image: assets/img/Tuxonoff_web_3.jpeg   # path to your photo
+  # bio: Your bio here
+  email: https://mailhide.io/e/AfgZo # for myudelson@gmail.com # https://mailhide.io/e/oisZjkK9 for myudelson@mail.ru
+  github: myudelson
+  linkedin: myudelson
+  medium: tuxonoff
+  google_scholar: ncrZ-ZsAAAAJ
+  orcid: 0000-0002-8280-0348
+  research_gate: Michael_Yudelson
+  acm: 81100603324
+  dblp: 60/3238.html
+
+# Build settings
+theme: portfolyou-jekyll-theme
+plugins:
+  - jekyll-feed
+
+# Do not show in main nav strip
+nav_exclude:
+  - index.md
+  - pages/blog.html
+  - pages/publications-tags.html
+  - pages/projects-tags.html
+  - pages/talks-tags.html
+
+# default theme
+color_scheme: light  # or dark
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
+
+repository: "myudelson/myudelson.github.io_py"
+
+collections:
+  projects:
+    output: true
+    sort_by: weight
+
+  publications:
+    output: false
+
+  talks:
+    output: true
+    permalink: /talks/:slug/
+
+defaults:
+  - scope:
+      type: talks
+    values:
+      layout: default
+
+# mathjax kramdown fix
+markdown: kramdown
+kramdown:
+  math_engine: null        # disable Kramdown's own math engine
+  syntax_highlighter: rouge

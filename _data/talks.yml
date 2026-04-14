@@ -1,0 +1,17 @@
+{
+    "type": "talks",
+    "en": [
+        {
+            "title": "AIAED 2018, China",
+            "date": "November 2018",
+            "description": "",
+            "image_url": "./assets/2018_ai.jpg"
+        },
+        {
+            "title": "CMU 2025, AI Class",
+            "date": "August 2025",
+            "description": "",
+            "image_url": "./assets/2018_ai.jpg"
+        }
+    ]
+}

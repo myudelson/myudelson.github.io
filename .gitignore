@@ -1,6 +1,6 @@
-yudelsoninfo.tmproj
-myudelson.bbprojectd/*
-_frameworks/*
-.Rhistory
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
 .DS_store
-

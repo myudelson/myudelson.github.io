@@ -1,0 +1,19 @@
+- name: Scalable Machine Learning Systems
+  percentage: 100
+  color: info
+
+- name: Data Infrastructure and Processing Pipelines
+  percentage: 100
+  color: warning
+
+- name: Applied Statistical Modeling
+  percentage: 100
+  color: dark
+
+- name: Translating Research into Production Systems
+  percentage: 100
+  color: primary
+
+- name: Decision Intelligence Systems
+  percentage: 100
+  color: danger

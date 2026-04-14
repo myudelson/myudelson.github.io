@@ -1,0 +1,45 @@
+<div class="col mt-4">
+  <div class="timeline-body">
+    {% for item in site.data.vitae.en %}
+      <div class="timeline-item">
+        <div class="content">
+          <h2>
+            {% assign parts = item.title | split: "<a>" %}
+            {% assign result = parts[0] %}
+            {% for i in (1..10) %}
+              {% if parts[i] %}
+                {% assign idx = i | minus: 1 %}
+                {% assign href = item.title_links[idx] %}
+                {% if href %}
+                  {% assign result = result | append: '<a href="' | append: href | append: '" target="_blank">' | append: parts[i] %}
+                {% else %}
+                  {% assign result = result | append: '<a>' | append: parts[i] %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            {{ result }}                        
+          </h2>
+          <h6 class="date">{{ item.dates }}</h6>
+          <p>
+            {% assign parts = item.text | split: "<a>" %}
+            {% assign result = parts[0] %}
+            {% for i in (1..10) %}
+              {% if parts[i] %}
+                {% assign idx = i | minus: 1 %}
+                {% assign href = item.text_links[idx] %}
+                {% if href %}
+                  {% assign result = result | append: '<a href="' | append: href | append: '" target="_blank">' | append: parts[i] %}
+                {% else %}
+                  {% assign result = result | append: '<a>' | append: parts[i] %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            {{ result }}
+          </p>
+
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

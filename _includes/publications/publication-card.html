@@ -1,0 +1,48 @@
+{%- comment -%} Default Styles {%- endcomment -%}
+{%- assign card_style  = '' -%}
+{%- assign text_style  = 'text-themed' -%}
+{%- assign badge_style = 'badge-dark' -%}
+{%- comment -%} Update Styles {%- endcomment -%}
+{%- if publication.style == 'fill' -%}
+  {%- assign card_style = publication.color | prepend: 'bg-' -%}
+  {%- if publication.color != 'light' -%}
+    {%- assign text_style  = 'text-white' -%}
+    {%- assign badge_style = 'badge-light text-' -%}
+    {%- assign badge_style = badge_style | append: publication.color -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign card_style = publication.color | prepend: 'border border-' -%}
+  {%- if publication.color -%}
+    {%- assign badge_style = publication.color | prepend: 'badge-' -%}
+  {%- endif -%}
+{%- endif -%}
+{%- comment -%} Determine Publication URL {%- endcomment -%}
+{%- if publication.external_url -%}
+  {%- assign publication_url = publication.external_url -%}
+{%- else -%}
+  {%- assign publication_url = publication.url | relative_url -%}
+{%- endif -%}
+<div class="col-12 my-2 wow animated fadeIn" data-wow-delay=".15s">
+  <a href="{{ publication_url }}" class="post card {{ card_style }}" {%- if publication.external_url and site.open_new_tab -%} target="_blank" {%- endif -%}>
+    <div class="card-body {{ text_style }} d-flex justify-content-between align-items-start">
+      <div class="flex-grow-1 pr-4">
+        <h5 class="card-title mb-1">{{ publication.title }}</h5>
+        <p class="card-text mb-1">
+          {% for tag in publication.tags %}
+            <span class="badge {{ badge_style }}">{{ tag }}</span>
+          {% endfor %}
+        </p>
+        <p class="card-text small">
+          {%- if publication.description -%}
+            {{ publication.description }}
+          {%- else -%}
+            {{ publication.content | truncatewords: 25, "<small><i> read more...</i></small>" }}
+          {%- endif -%}
+        </p>
+      </div>
+      <div class="text-right text-nowrap small {{ text_style }} pt-1">
+        {{ publication.date | date_to_long_string }}
+      </div>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,220 @@
+{
+    "type": "vitae",
+    "en": [
+        {
+			"title": "CTO at <a>myProse</a>, a <a>Carnegie Mellon University</a> startup",
+            "dates": "September 2025 - present",
+            "text": "Defining the roadmap for an MVP and dealing with technological uncertainty. Leading the full-stack development and architecture for an AI product.",
+            "title_links": [
+                "https://www.cmu.edu/corecompetencies/communication/resources-and-tools/myprose/index.html",
+                "http://www.cmu.edu/"
+            ]
+        },
+        {
+			"title": "Founder at Akyn Avtomatika",
+            "dates": "January 2023 - present",
+            "text": "End-to-end design of scalable cloud infrastructure and automated ML pipelines for a social media publishing enterprise. Development of custom, audio/video-processing tools, implementing advanced LLM-as-a-Judge solutions and automated decision-making support.",
+            "title_links": []
+        },
+        {
+			"title": "Staff ML Engineer at <a>Chegg, Inc.</a>",
+            "dates": "June 2022 - November 2024",
+            "text": "Focusing on the orchestration of enterprise-grade RAG pipelines and the standardization of evaluation frameworks for large language model prompting and performance reporting. Driving the engineering of high-precision, fine-tuned models specialized in complex data extraction and the automation of pedagogical content analysis within large-scale digital learning environments.",
+            "title_links": [
+                "http://www.chegg.com/"
+            ]
+        },
+        {
+			"title": "Principal ML/AI Scientist at <a>BrainPOP, Inc.</a>",
+            "dates": "April 2021 - June 2022",
+            "text": "Orchestrated efforts on ideation, design, and implementation of ML/AI-based product features offering automated answer-scoring capabilities as one of only two ML engineers in the company.",
+            "title_links": [
+                "http://www.brainpop.com/"
+            ]
+        },
+        {
+			"title": "Senior Research Scientist at <a>ACT, Inc.</a>",
+            "dates": "July 2017 - April 2021",
+            "text": "Driving the development and architecture of diagnostic student learning models for large-scale educational platforms. Overseeing the design of comprehensive analytical pipelines to ensure the rigorous validation and performance of complex modeling suites.",
+            "title_links": [
+                "http://www.act.org/"
+            ]
+        },
+        {
+			"title": "Project Scientist at <a>Human-Computer Interaction Institute</a> of <a>Carnegie Mellon University</a>",
+            "dates": "January 2016 - May 2017",
+            "text": "Driving the development and scaling of high-concurrency affect detection systems capable of supporting tens of millions of users globally. Architecting hybrid teacher-machine tutoring frameworks that facilitate seamless automated hand-offs, while leading the strategic acquisition and curation of large-scale longitudinal datasets for advanced theoretical and practical investigations.",
+            "title_links": [
+                "http://www.hcii.cmu.edu/",
+                "http://www.scs.cmu.edu/",
+                "http://www.cmu.edu/",
+                "http://pact.cs.cmu.edu/koedinger.html"
+            ]
+        },
+        {
+			"title": "Research Scientist at <a>Carnegie Learning, Inc.</a>",
+            "dates": "March 2013 - January 2016",
+            "text": "Leading the development and optimization of high-impact algorithms serving over half a million users annually to significantly streamline the user experience. Directing cross-functional analytical initiatives and the orchestration of large-scale data modeling pipelines to drive institutional scientific leadership and enterprise-level data strategy.",
+            "title_links": [
+                "http://www.carnegielearning.com/"
+            ]
+        },
+        {
+			"title": "Postdoctoral Fellow at <a>Human-Computer Interaction Institute</a> of <a>Carnegie Mellon University</a>",
+            "dates": "October 2010 - FEbruary 2013",
+            "text": "Leading the development of state-of-the-art methods for modeling complex knowledge acquisition and the creation of high-scale, open-source Bayesian modeling tools. Driving institutional thought leadership through the publication of highly-cited research in top-tier peer-reviewed journals and international conference proceedings. Advisors <a>Kenneth R. Koedinger</a> and <a>Geoffrey J. Gordon</a>.",
+            "title_links": [
+                "http://www.hcii.cmu.edu/",
+                "http://www.cmu.edu/"
+            ],
+            "text_links": [
+                "http://pact.cs.cmu.edu/koedinger.html",
+                "http://www.cs.cmu.edu/~ggordon/"
+            ]
+        },
+        {
+			"title": "Doctoral Student at the <a>School of Information Sciences</a> of the <a>University of Pittsburgh</a>",
+            "dates": "August 2004 - December 2010",
+            "text": "Defended Doctor of Philosophy thesis <i><a>Providing Service-Based Personalization in an Adaptive Hypermedia System</a></i> (advisor <a>Peter L. Brusilovsky</a>).",
+            "title_links": [
+                "http://ischool.pitt.edu/",
+                "http://www.pitt.edu/"
+                
+            ],
+            "text_links": [
+                "http://d-scholarship.pitt.edu/9463/",
+                "http://www.brusilovsky.org/"
+            ]
+        },
+        {
+			"title": "Doctoal Student at <a>Ivanovo State Power University, Russia</a>",
+            "dates": "September 2001 - June 2004",
+            "text": "Defended Candidate of Technical Sciences dissertation <i><a>Models and methods of advanced online training operating personnel of Computer Aided Design systems</a></i> at <a>Ivanovo State Power University</a>, Russia (advisor Evgeny R. Panteleev).",
+            "title_links": ["http://ispu.ru"],
+            "text_links": [
+                "http://old.rsl.ru/view.jsp?f=1003&t=3&v0=Юдельсон+Михаил+Вячеславович&f=1003&t=1&v1=&f=4&t=2&v2=&f=21&t=3&v3=&f=1016&t=3&v4=&f=1016&t=3&v5=&cc=a1&s=2&ss=-31&ce=4",
+                "http://eng.ispu.ru/"
+            ]
+        },
+        {
+			"title": "Student at <a>Ivanovo State Power University, Russia</a>",
+            "dates": "September 1996 - June 2001",
+            "text": "Graduated Summa Cum Laude from the Department of Computer Aided Design, Manufacturing and Engineering, School of Information Sciences, at <a>Ivanovo State Power University, Russia</a>.",
+            "title_links": [
+                "http://eng.ispu.ru/"
+            ],
+            "text_links": [
+                "http://eng.ispu.ru/"
+            ]
+        }
+    ],
+    "ru": [
+        {
+            "title": "Главный технический директор в <a>myProse</a> — стартапе <a>Университета Карнеги-Меллона</a>",
+            "dates": "сентябрь 2025 — по н.в.",
+            "text": "Определение дорожной карты для MVP и работа в условиях технологической неопределенности. Руководство full-stack разработкой и архитектурой AI-продукта.",
+            "title_links": [
+                "https://www.cmu.edu/corecompetencies/communication/resources-and-tools/myprose/index.html",
+                "http://www.cmu.edu/"
+            ]
+        },
+        {
+            "title": "Основатель Акын Автоматика",
+            "dates": "январь 2023 — по н.в.",
+            "text": "Комплексное проектирование масштабируемой облачной инфраструктуры и автоматизированных ML-конвейеров для компании, занимающейся публикацией контента в социальных сетях. Разработка специализированных инструментов для обработки аудио и видео, внедрение передовых решений на базе LLM для оценки качества (LLM-as-a-Judge) и систем автоматизированной поддержки принятия решений.",
+            "title_links": []
+        },
+        {
+            "title": "Staff-инженер по ИИ в <a>Chegg, Inc.</a>",
+            "dates": "июнь 2022 — ноябрь в 2024",
+            "text": "Фокус на оркестрации RAG-конвейеров корпоративного уровня и стандартизации фреймворков для оценки промптинга больших языковых моделей (LLM) и отчетности об их производительности. Руководство разработкой высокоточных, дообученных моделей, специализирующихся на извлечении сложных данных и автоматизации анализа педагогического контента в масштабных цифровых образовательных средах.",
+            "title_links": [
+                "http://www.chegg.com/"
+            ]
+        },
+        {
+            "title": "Principal-инженер по ИИ в <a>BrainPOP, Inc.</a>",
+            "dates": "апрель 2021 — июнь 2022",
+            "text": "Оркестрация процессов генерации идей, проектирования и внедрения продуктовых функций на базе ML/AI, обеспечивающих автоматизированную оценку ответов; работа в качестве одного из всего двух ML-инженеров в компании.",
+            "title_links": [
+                "http://www.brainpop.com/"
+            ]
+        },
+        {
+            "title": "Старший учёный-исследователь в <a>ACT, Inc.</a>",
+            "dates": "июль 2017 — апрель 2021",
+            "text": "Руководство разработкой и архитектурой диагностических моделей обучения студентов для крупномасштабных образовательных платформ. Курирование проектирования комплексных аналитических конвейеров с целью обеспечения строгой валидации и высокой производительности сложных пакетов моделей.",
+            "title_links": [
+                "http://www.act.org/"
+            ]
+        },
+        {
+            "title": "Проектный учёный-исследователь, в <a>Институте человеко-машинного взаимодействия</a> при <a>Университете Карнеги — Меллон</a>, США",
+            "dates": "январь 2016 — май 2017",
+            "text": "Руководство разработкой и масштабированием высоконагруженных систем распознавания аффектов, способных обслуживать десятки миллионов пользователей по всему миру. Проектирование гибридных систем тьюторства (человек-машина), обеспечивающих бесшовную автоматизированную передачу управления, а также руководство стратегическим сбором и курированием крупномасштабных лонгитюдных наборов данных для проведения углубленных теоретических и практических исследований.",
+            "title_links": [
+                "http://www.hcii.cmu.edu/",
+                "http://www.scs.cmu.edu/",
+                "http://www.cmu.edu/",
+                "http://pact.cs.cmu.edu/koedinger.html"
+            ]
+        },
+        {
+            "title": "Учёный-исследователь в <a>Carnegie Learning, Inc.</a>",
+            "dates": "март 2013 — январь 2016",
+            "text": "Руководство разработкой и оптимизацией высокоэффективных алгоритмов, обслуживающих более полумиллиона пользователей ежегодно и позволяющих существенно улучшить пользовательский опыт. Управление кросс-функциональными аналитическими инициативами и координация работы крупномасштабных конвейеров моделирования данных с целью укрепления научного лидерства организации и реализации корпоративной стратегии в области данных.",
+            "title_links": [
+                "http://www.carnegielearning.com/"
+            ]
+        },
+        {
+            "title": "Постдок в <a>Институте человеко-машинного взаимодействия</a> при <a>Университете Карнеги — Меллон</a>, США",
+            "dates": "октябрь 2010 — февраль 2013",
+            "text": "Руководство разработкой передовых методов моделирования сложных процессов усвоения знаний, а также созданием масштабируемых инструментов байесовского моделирования с открытым исходным кодом. Обеспечение институционального лидерства в области идей посредством публикации высокоцитируемых исследований в ведущих рецензируемых журналах и материалах международных конференций. Научные руководители: <a>Кеннет Р. Коедингер</a> и <a>Джеффри Дж. Гордон</a>.",
+            "title_links": [
+                "http://www.hcii.cmu.edu/",
+                "http://www.cmu.edu/"
+            ],
+            "text_links": [
+                "http://pact.cs.cmu.edu/koedinger.html",
+                "http://www.cs.cmu.edu/~ggordon/"
+            ]
+        },
+        {
+            "title": "Докторант <a>факультета информационных наук</a> <a>Питтсбургского университета</a>, США",
+            "dates": "август 2004 — декабрь 2010",
+            "text": "Защитил диссертацию на соискание степени доктора философии (PhD) по теме: <i><a>Обеспечение персонализации на основе сервисов в адаптивной гипермедийной системе</a></i> (научный руководитель — <a>П.Л. Брусиловский</a>).",
+            "title_links": [
+                "http://ischool.pitt.edu/",
+                "http://www.pitt.edu/"
+            ],
+            "text_links": [
+                "http://d-scholarship.pitt.edu/9463/",
+                "http://www.brusilovsky.org/"
+            ]
+        },
+        {
+            "title": "Аспирант <a>Ивановского государственного энергетического университета, Россия</a>",
+            "dates": "сентябрь 2001 — июнь 2004",
+            "text": "Защитил диссертацию на соискание ученой степени кандидата технических наук по теме <i><a>Модели и методы дистанционного обучения эксплуатационного персонала систем автоматизации проектирования</a></i> в <a>Ивановском государственном энергетическом университете</a>, Россия (научный руководитель — Евгений Рафаилович Пантелеев).",
+            "title_links": [
+                "http://ispu.ru"
+            ],
+            "text_links": [
+                "http://old.rsl.ru/view.jsp?f=1003&t=3&v0=Юдельсон+Михаил+Вячеславович&f=1003&t=1&v1=&f=4&t=2&v2=&f=21&t=3&v3=&f=1016&t=3&v4=&f=1016&t=3&v5=&cc=a1&s=2&ss=-31&ce=4",
+                "http://eng.ispu.ru/"
+            ]
+        },
+        {
+            "title": "Студент <a>Ивановского государственного энергетического университета (Россия)</a>",
+            "dates": "сентябрь 1996 — июнь 2001",
+            "text": "С отличием (Summa Cum Laude) окончил кафедру систем автоматизации проектирования факультета информатики и вычислительной техники <a>Ивановского государственного энергетического университета (Россия)</a>.",
+            "title_links": [
+                "http://eng.ispu.ru/"
+            ],
+            "text_links": [
+                "http://eng.ispu.ru/"
+            ]
+        }
+    ]
+}

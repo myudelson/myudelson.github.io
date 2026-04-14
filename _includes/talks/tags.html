@@ -1,0 +1,31 @@
+<!-- Collect tags from all talks -->
+{%- assign tags = blank -%}
+{%- for talk in site.talks -%}
+  {%- assign talk_tags = talk.tags | join:'|' | append:'|' -%}
+  {%- if talk_tags != '|' -%}
+    {%- assign tags = tags | append:talk_tags -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign tags = tags | split:'|' | uniq | sort -%}
+
+<!-- List tags & related talks -->
+{% for tag in tags %}
+<div class="py-3">
+  <h4 id="{{ tag | slugify }}">{{ tag }}</h4>
+  <ol>
+  {% for talk in site.talks %}
+    {%- if talk.tags contains tag -%}
+      {%- if talk.external_url -%}
+        {%- assign url = talk.external_url -%}
+      {%- else -%}
+        {%- assign url = talk.url | relative_url -%}
+      {%- endif -%}
+    <a href="{{ url }}"><li>{{ talk.title }}</li></a>
+    <small class="text-muted">{{ talk.date | date_to_long_string }}</small>
+    <br/>
+    {%- endif -%}
+  {% endfor %}
+  </ol>
+</div>
+<hr class="bg-light">
+{% endfor %}

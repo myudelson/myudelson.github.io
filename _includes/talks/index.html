@@ -1,0 +1,60 @@
+
+<div class="card-columns m-3 mt-5">
+
+  <!-- Remote Talks -->
+  {% for remote_talk in page.remote_talks %}
+
+    {%- for repo in site.github.public_repositories -%}
+
+      {%- if remote_talk == repo.name -%}
+
+        {%- assign talk = repo -%}
+        {%- assign words = talk.name | split: '-' -%}
+        
+        {%- capture titlecase -%}
+          {%- for word in words -%}
+            {{ word | capitalize | append: ' ' }}
+          {%- endfor -%}
+        {%- endcapture -%}
+
+        {%- assign talk_type  = "remote" -%}
+        {%- assign talk_id    = talk.title -%}
+        {%- assign talk_img   = false -%}
+        {%- assign talk_name  = titlecase | strip -%}
+        {%- assign talk_desc  = talk.description -%}
+        {%- assign talk_url   = talk.html_url -%}
+        {%- assign talk_tags  = talk.tags -%}
+        {%- assign external   = true -%}
+
+        {% include talks/talk-card.html %}
+
+      {%- endif -%}
+
+    {%- endfor -%}
+
+  {% endfor %}
+
+  <!-- Local Talks -->
+  {% for talk in site.talks %}
+
+    {%- assign talk_type  = "local" -%}
+    {%- assign talk_id    = talk.title | slugify -%}
+    {%- assign talk_img   = talk.image -%}
+    {%- assign talk_name  = talk.name -%}
+    {%- assign talk_desc  = talk.description -%}
+    {%- assign talk_tags = talk.tags -%}
+    {%- assign talk_date = talk.date -%}
+
+    {%- if talk.external_url -%}
+      {%- assign talk_url = talk.external_url -%}
+      {%- assign external    = true -%}
+    {%- else -%}
+      {%- assign talk_url = talk.url | relative_url -%}
+      {%- assign external    = false -%}
+    {%- endif -%}
+
+    {% include talks/talk-card.html %}
+
+  {% endfor %}
+
+</div>

@@ -1,0 +1,32 @@
+<div class="card-group mt-2">
+
+  <!-- markdown -->
+  <!--
+  {% for post in site.publications %}
+    {% include publications/publication-card.html %}
+  {% endfor %}
+  -->
+
+  <!-- JSON -->
+  <!--
+  {% for pub in site.data.publications %}
+    {% include publications/publication-card-json.html %}
+  {% endfor %}
+-->
+
+<!-- with headers -->
+{%- assign current_type = "" -%}
+{% for pub in site.data.publications %}
+  {%- if pub.type != current_type -%}
+    {%- assign current_type = pub.type -%}
+    <div class="col-12 mt-4 mb-2">
+      <h4 class="text-uppercase font-weight-bold text-muted"
+          style="letter-spacing:.1em; border-bottom: 2px solid; padding-bottom:.4rem;">
+        {{ pub.type }}
+      </h4>
+    </div>
+  {%- endif -%}
+  {% include publications/publication-card-json.html %}
+{% endfor %}
+  
+</div>

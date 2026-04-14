@@ -1,0 +1,563 @@
+[
+    {
+        "type": "journal",
+        "year": "2019",
+        "title": "Computational Psychometrics Approach to Holistic Learning and Assessment Systems",
+        "text": "Von Davier, A. A., Deonovic, B. E., Yudelson, M., Polyak, S., & Woo, A. (2019). Computational Psychometrics Approach to Holistic Learning and Assessment Systems. Frontiers in Education, (4), 69.",
+        "doi": "https://doi.org/10.3389/feduc.2019.00069"
+    },
+    {
+        "type": "journal",
+        "year": "2019",
+        "title": "The Argument for a \"Data Cube\" for Large-Scale Psychometric Data",
+        "text": "Von Davier, A. A., Wong, P. C., Polyak, S., & Yudelson, M. (2019). The Argument for a \"Data Cube\" for Large-Scale Psychometric Data. Frontiers in Education 4, 71.",
+        "doi": "https://doi.org/10.3389/feduc.2019.00071",
+        "tags": [
+            "BigData&Scale"
+        ]
+    },
+    {
+        "type": "journal",
+        "year": "2018",
+        "title": "Learning meets assessment",
+        "text": "Deonovic, B., Yudelson, M., Bolsinova, M., Attali, M., & Maris, G. (2018). Learning meets assessment. On the relation between item response theory and Bayesian knowledge tracing. Behaviormetrika, TBD 45(2), 457—474.",
+        "doi": "https://doi.org/10.1007/s41237-018-0070-z",
+        "tags": [
+            "HMM"
+        ]
+    },
+    {
+        "type": "journal",
+        "year": "2016",
+        "title": "Testing Theories of Transfer Using Error Rate Learning Curves",
+        "text": "Koedinger, K., Yudelson, M., & Pavlik, P. (2016). Testing Theories of Transfer Using Error Rate Learning Curves. In: Goldstone, R. & Lupyan, G. (Eds.). Topics in Cognitive Science, 8 (3), 589—609.",
+        "doi": "http://dx.doi.org/10.1111/tops.12208"
+    },
+    {
+        "type": "journal",
+        "year": "2015",
+        "title": "A Measurement Model of Microgenetic Transfer for Improving Instructional Outcomes",
+        "text": "Pavlik, P.I., Yudelson, M., Koedinger, K.R. (2015) A Measurement Model of Microgenetic Transfer for Improving Instructional Outcomes. International Journal of Artificial Intelligence in Education, 25 (3), 1v34.",
+        "doi": "http://dx.doi.org/10.1007/s40593-015-0039-y"
+    },
+    {
+        "type": "journal",
+        "year": "2010",
+        "title": "Learning sql programming with interactive tools: From integration to personalization",
+        "text": "Brusilovsky, P., Sosnovsky, S., Yudelson, M., Lee, D., Zadorozhny, V., and Zhou, X. (2010) Learning sql programming with interactive tools: From integration to personalization. ACM Transactions on Computing Education, 9 (4), 1—15.",
+        "doi": "http://dx.doi.org/10.1145/1656255.1656257"
+    },
+    {
+        "type": "journal",
+        "year": "2009",
+        "title": "Addictive Links: The Motivational Value of Adaptive Link Annotation",
+        "text": "Brusilovsky, P., Sosnovsky, S., and Yudelson, M. (2009) Addictive Links: The Motivational Value of Adaptive Link Annotation. New Review of Hypermedia and Multimedia, 15 (1), 97–118.",
+        "doi": "http://dx.doi.org/10.1080/13614560902803570"
+    },
+    {
+        "type": "journal",
+        "year": "2009",
+        "title": "Problem solving examples as first class objects in educational digital libraries: Three obstacles to overcome",
+        "text": "Brusilovsky, P., Yudelson, M., and Hsiao, I.-H. (2009) Problem solving examples as first class objects in educational digital libraries: Three obstacles to overcome. Journal of Educational Multimedia and Hypermedia, 18 (3), 267—288."
+    },
+    {
+        "type": "journal",
+        "year": "2008",
+        "title": "From WebEx to NavEx: Interactive access to annotated program examples",
+        "text": "Brusilovsky, P. and Yudelson, M. V. (2008) From WebEx to NavEx: Interactive access to annotated program examples. Proceedings of the IEEE, 96 (6), 990–999.",
+        "doi": "http://dx.doi.org/10.1109/JPROC.2008.921611"
+    },
+    {
+        "type": "journal",
+        "year": "2008",
+        "title": "A multifactor approach to student model evaluation",
+        "text": "Yudelson, M. V., Medvedeva, O., and Crowley, R. S. (2008) A multifactor approach to student model evaluation. User Modeling and User-Adapted Interaction, 18 (4), 349—382.",
+        "doi": "http://dx.doi.org/10.1007/s11257-007-9046-5"
+    },
+    {
+        "type": "journal",
+        "year": "2008",
+        "title": "A Framework for Performance Evaluation of User Modeling Servers for Web Applications",
+        "text": "Zadorozhny, V., Yudelson, M., and Brusilovsky, P. (2008) A Framework for Performance Evaluation of User Modeling Servers for Web Applications. Web Intelligence and Agent Systems, 6 (2), 175—191.",
+        "doi": "http://dx.doi.org/10.3233/WIA-2008-0136"
+    },
+    {
+        "type": "chapter",
+        "year": "2019",
+        "title": "Application of Cognitive Diagnostic Models to Learning and Assessment Systems",
+        "text": "Deonovic, B., Chopade, P., Yudelson, M., de la Torre, J., & von Davier, A. (2019). Application of Cognitive Diagnostic Models to Learning and Assessment Systems. In: von Davier, M., Lee, YS. (eds) Handbook of Diagnostic Classification Models. Methodology of Educational Measurement and Assessment. (pp. 437—460). Springer, Cham.",
+        "doi": "https://doi.org/10.1007/978-3-030-05584-4_21"
+    },
+    {
+        "type": "chapter",
+        "year": "2018",
+        "title": "Modeling dynamic team interactions for intelligent tutoring",
+        "text": "Chopade, P., Yudelson, M., Deonovic, B., & von Davier, A. A. (2018). Modeling dynamic team interactions for intelligent tutoring. In: Building Intelligent Tutoring Systems for Teams: What Matters (pp. 131—151). Emerald Publishing Limited.",
+        "doi": "https://doi.org/10.1108/S1534-085620180000019010"
+    },
+    {
+        "type": "chapter",
+        "year": "2009",
+        "title": "Semantic Integration of Adaptive Educational Systems",
+        "text": "Sosnovsky, S. A., Brusilovsky, P., Yudelson, M., Mitrovic, A., Mathews, M., and Kumar, A. N. (2009) Semantic Integration of Adaptive Educational Systems. In: T. Kuflik, S. Berkovsky, F. Carmagnola, D. Heckmann, and A. Krüger (Eds.), Advances in Ubiquitous User Modelling (134—158).",
+        "doi": "http://dx.doi.org/10.1007/978-3-642-05039-8_8"
+    },
+    {
+        "type": "conference",
+        "year": "2021",
+        "title": "Elo-infused Bayesian Knowledge Tracing – an approach to operationalized individualization",
+        "text": "Yudelson, M. (2021) Elo-infused Bayesian Knowledge Tracing – an approach to operationalized individualization. In Proceedings of the 2nd Conference on Artificial Intelligence in Education (AIEd 2021), June 14-18, 2021, Utrecht, NL and Online.",
+        "pdf": "assets/pdf/pub/AIED2021_Yudelson.pdf",
+        "tags": [
+            "HMM",
+            "Elo"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2020",
+        "title": "Towards Scalable Gamified Assessment in Support of Collaborative Problem-Solving Competency Development in Online and Blended Learning",
+        "text": "Rosen, Y., Stoeffler, K., Simmering, V., & Yudelson, M. (2020) Towards Scalable Gamified Assessment in Support of Collaborative Problem-Solving Competency Development in Online and Blended Learning. In Proceedings of the Seventh ACM Conference on Learning at Scale (L@S 2020), Association for Computing Machinery, New York, NY, USA, 369—372.",
+        "doi": "https://dl.acm.org/doi/abs/10.1145/3386527.3405946"
+    },
+    {
+        "type": "conference",
+        "year": "2020",
+        "title": "Deep Knowledge Tracing with Transformers",
+        "text": "Pu, S., Yudelson, M., Ou, L. & Huang, Y. (2020) Deep Knowledge Tracing with Transformers. In Proceedings of the 21st International Conference on Artificial Intelligence in Education (AIED 2020). Online, July 6-10, 2020.",
+        "doi": "https://doi.org/10.1007/978-3-030-52240-7_46",
+        "tags": [
+            "HMM"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2019",
+        "title": "Leveraging Skill Hierarchy for Multi-Level Modeling with Elo Rating System",
+        "text": "Yudelson, M., Rosen, Y., Polyak, S., & de la Torre, J. (2019) Leveraging Skill Hierarchy for Multi-Level Modeling with Elo Rating System. In Proceedings of the Sixth ACM Conference on Learning at Scale (L@S 2019), Chicagom IL, USA, June 24-25, 2019, (32:1—32:4). ACM, New York, NY, USA.",
+        "pdf": "assets/pdf/pub/LaS2019_YudelsonRPdlT_WiP.pdf",
+        "doi": "https://doi.org/10.1145/3330430.3333645",
+        "tags": [
+            "Elo",
+            "BigData&Scale"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2019",
+        "title": "Elo, I Love You Won’t You Tell Me Your K",
+        "text": "Yudelson, M. (2019) Elo, I Love You Won’t You Tell Me Your K. In: M. Scheffel, J. Broisin, V. Pammer-Schindler, A. Ioannou, & J. Schneider (Eds.) Proceedings of 14th European Conference on Technology Enhanced Learning (EC-TEL 2019), Delft, The Netherlands, September 16-19, 2019, (213—223). Springer,",
+        "pdf": "assets/pdf/pub/ECTEL2019_Yudelson_Elo.pdf",
+        "doi": "https://doi.org/10.1007/978-3-030-29736-7_16",
+        "tags": [
+            "Elo"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2018",
+        "title": "Intelligent Instructional Hand Offs",
+        "text": "Fancsali, S., Yudelson, M., Berman, S., & Ritter, S. (2018) Intelligent Instructional Hand Offs. In: K.E. Boyer, M. Yudelson (Eds.) Proceedings of 11th International Conference on Educational Data Mining (EDM 2018), Buffalo, NY, USA, July 15-18, 2018, (198—207).",
+        "pdf": "http://educationaldatamining.org/files/conferences/EDM2018/papers/EDM2018_paper_134.pdf",
+        "tags": [
+            "BigData&Scale"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2017",
+        "title": "Stereotype Modeling for Problem-Solving Performance Predictions in MOOCs and Traditional Courses",
+        "text": "Hosseini, R., Brusilovsky, P., Yudelson, M., & Hellas, A. (2017) Stereotype Modeling for Problem-Solving Performance Predictions in MOOCs and Traditional Courses. In Proceedings of the International Conference on User Modeling, Adaptation, and Personalization (UMAP 2017). Bratislava, Slovakia, July 9-12, 2017, ACM, New York, NY, USA (pp. 76—84).",
+        "doi": "https://doi.org/10.1145/3079628.3079672",
+        "tags": [
+            "BigData&Scale"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "",
+        "title": "Detecting Diligence with Online Behaviors on Intelligent Tutoring Systems",
+        "text": "Dang, S., Yudelson, M., & Koedinger, K. (2017) Detecting Diligence with Online Behaviors on Intelligent Tutoring Systems. In Proceedings of the Fourth ACM Conference on Learning at Scale (L@S 2017). ACM, New York, NY, USA, (pp. 5159).",
+        "doi": "https://doi.org/10.1145/3051457.3051470"
+    },
+    {
+        "type": "conference",
+        "year": "",
+        "title": "An Analysis of Human Tutors’ Actions in Tutorial Dialogues",
+        "text": "Rus, V., Maharjan, N., Tamang, L., Yudelson, M., Berman, S., Fancsali, S., Ritter, S. (2018) An Analysis of Human Tutors’ Actions in Tutorial Dialogues. In: Proceedings of the Thirtieth International Florida Artificial Intelligence Research Society Conference (FLAIRS 2018). AAAI Press, Marco Island, FL, USA, (pp. 122—127).",
+        "pdf": "https://aaai.org/ocs/index.php/FLAIRS/FLAIRS17/paper/view/15491/14920",
+        "tags": [
+            "BigData&Scale"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2016",
+        "title": "How Mastery Learning Works at Scale",
+        "text": "Ritter, S., Yudelson, M., Fancsali, S., & Berman, S. (2016) How Mastery Learning Works at Scale. In: Proceedings of 3rd Annual ACM Conference on Learning at Scale (L@S 2016), Edinburgh, UK, April 25-26, 2016, ACM Press, (pp. 71—79).",
+        "doi": "http://dx.doi.org/10.1145/2876034.2876039",
+        "tags": [
+            "BigData&Scale"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2016",
+        "title": "A Framework for Dynamic Knowledge Modeling in Textbook-Based Learning",
+        "text": "Huang, Y., Yudelson, M., Han, S., He, D., & Brusilovsky, P. (2016) A Framework for Dynamic Knowledge Modeling in Textbook-Based Learning. In: Proceedings of 24th Conference on User Modeling, Adaptation and Personalization (UMAP 2016), Halifax, Canada, July 13-17, 2016, ACM Press, (pp. 141—150).",
+        "doi": "http://dx.doi.org/10.1145/2930238.2930258"
+    },
+    {
+        "type": "conference",
+        "year": "2016",
+        "title": "Individualizing Bayesian Knowledge Tracing",
+        "text": "Yudelson, M. (2016) Individualizing Bayesian Knowledge Tracing. Are Skill Parameters More Important Than Student Parameters?. In: T. Barnes, M. Chi, and M. Feng (Eds.) Proceedings of 9th International Conference on Educational Data Mining (EDM 2016), Raleigh, NC, USA, June 29-July 2-17, 2016, (556—561).",
+        "pdf": "assets/pdf/pub/EDM2016_Yudelson.pdf",
+        "tags": [
+            "HMM"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2016",
+        "title": "Implementation Factors, Outcomes for Intelligent Tutoring Systems: A Case Study of Time, Efficiency with Cognitive Tutor Algebra",
+        "text": "Fancsali, S.E., Ritter, S., Yudelson, M., Sandbothe, M., Berman, S.R. (2016) Implementation Factors, Outcomes for Intelligent Tutoring Systems: A Case Study of Time, Efficiency with Cognitive Tutor Algebra. In: Z. Markov and I. Russell (Eds.) Proceedings of 29th International Florida Artificial Intelligence Research Society Conference, (FLAIRS 2016), Key Largo, Florida, May 16-18, 2016, AAAI Press (pp. 473—478).",
+        "pdf": "https://www.aaai.org/ocs/index.php/FLAIRS/FLAIRS16/paper/view/12965/12614"
+    },
+    {
+        "type": "conference",
+        "year": "2015",
+        "title": "Small Improvement for the Model Accuracy – Big Difference for the Students",
+        "text": "Yudelson, M. & Ritter, S. (2015) Small Improvement for the Model Accuracy – Big Difference for the Students. In: Proceedings of 17th International Conference on Artificial Intelligence in Education (AIED 2015), Madrid, Spain.",
+        "pdf": "assets/pdf/pub/AIED2015_YudelsonR.pdf"
+    },
+    {
+        "type": "conference",
+        "year": "2015",
+        "title": "Spectral Bayesian Knowledge Tracing",
+        "text": "Falakmasir, M., Yudelson, M., Ritter, & Koedinger, K. (2015) Spectral Bayesian Knowledge Tracing. In: O. Santos, J. Boticario, C. Romero, M. Pechenizkiy, A. Merceron, P. Mitros, J.M. Luna, C. Mihaescu, P. Moreno, A. Hershkovitz, S. Ventura, & M. Desmarais (eds.) Proceedings of the 8th International Conference on Educational Data Mining (EDM 2015), Madrid, Spain, (pp. 360—363).",
+        "pdf": "assets/pdf/pub/EDM2015_FalakmasirYRK.pdf",
+        "tags": [
+            "HMM"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2014",
+        "title": "Better Data Beats Big Data",
+        "text": "Yudelson, M., Fancsali, S., Ritter, S., Berman, S., Nixon, T., & Joshi, A. (2014) Better Data Beats Big Data. In: J. Stamper, Z. Pardos, M. Mavrikis, B. McLaren (eds.) Proceedings of the 7th International Conference on Educational Data Mining (EDM 2014), London, UK, (pp.204—208).",
+        "pdf": "assets/pdf/pub/EDM2014_YudelsonFRBNJ.pdf",
+        "tags": [
+            "BigData&Scale"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2014",
+        "title": "Investigating Automated Student Modeling in a Java MOOC",
+        "text": "Yudelson, M., Hosseini, R., Vihavainen, A. & Brusilovsky, P. (2014) Investigating Automated Student Modeling in a Java MOOC. In: J. Stamper, Z. Pardos, M. Mavrikis, B. McLaren (eds.) Proceedings of the 7th International Conference on Educational Data Mining (EDM 2014), London, UK, (pp.261—264).",
+        "pdf": "assets/pdf/pub/EDM2014_YudelsonHVB.pdf",
+        "tags": [
+            "BigData&Scale"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2014",
+        "title": "Goal orientation, selfefficacy, and \"online measures\" in intelligent tutoring systems",
+        "text": "Fancsali, S. E., Bernacki, M. L., Nokes-Malach, T. J., Ritter, S., & Yudelson, M. (2014) Goal orientation, selfefficacy, and \"online measures\" in intelligent tutoring systems. In: Proceedings of the 36th Annual Meeting of the Cognitive Science Society (CogSci 2014), Quebec City, Quebec."
+    },
+    {
+        "type": "conference",
+        "year": "2013",
+        "title": "Individualized Bayesian Knowledge Tracing Models",
+        "text": "Yudelson, M., Koedinger, K., Gordon, G. (2013) Individualized Bayesian Knowledge Tracing Models. In: Lane, H.C., and Yacef, K., Mostow, J., Pavlik, P.I. (eds.) Proceedings of 16th International Conference on Artificial Intelligence in Education (AIED 2013), Memphis, TN. LNCS vol. 7926, (pp. 171—180). Springer-Verlag Berlin Heidelberg (2013).",
+        "pdf": "assets/pdf/pub/AIED2013_YudelsonKG.pdf",
+        "doi": "http://dx.doi.org/10.1007/978-3-642-39112-5_18",
+        "tags": [
+            "HMM"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2012",
+        "title": "Policy Building - An Extension To User Modeling",
+        "text": "Yudelson, M., Brunskill, E. (2012) Policy Building - An Extension To User Modeling. In K. Yasef, O. Zaïane, A. Hershkovitz, and M. Yudelson (Eds.) Proceedings of the 5th International Conference on Educational Data Mining (EDM 2012), Chania, Greece, (pp. 181—191).",
+        "pdf": "assets/pdf/pub/EDM2012_YudelsonB.pdf"
+    },
+    {
+        "type": "conference",
+        "year": "2011",
+        "title": "User Modeling – a Notoriously Black Art",
+        "text": "Yudelson, M., Pavlik, P.I., Koedinger, K.R. (2011) User Modeling – a Notoriously Black Art. In J.A. Konstan, R. Conejo, J.L. Marzo, and N. Oliver (Eds.) Proceedings of the 19th International Conference on User Modeling Adaptation and Personalization (UMAP 2011), Girona, Spain, (pp. 317—328).",
+        "pdf": "assets/pdf/pub/UMAP2011_YudelsonPK.pdf",
+        "doi": "http://dx.doi.org/10.1007/978-3-642-22362-4_27"
+    },
+    {
+        "type": "conference",
+        "year": "2011",
+        "title": "Using Contextual Factors Analysis to Explain Transfer of Least Common Multiple Skills",
+        "text": "Pavlik, P.I., Yudelson, M., Koedinger, K.R. (2011) Using Contextual Factors Analysis to Explain Transfer of Least Common Multiple Skills. In G. Biswas, S. Bull, J. Kay, and A.Mitrovic (Eds.) Proceedings of the 15th International Conference on Artificial Intelligence in Education (AIED 2011), Eindhoven, The Netherlands, (pp. 256—263).",
+        "doi": "http://dx.doi.org/10.1007/978-3-642-21869-9_34"
+    },
+    {
+        "type": "conference",
+        "year": "2010",
+        "title": "Using numeric optimization to refine semantic user model integration of adaptive educational systems",
+        "text": "Yudelson, M., Brusilovsky, P., Mitrovic, A., and Mathews, M. (2010). Using numeric optimization to refine semantic user model integration of adaptive educational systems. In R. S. J. d. Baker, A. Merceron, and P. Pavlik (Eds.), 3rd International Conference on Educational Data Mining (EDM 2010), Pittsburgh, USA, (pp. 221–230)",
+        "pdf": "assets/pdf/pub/EDM2010_YudelsonBMM.pdf",
+        "tags": [
+            "HMM"
+        ]
+    },
+    {
+        "type": "conference",
+        "year": "2008",
+        "title": "Annotated program examples as first class objects in an educational digital library",
+        "text": "Brusilovsky, P., Hsiao, I.-H., and Yudelson, M. (2008). Annotated program examples as first class objects in an educational digital library. In R. L. Larsen, A. Paepcke, J. L. Borbinha, and M. Naaman (Eds.), ACM/IEEE Joint Conference on Digital Libraries (JCDL 2008), (pp. 337—340).",
+        "doi": "http://dx.doi.org/10.1145/1378889.1378946"
+    },
+    {
+        "type": "conference",
+        "year": "2008",
+        "title": "An open integrated exploratorium for database courses",
+        "text": "Brusilovsky, P., Sosnovsky, S. A., Lee, D. H., Yudelson, M., Zadorozhny, V., and Zhou, X. (2008). An open integrated exploratorium for database courses. In J. Amillo, C. Laxer, E. M. Ruiz, and A. Young (Eds.), 13th Annual SIGCSE Conference on Innovation and Technology in Computer Science Education (ITiCSE 2008), (pp. 22—26).",
+        "doi": "http://dx.doi.org/10.1145/1384271.1384280"
+    },
+    {
+        "type": "conference",
+        "year": "2008",
+        "title": "Ontology-based Integration of Adaptive Educational Systems",
+        "text": "Sosnovsky, S., Mitrovic, A., Lee, D., Brusilovsky, P., and Yudelson, M. (2008). Ontology-based Integration of Adaptive Educational Systems. In 16th International Conference on Computers in Education (ICCE'2008), (pp. 11—18)."
+    },
+    {
+        "type": "conference",
+        "year": "2008",
+        "title": "Adaptive Link Annotation in Distributed Hypermedia Systems: The Evaluation of a Service-Based Approach",
+        "text": "Yudelson, M. and Brusilovsky, P. (2008). Adaptive Link Annotation in Distributed Hypermedia Systems: The Evaluation of a Service-Based Approach. In W. Nejdl, J. Kay, P. Pu, and E. Herder (Eds.), 5th International Conference on Adaptive Hypermedia and Adaptive Web-Based Systems (AH 2008), (pp. 245—254).",
+        "doi": "http://dx.doi.org/10.1007/978-3-540-70987-9_27"
+    },
+    {
+        "type": "conference",
+        "year": "2007",
+        "title": "Integrating Interactive Learning Content into an Adaptive E-Learning System: Lessons Learned",
+        "text": "Meccawy, M., Brusilovsky, P., Ashman, H., Yudelson, M., and Shcherbinina, O. (2007). Integrating Interactive Learning Content into an Adaptive E-Learning System: Lessons Learned. In T. Bastiaens and S. Carliner (Eds.), World Conference on E-Learning in Corporate, Government, Healthcare, and Higher Education (ELEARN 2007), (pp. 6314—6319)."
+    },
+    {
+        "type": "conference",
+        "year": "2007",
+        "title": "Applying Learning Factors Analysis to Build Stereotypic Student Models",
+        "text": "Rafferty, A. N. and Yudelson, M. (2007). Applying Learning Factors Analysis to Build Stereotypic Student Models. In R. Luckin, K. R. Koedinger, and J. E. Greer (Eds.), Proceedings of 13th International Conference on Artificial Intelligence in Education (AIED 2007), Marina Del Rey, USA (pp. 697—698). Recipient of Martial Vivet Best Paper Prize for Young Researchers"
+    },
+    {
+        "type": "conference",
+        "year": "2007",
+        "title": "A User Modeling Server for Contemporary Adaptive Hypermedia: An Evaluation of the Push Approach to Evidence Propagation",
+        "text": "Yudelson, M., Brusilovsky, P., and Zadorozhny, V. (2007). A User Modeling Server for Contemporary Adaptive Hypermedia: An Evaluation of the Push Approach to Evidence Propagation. In: C. Conati, K. F. McCoy, and G. Paliouras (Eds.) Proceedings of 11th International Conference on User Modeling (UM 2007), (pp. 27—36). Recipient of James Chen Best Student Paper Award",
+        "doi": "http://dx.doi.org/10.1007/978-3-540-73078-1_6"
+    },
+    {
+        "type": "conference",
+        "year": "2006",
+        "title": "Adaptive Knowledge-Based Visualization for Accessing Educational Examples",
+        "text": "Brusilovsky, P., Ahn, J.-w., Dumitriu, T., and Yudelson, M. (2006). Adaptive Knowledge-Based Visualization for Accessing Educational Examples. In 10th International Conference on Information Visualization (IV 2006), (pp. 142—150)."
+    },
+    {
+        "type": "conference",
+        "year": "2006",
+        "title": "Addictive Links: The Motivational Value of Adaptive Link Annotation in Educational Hypermedia",
+        "text": "Brusilovsky, P., Sosnovsky, S. A., and Yudelson, M. (2006). Addictive Links: The Motivational Value of Adaptive Link Annotation in Educational Hypermedia. In V. P. Wade, H. Ashman, and B. Smyth (Eds.), 4th International Conference on Adaptive Hypermedia and Adaptive Web-Based Systems (AH 2006), (pp. 51—60)."
+    },
+    {
+        "type": "conference",
+        "year": "2005",
+        "title": "Ontology-based Framework for User Model Interoperability in Distributed Learning Environments",
+        "text": "Brusilovsky, P., Sosnovsky, S., and Yudelson, M. (2005). Ontology-based Framework for User Model Interoperability in Distributed Learning Environments. In G. Richards (Ed.), World Conference on E-Learning in Corporate, Government, Healthcare, and Higher Education, (pp. 2851—2855)."
+    },
+    {
+        "type": "conference",
+        "year": "2005",
+        "title": "Interactive Authoring Support for Adaptive Educational Systems",
+        "text": "Brusilovsky, P., Sosnovsky, S. A., Yudelson, M., and Chavan, G. (2005). Interactive Authoring Support for Adaptive Educational Systems. In C.-K. Looi, G. I. McCalla, B. Bredeweg, and J. Breuker (Eds.), 12th International Conference on Artificial Intelligence in Education (AIED 2005), (pp. 96—103)."
+    },
+    {
+        "type": "conference",
+        "year": "2005",
+        "title": "Collaborative Paper Exchange",
+        "text": "Brusilovsky, P., Yudelson, M., and Sosnovsky, S. (2005). Collaborative Paper Exchange. In G. Richards (Ed.), World Conference on E-Learning in Corporate, Government, Healthcare, and Higher Education (ELEARN 2005) (pp. 2844—2850)."
+    },
+    {
+        "type": "conference",
+        "year": "2005",
+        "title": "NavEx: Providing Navigation Support for Adaptive Browsing of Annotated Code Examples",
+        "text": "Yudelson, M. and Brusilovsky, P. (2005). NavEx: Providing Navigation Support for Adaptive Browsing of Annotated Code Examples. In C.-K. Looi, G. I. McCalla, B. Bredeweg, and J. Breuker (Eds.), 12th International Conference on Artificial Intelligence in Education (AIED 2005), (pp. 710—717)."
+    },
+    {
+        "type": "conference",
+        "year": "2004",
+        "title": "An Adaptive E-Learning Service for Accessing Interactive Examples",
+        "text": "Brusilovsky, P., Yudelson, M., and Sosnovsky, S. (2004). An Adaptive E-Learning Service for Accessing Interactive Examples. In G. Richards (Ed.), World Conference on E-Learning in Corporate, Government, Healthcare, and Higher Education (ELEARN 2004), (pp. 2556—2561)."
+    },
+    {
+        "type": "conference",
+        "year": "2004",
+        "title": "Accessing Interactive Examples with Adaptive Navigation Support",
+        "text": "Yudelson, M., Brusilovsky, P., and Sosnovsky, S. A. (2004). Accessing Interactive Examples with Adaptive Navigation Support. In Kinshuk, C.-K. Looi, E. Sutinen, D. G. Sampson, I. Aedo, L. Uden, and E. Kähkönen (Eds.), Proceedings of the IEEE International Conference on Advanced Learning Technologies (ICALT 2004), Joensuu, Finland. IEEE Computer Society."
+    },
+    {
+        "type": "workshop",
+        "year": "2016",
+        "title": "Toward Integrating Cognitive Tutor Interaction Data with Human Tutoring Text Dialogue Data in LearnSphere",
+        "text": "Fancsali, S.E., Ritter, S., Berman, S.R., Yudelson, M., Rus, V., and Morrison, D.M. (2016). Toward Integrating Cognitive Tutor Interaction Data with Human Tutoring Text Dialogue Data in LearnSphere. In: J.P. Rowe and E.L. Snow (Eds.), Proceedings of the Workshops at the 9th International Conference on Educational Data Mining, Raleigh, NC, USA, June 29, 2016.",
+        "pdf": "http://ceur-ws.org/Vol-1633/ws3-paper3.pdf"
+    },
+    {
+        "type": "workshop",
+        "year": "2016",
+        "title": "Regularizing Student Parameters of Individualized Bayesian Knowledge Tracing Model",
+        "text": "Yudelson, M. (2016). Regularizing Student Parameters of Individualized Bayesian Knowledge Tracing Model. In: J.P. Rowe and E.L. Snow (Eds.), Proceedings of the Workshops at the 9th International Conference on Educational Data Mining, Raleigh, NC, USA, June 29, 2016.",
+        "pdf": "http://ceur-ws.org/Vol-1633/ws3-paper3.pdf",
+        "tags": [
+            "HMM"
+        ]
+    },
+    {
+        "type": "workshop",
+        "year": "2013",
+        "title": "Towards Moment of Learning Accuracy",
+        "text": "Pardos, Z and Yudelson, M. (2013). Towards Moment of Learning Accuracy. In: E. Walker and C.-K. Looi (Eds.), Proceedings of the Workshops at the 16th International Conference on Artificial Intelligence in Education AIED 2013, Memphis, USA, July 9-13, 2013.",
+        "pdf": "http://ceur-ws.org/Vol-1009/0407.pdf"
+    },
+    {
+        "type": "workshop",
+        "year": "2010",
+        "title": "PERSEUS – personalization services engine",
+        "text": "Yudelson, M. (2010). PERSEUS – personalization services engine. In: S. Berkovsky, F. Abel, G.-J. Houben, E. Herder, M. Pechenizkiy, and M. Yudelson (Eds.), Workshop on Architectures and Building Blocks of Web-Based User-Adaptive Systems (WABBWUAS 2010), (pp. 47—49)."
+    },
+    {
+        "type": "workshop",
+        "year": "2009",
+        "title": "Database exploratorium: a semantically integrated adaptive educational system",
+        "text": "Brusilovsky, P., Mitrovic, A., Sosnovsky, S., Mathews, M., Yudelson, M., Lee, D., and Zadorozhny, V. (2009). Database exploratorium: a semantically integrated adaptive educational system. In S. Berkovsky, F. Carmagnola, D. Heckmann, and T. Kuflik (Eds.), 7th International Workshop on Ubiquitous User Modelling (UbiqUM 2009)."
+    },
+    {
+        "type": "workshop",
+        "year": "2009",
+        "title": "Retrospective Evaluation of Blended User Modeling For Adaptive Educational Systems",
+        "text": "Yudelson, M. and Sosnovsky, S. (2009). Retrospective Evaluation of Blended User Modeling For Adaptive Educational Systems. In S. Weibelzahl, J. Masthoff, A. Paramythis, and L. van Velsen (Eds.), 6th Workshop on User-Centered Design and Evaluation of Adaptive Systems, in conjunction with the International Conference on User Modeling, Adaptation, and Personalization (UMAP2009), (pp. 34—43)."
+    },
+    {
+        "type": "workshop",
+        "year": "2008",
+        "title": "User model integration in a distributed adaptive E-Learning system",
+        "text": "Brusilovsky, P., Sosnovsky, S., Yudelson, M., Kumar, A., and Hsiao, S. (2008). User model integration in a distributed adaptive E-Learning system. In S. Berkovsky, F. Carmagnola, D. Heckmann, A. Krueger, and T. Kuflik (Eds.), International Workshop on User Model Integration, (pp. 1—10)."
+    },
+    {
+        "type": "workshop",
+        "year": "2007",
+        "title": "Towards integration of adaptive educational systems: mapping domain models to ontologies",
+        "text": "Sosnovsky, S., Mitrovic, A., Lee, D. H., Brusilovsky, P., Yudelson, M., Brusilovsky, V., and Sharma, D. (2007). Towards integration of adaptive educational systems: mapping domain models to ontologies. In N. Capuano, D. Dicheva, A. Harrer, and R. Mizoguchi (Eds.), 5th International Workshop on Ontologies and Semantic Web for E-Learning (SWEL'2007)."
+    },
+    {
+        "type": "workshop",
+        "year": "2007",
+        "title": "Community-oriented course authoring to support topic-based student modeling",
+        "text": "Sosnovsky, S., Yudelson, M., and Brusilovsky, P. (2007). Community-oriented course authoring to support topic-based student modeling. In N. Capuano, D. Dicheva, A. Harrer, and R. Mizoguchi (Eds.), 5th International Workshop on Ontologies and Semantic Web for E-Learning (SWEL'2007), (pp. 91—100)."
+    },
+    {
+        "type": "workshop",
+        "year": "2007",
+        "title": "Mining student learning data to develop high level pedagogic strategy in a medical ITS",
+        "text": "Yudelson, M., Medvedeva, O., Legowski, E., Castine, M., Jukic, D., and Crowley, R. S. (2007). Mining student learning data to develop high level pedagogic strategy in a medical ITS. In C. Heiner, N. Heffernan, and T. Barnes (Eds.), Workshop on Educational Data Mining, (pp. 82—90)."
+    },
+    {
+        "type": "workshop",
+        "year": "2004",
+        "title": "Applying adaptive hypermedia services for e-learning",
+        "text": "Brusilovsky, P., Sosnovsky, S., and Yudelson, M. (2004). Applying adaptive hypermedia services for e-learning. In Workshop on Applying Adaptive Hypermedia Techniques to Service Oriented Environments: Pervasive Adaptive Web Services and Context Aware Computing, (pp. 470—472)."
+    },
+    {
+        "type": "workshop",
+        "year": "2004",
+        "title": "Supporting adaptive hypermedia authors with automated content indexing",
+        "text": "Sosnovsky, S., Brusilovsky, P., and Yudelson, M. (2004). Supporting adaptive hypermedia authors with automated content indexing. In 2nd Workshop on Authoring Adaptive and Adaptable Educational Hypermedia, (pp. 380—389)."
+    },
+    {
+        "type": "poster",
+        "year": "2016",
+        "title": "Towards Integrating Human and Automated Tutoring Systems",
+        "text": "Ritter, S., Yudelson, M., Fancsali, s., and Berman, S.R. (2016) Towards Integrating Human and Automated Tutoring Systems. In: T. Barnes, M. Chi, and M. Feng (Eds.) Proceedings of 9th International Conference on Educational Data Mining (EDM 2016), Raleigh, NC, USA, June 29-July 2-17, 2016, (626—627).",
+        "pdf": "http://www.educationaldatamining.org/EDM2016/proceedings/paper_189.pdf"
+    },
+    {
+        "type": "poster",
+        "year": "2016",
+        "title": "Preliminary Results On Dialogue Act and Subact Classification in Chat-based Online Tutorial Dialogues",
+        "text": "Rus, V., Banjade, R., Maharjan, N., Morrison, D.M., Ritter, S., and Yudelson, M.(2016) Preliminary Results On Dialogue Act and Subact Classification in Chat-based Online Tutorial Dialogues. In: T. Barnes, M. Chi, and M. Feng (Eds.) Proceedings of 9th International Conference on Educational Data Mining (EDM 2016), Raleigh, NC, USA, June 29-July 2-17, 2016, (630—631).",
+        "pdf": "http://www.educationaldatamining.org/EDM2016/proceedings/paper_186.pdf"
+    },
+    {
+        "type": "poster",
+        "year": "2013",
+        "title": "Towards Identifying Students’ Causal Reasoning Using Machine Learning",
+        "text": "Clarke-Midura, J., Yudelson, M. (2013) Towards Identifying Students’ Causal Reasoning Using Machine Learning. In: Lane, H.C., and Yacef, K., Mostow, J., Pavlik, P.I. (eds.) Proceedings of 16th International Conference on Artificial Intelligence in Education (AIED 2013), Memphis, TN. LNCS vol. 7926, (pp. 704—707). Springer-Verlag Berlin Heidelberg (2013).",
+        "doi": "http://dx.doi.org/10.1007/978-3-642-39112-5_93"
+    },
+    {
+        "type": "poster",
+        "year": "2013",
+        "title": "Estimating the benefits of student model improvements on a substantive scale",
+        "text": "Yudelson, M., Koedinger, K.R. (2013) Estimating the benefits of student model improvements on a substantive scale. In D'Mello, S.K., Calvo, R.A., Olney, A. (Eds.) Proceedings of the 6th International Conference on Educational Data Mining (EDM 2013), (pp. 358—359).",
+        "pdf": "assets/pdf/pub/EDM2013_YudelsonK.pdf"
+    },
+    {
+        "type": "poster",
+        "year": "2011",
+        "title": "Towards Better Understanding of Transfer in Cognitive Models of Practice",
+        "text": "Yudelson, M., Pavlik, P.I., Koedinger, K.R. (2011). Towards Better Understanding of Transfer in Cognitive Models of Practice. In 4rd International Conference on Educational Data Mining (EDM 2011), (pp.373—374).",
+        "pdf": "assets/pdf/pub/EDM2011_YudelsonPK.pdf"
+    },
+    {
+        "type": "poster",
+        "year": "2010",
+        "title": "Towards Incorporating Confidence Measure Into User Modeling",
+        "text": "Yudelson, M., Brusilovsky, P., Mitrovic, A., and Mathews, M. (2010). Towards Incorporating Confidence Measure Into User Modeling. In Bohnert, F. and Quiroga, L. (Eds.), Adjunct Proceedings of the 18th International Conference on User Modeling, Adaptation, and Personalization (UMAP 2010), (pp.40–42) [PDF]"
+    },
+    {
+        "type": "poster",
+        "year": "2008",
+        "title": "Providing social navigation within annotated examples",
+        "text": "Yudelson, M. and Goreva, N. (2008). Providing social navigation within annotated examples. In P. Brusilovsky and H. C. Davis (Eds.), 19th ACM Conference on Hypertext and Hypermedia (Hypertext 2008), (pp. 255—256).",
+        "doi": "http://dx.doi.org/10.1145/1379092.1379152"
+    },
+    {
+        "type": "poster",
+        "year": "2005",
+        "title": "Towards User Modeling Meta-ontology",
+        "text": "Yudelson, M., Gavrilova, T., and Brusilovsky, P. (2005). Towards User Modeling Meta-ontology. In L. Ardissono, P. Brna, and A. Mitrovic (Eds.), User Modeling, (pp. 448—452).",
+        "doi": "http://dx.doi.org/10.1007/11527886_62"
+    },
+    {
+        "type": "patent",
+        "year": "2023",
+        "title": "Deep knowledge tracing with transformers",
+        "text": "Pu Shi, Michael Yudelson, Lu Ou, & Yuchi Huang (2019) Deep knowledge tracing with transformers. U.S. Patent No. 11631338.",
+        "pdf": "https://patentimages.storage.googleapis.com/a6/d6/b9/52b46a5deecce6/US11631338.pdf",
+        "tags": [
+            "HMM"
+        ]
+    },
+    {
+        "type": "patent",
+        "year": "2019",
+        "title": "Systems and methods for interactive dynamic learning diagnostics and feedback",
+        "text": "Alina Von Davier, Stephen Polyak, Kurt Peterschmidt, Pravin Chopade, Michael Yudelson, Jimmy De La Torre, & Pamela Paek. (2019) Systems and methods for interactive dynamic learning diagnostics and feedback. U.S. Patent Application No. 15/802,404.",
+        "pdf": "https://patentimages.storage.googleapis.com/be/68/26/c81a21c6534e14/US20190130511A1.pdf"
+    },
+    {
+        "type": "patent",
+        "year": "2001",
+        "title": "Инструментальная среда разработки программ дистанционного обучения ГИПЕРТЕСТ",
+        "text": "Пантелеев Е.Р., Малков И.В., Пекунов В.В., Первовский М.А., Ковшова И.А., Юдельсон М.В. Инструментальная среда разработки программ дистанционного обучения ГИПЕРТЕСТ. Свидетельство об официальной регистрации программы для ЭВМ №2001611279. © М.: РОСПАТЕНТ, 2001"
+    }
+]
