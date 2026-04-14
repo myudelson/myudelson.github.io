@@ -1,0 +1,19 @@
+- name: Масштабируемые системы машинного обучения
+  percentage: 100
+  color: info
+
+- name: Инфраструктура данных и конвейеры обработки
+  percentage: 100
+  color: warning
+
+- name: Прикладное статистическое моделирование
+  percentage: 100
+  color: dark
+
+- name: Внедрение результатов исследований в промышленные системы
+  percentage: 100
+  color: primary
+
+- name: Системы интеллектуальной поддержки принятия решений
+  percentage: 100
+  color: danger

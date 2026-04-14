@@ -1,0 +1,77 @@
+{%- comment -%} Default Styles {%- endcomment -%}
+{%- assign card_style  = '' -%}
+{%- assign text_style  = 'text-themed' -%}
+{%- assign badge_style = 'badge-dark' -%}
+{%- comment -%} Update Styles {%- endcomment -%}
+{%- if pub.style == 'fill' -%}
+  {%- assign card_style = pub.color | prepend: 'bg-' -%}
+  {%- if pub.color != 'light' -%}
+    {%- assign text_style  = 'text-white' -%}
+    {%- assign badge_style = 'badge-light text-' -%}
+    {%- assign badge_style = badge_style | append: pub.color -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign card_style = pub.color | prepend: 'border border-' -%}
+  {%- if pub.color -%}
+    {%- assign badge_style = pub.color | prepend: 'badge-' -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- comment -%} Determine Publication URL {%- endcomment -%}
+<!--
+{%- if pub.external_url -%}
+  {%- assign pub_url = pub.external_url -%}
+{%- else -%}
+  {%- assign pub_url = pub.url | relative_url -%}
+{%- endif -%}
+-->
+{%- if pub.pdf or pub.doi -%}
+    {%- if pub.pdf -%}
+        {%- assign pub_url = pub.pdf -%}
+    {% else %}
+        {%- assign pub_url = pub.doi -%}
+    {%- endif -%}
+{%- else -%}
+    {%- assign pub_url = pub.url | relative_url -%}
+{%- endif -%}
+
+
+<div class="col-12 my-2 wow animated fadeIn" id="{{ pub.title | slugify }}" data-wow-delay=".15s">
+  <!-- <a href="{{ pub_url }}" class="pub card {{ card_style }}" {%- if pub.external_url and site.open_new_tab -%} target="_blank" {%- endif -%}> -->
+  <!-- <a class="pub card {{ card_style }}" {%- if pub.external_url and site.open_new_tab -%} target="_blank" {%- endif -%}> -->
+  <span class="pub card {{ card_style }}">
+    <div class="card-body {{ text_style }} d-flex justify-content-between align-items-start">
+      <div class="flex-grow-1 pr-4">
+        <h5 class="card-title mb-1">{{ pub.title }}</h5>
+        <p class="card-text mb-1">
+          {% for tag in pub.tags %}
+            <!-- <span class="badge {{ badge_style }}">{{ tag }}</span> -->
+            <span class="badge badge-pill text-primary border border-primary ml-1">{{ tag }}</span>
+          {% endfor %}
+        </p>
+        <p class="card-text small">
+          {%- if pub.text -%}
+            {{ pub.text }}
+          {%- else -%}
+            {{ pub.content | truncatewords: 25, "<small><i> read more...</i></small>" }}
+          {%- endif -%}
+
+        {%- if pub.pdf or pub.doi -%}
+            &nbsp;&nbsp;<span>
+            {%- if pub.pdf -%}
+                <span><a class="badge {{ badge_style }}" href="../{{ pub.pdf }}" target="_blank">PDF</a></span>
+            {% endif %}
+            {%- if pub.doi -%}
+                <span><a class="badge {{ badge_style }}" href="{{ pub.doi }}" target="_blank">DOI</a></span>
+            {%- endif -%}
+            </span>
+        {%- endif -%}
+        </p>
+      </div>
+      <div class="text-right text-nowrap small {{ text_style }} pt-1">
+        {{ pub.year }}<!-- {{ pub.year | date_to_long_string }}  -->
+      </div>
+    </div>
+  </span>
+  <!-- </a> -->
+</div>

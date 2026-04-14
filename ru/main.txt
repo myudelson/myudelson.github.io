@@ -1,0 +1,125 @@
+# Making it
+
+Install ruby and jekyll
+
+```sh
+brew install ruby
+gem install bundler jekyll
+```
+
+```sh
+echo 'export PATH="/opt/homebrew/opt/ruby/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Run 
+```sh
+gem env
+```
+
+<!-- And look for `EXECUTABLE DIRECTORY: /Users/yourname/.gem/ruby/3.2.0/bin`, add it to path
+
+```sh
+echo 'export PATH="/opt/homebrew/lib/ruby/gems/4.0.0/bin"' >> ~/.zshrc
+source ~/.zshrc
+``` -->
+
+Verify
+
+```sh
+ruby -v
+```
+
+```sh
+jekyll -v
+```
+
+Create jekyll site
+
+```sh
+jekyll new myudelson.github.io_py
+cd myudelson.github.io_py
+```
+
+Edit the _config.yml to use the theme:
+
+```
+theme: portfolyou-jekyll-theme
+```
+
+Move files from `https://github.com/yousinix/portfolYOU.git` to `myudelson.github.io_py` folder
+
+
+Build gem file `portfolyou-jekyll-theme-2.3.0.gem`
+
+```sh
+gem build portfolyou-jekyll-theme.gemspec
+```
+
+Install gem 
+
+```sh
+gem install portfolyou-jekyll-theme-2.3.0.gem
+```
+
+Open your project’s Gemfile and make sure it includes:
+
+```
+group :jekyll_plugins do
+  gem "jekyll-feed", "~> 0.16"
+end
+
+gem "jekyll-github-metadata", "~> 2.16"
+gem "kramdown", "~> 2.6"
+gem "kramdown-parser-gfm", "~> 1.2"
+gem "jekyll-include-cache", "~> 0.2.2"
+
+```
+
+in `portfolyou-jekyll-theme.gemspec` edit:
+
+```
+spec.add_runtime_dependency "jekyll-github-metadata", "~> 2.14.0" # was "2.13"
+spec.add_runtime_dependency "jekyll", ">= 4.0", "< 5.0"
+```
+
+In your _config.yml, add a line like:
+
+```
+repository: "myudelson/myudelson.github.io_py"
+```
+
+Install dependencies
+
+```sh
+bundle install
+```
+
+
+Run local server 
+
+```sh
+bundle exec jekyll serve --livereload
+```
+
+
+Get the `https://github.com/yousinix/portfolYOU.git`, cd inside this folder
+
+```sh
+bundle install
+```
+
+
+## Run 
+
+Build and serve 
+
+```sh
+bundle exec jekyll serve --livereload
+```
+
+Build 
+
+```sh
+bundle exec jekyll build
+```

@@ -1,0 +1,13 @@
+<div class="col mt-4">
+  <div class="timeline-body">
+    {% for item in site.data.vitae.ru %}
+      <div class="timeline-item">
+        <div class="content">
+          <h2>{{ item.title }}</h2>
+          <h6 class="date">{{ item.dates }}</h6>
+          <p>{{ item.text }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
