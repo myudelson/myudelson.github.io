@@ -47,7 +47,8 @@ author:
   dblp: 60/3238.html
 
 # Build settings
-theme: portfolyou-jekyll-theme
+# theme: portfolyou-jekyll-theme
+remote_theme: YoussefRaafatNasry/portfolyou-jekyll-theme
 plugins:
   - jekyll-feed
 
