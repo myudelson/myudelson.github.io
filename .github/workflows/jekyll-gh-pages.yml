@@ -2,7 +2,7 @@ name: Deploy Jekyll with GitHub Pages dependencies
 
 on:
   push:
-    branches: ["main"] # or "master" depending on your repo
+    branches: ["master"] # or "master" depending on your repo
 
 permissions:
   contents: read
