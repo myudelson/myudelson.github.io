@@ -108,3 +108,6 @@ markdown: kramdown
 kramdown:
   math_engine: null        # disable Kramdown's own math engine
   syntax_highlighter: rouge
+
+analytics:
+  google_analytics: UA-126816-12
