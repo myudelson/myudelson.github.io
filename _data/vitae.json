@@ -2,6 +2,12 @@
     "type": "vitae",
     "en": [
         {
+			"title": "Founder at Akyn Avtomatika",
+            "dates": "January 2023 - present",
+            "text": "End-to-end design of scalable cloud infrastructure and automated ML pipelines for a social media publishing enterprise. Development of custom, audio/video-processing tools, implementing advanced LLM-as-a-Judge solutions and automated decision-making support.",
+            "title_links": []
+        },
+        {
 			"title": "CTO at <a>myProse</a>, a <a>Carnegie Mellon University</a> startup",
             "dates": "September 2025 - present",
             "text": "Defining the roadmap for an MVP and dealing with technological uncertainty. Leading the full-stack development and architecture for an AI product.",
@@ -9,12 +15,6 @@
                 "https://www.cmu.edu/corecompetencies/communication/resources-and-tools/myprose/index.html",
                 "http://www.cmu.edu/"
             ]
-        },
-        {
-			"title": "Founder at Akyn Avtomatika",
-            "dates": "January 2023 - present",
-            "text": "End-to-end design of scalable cloud infrastructure and automated ML pipelines for a social media publishing enterprise. Development of custom, audio/video-processing tools, implementing advanced LLM-as-a-Judge solutions and automated decision-making support.",
-            "title_links": []
         },
         {
 			"title": "Staff ML Engineer at <a>Chegg, Inc.</a>",
@@ -110,6 +110,12 @@
     ],
     "ru": [
         {
+            "title": "Основатель Акын Автоматика",
+            "dates": "январь 2023 — по н.в.",
+            "text": "Комплексное проектирование масштабируемой облачной инфраструктуры и автоматизированных ML-конвейеров для компании, занимающейся публикацией контента в социальных сетях. Разработка специализированных инструментов для обработки аудио и видео, внедрение передовых решений на базе LLM для оценки качества (LLM-as-a-Judge) и систем автоматизированной поддержки принятия решений.",
+            "title_links": []
+        },
+        {
             "title": "Главный технический директор в <a>myProse</a> — стартапе <a>Университета Карнеги-Меллона</a>",
             "dates": "сентябрь 2025 — по н.в.",
             "text": "Определение дорожной карты для MVP и работа в условиях технологической неопределенности. Руководство full-stack разработкой и архитектурой AI-продукта.",
@@ -117,12 +123,6 @@
                 "https://www.cmu.edu/corecompetencies/communication/resources-and-tools/myprose/index.html",
                 "http://www.cmu.edu/"
             ]
-        },
-        {
-            "title": "Основатель Акын Автоматика",
-            "dates": "январь 2023 — по н.в.",
-            "text": "Комплексное проектирование масштабируемой облачной инфраструктуры и автоматизированных ML-конвейеров для компании, занимающейся публикацией контента в социальных сетях. Разработка специализированных инструментов для обработки аудио и видео, внедрение передовых решений на базе LLM для оценки качества (LLM-as-a-Judge) и систем автоматизированной поддержки принятия решений.",
-            "title_links": []
         },
         {
             "title": "Staff-инженер по ИИ в <a>Chegg, Inc.</a>",

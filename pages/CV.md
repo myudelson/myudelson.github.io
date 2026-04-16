@@ -27,6 +27,16 @@ Accomplished Data Scientist and ML/AI Engineer with a PhD in Information Science
 ## Professional Experience
 
 
+#### Akyn Avtomatika
+
+Jan 2023 – present
+
+*Founder*
+
+- Designed and implemented a bespoke, scalable cloud infrastructure and ML pipeline, boosting the throughput of a social media publishing group 5-fold, and set up an asset management process for publication preparation.
+- Built, deployed, and rigorously evaluated an assistive chatbot consultant, leveraging 1000 hours of expert-provided stream audio and leveraging an LLM-as-a-Judge methodology.
+
+
 #### myProse, a Carnegie Mellon University startup
 
 Sep 2025 – present
@@ -36,16 +46,6 @@ Sep 2025 – present
 - Defining the product roadmap and dealing technological uncertainty.
 - Developing value proposition and go-to-market strategy.
 - Leading the full-stack development and architecture for an AI product.
-
-
-#### Akyn Avtomatika
-
-Jan 2023 – present
-
-*Founder*
-
-- Designed and implemented a bespoke, scalable cloud infrastructure and ML pipeline, boosting the throughput of a social media publishing group 5-fold, and set up an asset management process for publication preparation.
-- Built, deployed, and rigorously evaluated an assistive chatbot consultant, leveraging 1000 hours of expert-provided stream audio and leveraging an LLM-as-a-Judge methodology.
 
 
 #### Chegg, Inc
