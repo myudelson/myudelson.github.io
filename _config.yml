@@ -110,4 +110,5 @@ kramdown:
   syntax_highlighter: rouge
 
 analytics:
+  enabled: true
   google_analytics: UA-126816-12
