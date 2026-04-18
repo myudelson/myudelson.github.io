@@ -1,8 +1,10 @@
 <!-- MY LOCAL ANALYTICS -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126816-12"></script>
+{%- if site.analytics.enabled == true -%}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google.tracking_id }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-126816-12');
+  gtag('config', '{{ site.analytics.google.tracking_id }}');
 </script>
+{%- endif -%}
