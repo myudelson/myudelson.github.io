@@ -111,4 +111,5 @@ kramdown:
 
 analytics:
   enabled: true
-  google_analytics: UA-126816-12
+  google:
+    tracking_id: UA-126816-12
