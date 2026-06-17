@@ -13,7 +13,7 @@ weight: 7
 
 ## Professional Summary
 
-Accomplished Data Scientist and ML/AI Engineer with a PhD in Information Science and a proven record of leading innovative analytical and machine learning projects producing quantifiable results. Seeking to apply my expertise in a managing role to make transformative contributions to organizational growth and success.
+An R&D leader with 16 years of international experience in Data Science, Machine Learning, and AI. I possess a unique blend of academic expertise (Candidate of Technical Sciences, Russia; PhD, USA) and a proven track record of building IT products for millions of users. My areas of specialization include commercializing complex scientific innovations, architecting high-performance data pipelines, implementing generative AI, and leading cross-functional teams of engineers and analysts.
 
 
 ## Key Achievements
@@ -27,36 +27,39 @@ Accomplished Data Scientist and ML/AI Engineer with a PhD in Information Science
 ## Professional Experience
 
 
-#### Akyn Avtomatika
+#### Akyn Avtomatika Consulting, Russia
 
 Jan 2023 – present
 
-*Founder*
+*chief technology officer*
 
-- Designed and implemented a bespoke, scalable cloud infrastructure and ML pipeline, boosting the throughput of a social media publishing group 5-fold, and set up an asset management process for publication preparation.
-- Built, deployed, and rigorously evaluated an assistive chatbot consultant, leveraging 1000 hours of expert-provided stream audio and leveraging an LLM-as-a-Judge methodology.
+- Led the development and implementation of AI data processing infrastructure and automated content production.
+- Organized the development of an audio-video processing application, increasing the client team's output fivefold.
 
 
-#### myProse, a Carnegie Mellon University startup
 
-Sep 2025 – present
+#### myProse, consulting project
 
-*Chief Technology Officer*
+Sep 2025 – Jun 2026
 
-- Defining the product roadmap and dealing technological uncertainty.
-- Developing value proposition and go-to-market strategy.
-- Leading the full-stack development and architecture for an AI product.
+*chief technology and architecture consultant*
+
+- Built the startup's technology infrastructure.
+- Developed the go-to-market strategy.
+- Organized the development and launch of the MVP.
+
 
 
 #### Chegg, Inc
 
 Jun 2022 – Nov 2024
 
-*Staff Data Scientist, Learning Sciences and Data Science*
+*staff AI engineer, Learning Sciences and Data Science*
 
-- Spearheading efforts on building a pipeline for designing retrieval-augmented prompts.
-- Created a process for LLM prompt evaluation and designed automatic diagram-rich reports.
-- Designed and deployed a fine-tuned LLM for extracting math expressions from question text.
+- Developed a retrieval-augmented generation (RAG) service and carried out 20+ analytical experiments.
+- Spearheaded fine-tuning a Gen AI model for extracting expressions boosting service component’s accuracy by 11%.
+- Led a cross-functional team (engineers, analysts, data labeling experts) in developing quality assessment systems for AI models.
+
 
 #### BrainPOP
 
@@ -93,10 +96,10 @@ Mar 2013 – Jan 2016
 
 *Research Scientist*
 
-- Optimized an algorithm serving 0.5 million students a year to save 37% of the in-app time.
+- Optimized an algorithm serving 0.5 million users  a year to save 37% of the in-app time.
 - Headed a multi-team effort analyzing data of 350 000 users and built analytical pipeline.
 - Brokered a transfer of 1 billion records of user data from the vendor and carried out 1000+ data modeling replays.
-- Co-authored and presented 10 publications to promote the company's scientific leadership.
+
 
 
 #### Carnegie Mellon University
@@ -106,7 +109,7 @@ Oct 2010 – Feb 2013
 *Post-doctoral Fellow, Human-Computer Interaction Institute*
 
 - Created a novel approach to modeling student knowledge acquisition and published the results in peer-reviewed journals and conference proceedings (this work was cited over 600 times).
-- Developed an open-source tool for building Bayesian models at scale.
+- Developed an open-source tool for building Bayesian models at scale on datasets of up to 1 billion records.
 
 
 
