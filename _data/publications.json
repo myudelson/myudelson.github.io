@@ -104,6 +104,16 @@
     },
     {
         "type": "conference",
+        "year": "2026",
+        "title": "Using Elo to Operationalize Modeling of Aphasia Patients' Word-Recall Practice During Recovery",
+        "text": "Sampaio de Alencar, R., Yudelson, M., Brusilovsky, P., and Evans. W. (2026) Using Elo to Operationalize Modeling of Aphasia Patients' Word-Recall Practice During Recovery. In Proceedings of the 34nd ACM} Conference on User Modeling, Adaptation and Personalization (UMAP 2026), June 8-11, 2026, Gothenburg, Sweden.",
+        "tags": [
+            "Elo"
+        ],
+        "doi": "https://doi.org/10.1145/3774935.3806183"
+    },
+    {
+        "type": "conference",
         "year": "2021",
         "title": "Elo-infused Bayesian Knowledge Tracing – an approach to operationalized individualization",
         "text": "Yudelson, M. (2021) Elo-infused Bayesian Knowledge Tracing – an approach to operationalized individualization. In Proceedings of the 2nd Conference on Artificial Intelligence in Education (AIEd 2021), June 14-18, 2021, Utrecht, NL and Online.",
